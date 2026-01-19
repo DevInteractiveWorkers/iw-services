@@ -24,3 +24,24 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.flip-logo {
+  display: inline-block;
+  /* will-change: transform; */
+}
+
+.flip-logo:hover {
+  animation: flip-scale 1.2s ease-in-out forwards;
+}
+
+@keyframes flip-scale {
+  0% {
+    transform: scale(1) scaleX(1);
+  }
+  50% {
+    transform: scale(1.5) scaleX(-1);
+  }
+  100% {
+    transform: scale(1) scaleX(1);
+  }
+}

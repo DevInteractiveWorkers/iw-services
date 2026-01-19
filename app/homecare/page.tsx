@@ -1,7 +1,9 @@
 import { Highlight } from "@/components/highlight";
-import Review from "@/components/review";
 import { VAs } from "@/components/VAs";
 import Image from "next/image";
+import "../globals.css";
+import Reviews from "@/components/reviews";
+import { reviews } from "../reviews";
 
 export default function HomeCareLanding() {
   return (
@@ -13,7 +15,7 @@ export default function HomeCareLanding() {
           quality={100}
           height={1080}
           width={1080}
-          className="w-min max-h-20 object-contain"
+          className="w-min max-h-20 object-contain flip-logo"
         />
         <h1
           className="font-medium text-center md:text-4xl text-3xl"
@@ -50,7 +52,7 @@ export default function HomeCareLanding() {
         </button>
       </main>
       <section className="w-full p-10">
-        <Review />
+        <Reviews reviews={reviews} />
       </section>
       <VAs
         header={

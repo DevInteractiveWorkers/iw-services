@@ -47,7 +47,7 @@ export function NavBar() {
       />
       {/* max-lg:hidden */}
       <ul
-        className={`flex gap-5  p-4 z-10 top-0 max-lg:fixed max-lg:flex-col bg-white max-lg:shadow-lg 
+        className={`flex gap-5  p-4 z-10 top-0 max-lg:fixed max-lg:flex-col max-lg:bg-white max-lg:shadow-lg 
           max-lg:h-dvh max-lg:w-2/3 max-lg:pt-5 max-lg:px-10 max-md:px-5
           ${isOpen ? "max-lg:right-0" : "max-lg:-right-full"} transition-all duration-300`}
       >

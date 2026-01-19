@@ -1,32 +1,25 @@
-export default function Review() {
+export interface ReviewProps {
+  name: string;
+  content: string;
+  rating: number;
+}
+
+export default function ReviewComponent({ review }: { review: ReviewProps }) {
+  const { name, content, rating } = review;
   return (
     <div className="rounded-3xl overflow-hidden lg:max-w-250 md:max-w-150 mx-auto shadow-lg">
       <div className="bg-[#EFEFEF] px-5 pt-5">
-        <RateStars count={5} color="[#FFC72F]" />
-        <p className="text-justify py-3">
-          I have been working with Interactive Workers for over a year and The
-          experience has been wonderful. Before working with them, it had been
-          so hard for me to find an assistant, and they made it so easy ! They
-          have a great team of individuals that can perform many different
-          tasks, so it is very easy to choose who you want to work with. The
-          company is very organized and takes part in great communication. I am
-          very happy with the work of my virtual assistant. 10/10 recommend !
-        </p>
+        <RateStars count={rating} />
+        <p className="text-justify py-3">{content}</p>
       </div>
       <span className="bg-[#191919] text-white px-5 pb-3 font-semibold w-full block">
-        Tatiana Mosquera
+        {name}
       </span>
     </div>
   );
 }
 
-const RateStars = ({
-  count,
-  color = "iw-red-1",
-}: {
-  count: number;
-  color?: "white" | "iw-red-1" | "[#FFC72F]";
-}) => {
+const RateStars = ({ count }: { count: number }) => {
   const fullStars = Math.floor(count);
   const hasHalf = count % 1 !== 0;
 
