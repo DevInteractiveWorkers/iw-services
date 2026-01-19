@@ -7,7 +7,7 @@ const ALLOWED_SUBDOMAINS = [
   "privatesecurity",
 ];
 
-export function middleware(req: NextRequest) {
+export default function proxy(req: NextRequest) {
   const host = req.headers.get("host") || "";
   const pathname = req.nextUrl.pathname;
 

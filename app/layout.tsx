@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ParticlesBG } from "@/components/particles-bg";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,7 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className + " scroll-smooth overflow-x-hidden"}>
         <ParticlesBG id={"iw-particles"} />
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

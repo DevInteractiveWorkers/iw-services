@@ -9,7 +9,7 @@ export const ParticlesBG = ({
   position?: string;
 }) => {
   return (
-    <div className={`${position} w-full h-screen flex items-center -z-10`}>
+    <div className={`${position} w-full h-dvh fixed flex items-center -z-10`}>
       <div className={`${position} w-full h-full`}>
         <ParticlesComponent id={id} color="#cfcfcf" />
       </div>
