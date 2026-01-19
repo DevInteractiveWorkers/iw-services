@@ -7,39 +7,25 @@ const ALLOWED_SUBDOMAINS = [
   "privatesecurity",
 ];
 
-// Domains that may host this app
-const BASE_DOMAINS = [
-  "interactiveworkers.com",
-  "iw-services.vercel.app",
-  "localhost",
-  "10.100.9.208",
-];
-
-function getSubdomain(host: string): string | null {
-  // Remove port if present
-  const cleanHost = host.split(":")[0];
-
-  for (const base of BASE_DOMAINS) {
-    if (cleanHost === base) return null;
-    if (cleanHost.endsWith(`.${base}`)) {
-      return cleanHost.replace(`.${base}`, "").split(".")[0];
-    }
-  }
-
-  // Fallback for preview URLs (Vercel)
+function extractSubdomain(host: string): string | null {
+  const cleanHost = host.split(":")[0]; // remove port
   const parts = cleanHost.split(".");
-  if (parts.length > 2) {
-    return parts[0];
-  }
 
-  return null;
+  // localhost or invalid
+  if (parts.length < 2) return null;
+
+  // homecare.iw-services.vercel.app → homecare
+  // homecare.interactiveworkers.com → homecare
+  return parts[0];
 }
 
 export default function proxy(req: NextRequest) {
-  const host = req.headers.get("host") || "";
+  const host = req.headers.get("host");
+  if (!host) return NextResponse.next();
+
   const pathname = req.nextUrl.pathname;
 
-  // Ignore static assets
+  // Ignore Next internals & static assets
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
@@ -48,11 +34,16 @@ export default function proxy(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const subdomain = getSubdomain(host);
+  const subdomain = extractSubdomain(host);
 
-  // ❌ Block root or unknown domains
+  // ❌ Block root domain & unknown subdomains
   if (!subdomain || !ALLOWED_SUBDOMAINS.includes(subdomain)) {
     return NextResponse.rewrite(new URL("/not-found", req.url));
+  }
+
+  // Prevent infinite rewrite
+  if (pathname.startsWith(`/${subdomain}`)) {
+    return NextResponse.next();
   }
 
   // ✅ Rewrite to internal route
