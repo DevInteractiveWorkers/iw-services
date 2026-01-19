@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import SignUp from "./sign-up";
 
 export default function Header() {
   return (
@@ -60,12 +61,7 @@ export function NavBar() {
         <Item href={"/how-it-works#benefits"}>Benefits</Item>
         <Item href={"/how-it-works#faq"}>FAQ</Item>
       </ul>
-      <Link
-        href={"/sign-up"}
-        className="hover:underline cursor-pointer text-white bg-[#191919] px-4 py-1 rounded-md max-md:hidden"
-      >
-        Sign Up for our Newsletter
-      </Link>
+      <SignUp dark />
       <MenuButton onClick={() => setIsOpen(!isOpen)} />
     </nav>
   );

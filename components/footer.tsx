@@ -1,11 +1,11 @@
+"use client";
 import Image from "next/image";
+import SignUp from "./sign-up";
 
 export default function Footer() {
   return (
     <footer className="w-full py-10 md:gap-10 gap-5 flex flex-col justify-center items-center text-[#191919]">
-      <button className="text-white bg-[#DD272D] px-6 py-3 md:text-2xl rounded-2xl">
-        Sign up for our Newsletter
-      </button>
+      <SignUp />
       <div className="flex justify-around items-center max-md:flex-col">
         <Image
           src={"/iw-red-black-logo.png"}
