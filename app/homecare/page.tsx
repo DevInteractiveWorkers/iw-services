@@ -1,15 +1,16 @@
 import { Highlight } from "@/components/highlight";
 import { VAs } from "@/components/VAs";
 import Image from "next/image";
-import "../globals.css";
 import Reviews from "@/components/reviews";
 import { reviews } from "../reviews";
 import Link from "next/link";
+import BookACall from "@/components/book-a-call";
+import "./colors.css";
 
 export default function HomeCareLanding() {
   return (
     <>
-      <main className="h-dvh p-5 flex flex-col justify-center items-center gap-5">
+      <main className="max-h-dvh max-md:min-h-dvh px-5 flex flex-col justify-start items-center gap-5">
         <Image
           src={"/iw-icon.png"}
           alt={"iw-icon"}
@@ -24,11 +25,7 @@ export default function HomeCareLanding() {
         >
           Cut Admin Time, Not Quality of Care
           <br />
-          We can fill any{" "}
-          <Highlight color="#191919" bgColor="#56DBB5">
-            HIPAA
-          </Highlight>{" "}
-          requirements
+          We can fill any <Highlight>HIPAA</Highlight> requirements
           <br />
           for Home Care
         </h1>
@@ -37,7 +34,7 @@ export default function HomeCareLanding() {
           autoPlay
           loop
           muted
-          className="w-min md:h-1/3 h-1/4 object-cover rounded-2xl"
+          className="xl:max-w-3xl lg:max-w-2xl sm:max-w-xl w-min md:h-1/3 h-1/4 object-cover rounded-2xl"
         />
         <p className="text-center max-md:text-sm" style={{ lineHeight: 1.2 }}>
           Save time, reduce costs, and improve patient
@@ -56,6 +53,14 @@ export default function HomeCareLanding() {
           <br className="max-md:hidden" />
           15-Minute Call
         </Link>
+        <Link
+          target="_blank"
+          href={"https://calendly.com/interactiveworkersgm/30min"}
+          className="bg-[#191919] text-white font-medium px-4 py-2 rounded-2xl text-xl cursor-pointer md:hidden
+            hover:scale-109 transition-all duration-300 active:bg-[#191919] active:text-[#56DBB5] active:scale-95"
+        >
+          Book Your Free 15-Minute Call
+        </Link>
       </main>
       <section className="w-full p-10">
         <Reviews reviews={reviews} />
@@ -63,11 +68,7 @@ export default function HomeCareLanding() {
       <VAs
         header={
           <>
-            Our{" "}
-            <Highlight color="#191919" bgColor="#56DBB5">
-              Home Care
-            </Highlight>{" "}
-            VAs
+            Our <Highlight>Home Care</Highlight> VAs
           </>
         }
         VAs={[
@@ -83,35 +84,18 @@ export default function HomeCareLanding() {
           "Bilingual English/Spanish",
         ]}
       />
-      <div className="md:px-10 px-5 pb-10 flex justify-center">
-        <div
-          className="bg-[#56DBB5] text-[#191919] font-medium px-10 py-8 rounded-2xl md:text-6xl sm:text-4xl text-3xl text-center"
-          style={{ lineHeight: 1 }}
-        >
-          Ready to{" "}
-          <Highlight color="#ffffff" bgColor="#191919">
-            Simplify
-          </Highlight>{" "}
-          Your
-          <br />
-          <Highlight color="#ffffff" bgColor="#191919">
-            Home Care
-          </Highlight>{" "}
-          Operations?
-          <div className="flex justify-center pt-5">
-            <Link
-              target="_blank"
-              href={"https://calendly.com/interactiveworkersgm/30min"}
-              className="text-white bg-[#191919] md:text-5xl sm:text-4xl text-3 rounded-2xl px-6 py-3 cursor-pointer 
-              hover:scale-109 transition-all duration-300 active:bg-white active:text-[#191919] active:scale-95"
-            >
-              Book Your Free
-              <br />
-              15-Minute Call
-            </Link>
-          </div>
-        </div>
-      </div>
+      <BookACall>
+        Ready to{" "}
+        <Highlight color="#ffffff" bgColor="#191919">
+          Simplify
+        </Highlight>{" "}
+        Your
+        <br />
+        <Highlight color="#ffffff" bgColor="#191919">
+          Home Care
+        </Highlight>{" "}
+        Operations?
+      </BookACall>
     </>
   );
 }

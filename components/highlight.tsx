@@ -1,54 +1,47 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+
+import { useEffect, useRef } from "react";
 
 interface HighlightProps {
   children: React.ReactNode;
   color?: string;
   bgColor?: string;
-  animate?: boolean;
 }
 
-export const Highlight = ({
-  children,
-  color = "white",
-  bgColor = "#DD272D",
-}: HighlightProps) => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // ✅ Cast to HTMLElement so .style exists
-            const el = entry.target as HTMLElement;
-            el.style.animationPlayState = "running";
+export const Highlight = ({ children, color, bgColor }: HighlightProps) => {
+  const ref = useRef<HTMLSpanElement>(null);
 
-            observer.unobserve(el); // run once
-          }
-        });
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const el = ref.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.animationPlayState = "running";
+          observer.disconnect(); // run once
+        }
       },
-      {
-        threshold: 0.2, // 20% visible
-      },
+      { threshold: 0.2 },
     );
 
-    // Observe all elements with class 'highlight'
-    document.querySelectorAll(".highlight").forEach((el) => {
-      observer.observe(el);
-    });
+    observer.observe(el);
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <>
-      <style>
-        {`:root{
-        --highlight-color: ${color};
-        --highlight-bg: ${bgColor};
-        }
-        `}
-      </style>
-      <span className="text-bogue relative text-center inline-block z-10 highlight">
-        {children}
-      </span>
-    </>
+    <span
+      ref={ref}
+      className="highlight inline-block relative z-10"
+      style={{
+        // ✅ component-scoped CSS variables
+        ["--service-color" as any]: color,
+        ["--service-bg" as any]: bgColor,
+      }}
+    >
+      {children}
+    </span>
   );
 };

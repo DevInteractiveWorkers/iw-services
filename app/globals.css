@@ -3,10 +3,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --highlight-color: #ffffff;
-  --highlight-bg: #dd272d;
-  --highlight-color-dark: #ffffff;
-  --highlight-bg-dark: #191919;
+  --service-color: #ffffff;
+  --service-bg: #dd272d;
+  --service-color-dark: #ffffff;
+  --service-bg-dark: #191919;
+}
+
+* {
+  scroll-behavior: smooth;
 }
 
 @theme inline {
@@ -51,8 +55,8 @@ body {
 }
 
 .highlight {
-  color: var(--highlight-color);
-  background-image: linear-gradient(var(--highlight-bg), var(--highlight-bg));
+  color: var(--service-color);
+  background-image: linear-gradient(var(--service-bg), var(--service-bg));
   background-size: 110% 80%;
   background-repeat: no-repeat;
   background-position: center;
@@ -62,11 +66,24 @@ body {
   animation-play-state: paused;
 }
 
+.service {
+  color: var(--service-color);
+  background-image: linear-gradient(var(--service-bg), var(--service-bg));
+  background-size: 100% 100%;
+}
+.service-text {
+  color: var(--service-color);
+}
+.service-bg {
+  background-image: linear-gradient(var(--service-bg), var(--service-bg));
+  background-size: 100% 100%;
+}
+
 .highlight.dark {
-  color: var(--highlight-color-dark);
+  color: var(--service-color-dark);
   background-image: linear-gradient(
-    var(--highlight-bg-dark),
-    var(--highlight-bg-dark)
+    var(--service-bg-dark),
+    var(--service-bg-dark)
   );
 }
 .highlight.is-visible {

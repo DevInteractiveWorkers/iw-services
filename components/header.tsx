@@ -28,6 +28,7 @@ export function NavBar() {
         <Link
           href={href}
           className="cursor-pointer group relative w-full max-md:block"
+          onClick={() => setIsOpen(false)}
         >
           {children}
           <div className="bg-[#191919] h-px w-0 absolute left-1/2 group-hover:left-0 group-hover:w-full transition-all duration-300"></div>
@@ -37,7 +38,7 @@ export function NavBar() {
   };
 
   return (
-    <nav className="w-full flex md:justify-center justify-around items-center gap-5 z-50 absolute top-0 left-0 pt-5">
+    <nav className="w-full flex md:justify-center justify-around items-center gap-5 z-50  top-0 left-0 pt-5">
       <Image
         src={"/InteractiveWorkers-logo.png"}
         quality={100}
@@ -57,7 +58,7 @@ export function NavBar() {
         </li>
         <Item href={"/"}>Home</Item>
         <Item href={"/how-it-works"}>See How it Works</Item>
-        <Item href={"#our-vas"}>Our VAs</Item>
+        <Item href={"/#our-vas"}>Our VAs</Item>
         <Item href={"/how-it-works#benefits"}>Benefits</Item>
         <Item href={"/how-it-works#faq"}>FAQ</Item>
       </ul>
