@@ -4,6 +4,7 @@ import Image from "next/image";
 import "../globals.css";
 import Reviews from "@/components/reviews";
 import { reviews } from "../reviews";
+import Link from "next/link";
 
 export default function HomeCareLanding() {
   return (
@@ -45,11 +46,16 @@ export default function HomeCareLanding() {
           <br />
           understand the home care industry.
         </p>
-        <button className="bg-[#56DBB5] text-[#191919] font-medium px-4 py-2 rounded-2xl md:text-4xl text-xl">
+        <Link
+          target="_blank"
+          href={"https://calendly.com/interactiveworkersgm/30min"}
+          className="bg-[#56DBB5] text-[#191919] font-medium px-4 py-2 rounded-2xl md:text-4xl text-xl cursor-pointer
+            hover:scale-109 transition-all duration-300 active:bg-[#191919] active:text-[#56DBB5] active:scale-95"
+        >
           Book Your Free
           <br className="max-md:hidden" />
           15-Minute Call
-        </button>
+        </Link>
       </main>
       <section className="w-full p-10">
         <Reviews reviews={reviews} />
@@ -93,14 +99,16 @@ export default function HomeCareLanding() {
           </Highlight>{" "}
           Operations?
           <div className="flex justify-center pt-5">
-            <button
-              className="text-white bg-[#191919] md:text-5xl sm:text-4xl text-3 rounded-2xl px-6 py-3 cursor-pointer hover:scale-109 transition-all duration-300
-            active:bg-white active:text-[#191919] active:scale-95"
+            <Link
+              target="_blank"
+              href={"https://calendly.com/interactiveworkersgm/30min"}
+              className="text-white bg-[#191919] md:text-5xl sm:text-4xl text-3 rounded-2xl px-6 py-3 cursor-pointer 
+              hover:scale-109 transition-all duration-300 active:bg-white active:text-[#191919] active:scale-95"
             >
               Book Your Free
               <br />
               15-Minute Call
-            </button>
+            </Link>
           </div>
         </div>
       </div>

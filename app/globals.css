@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --highlight-color: #ffffff;
+  --highlight-bg: #dd272d;
+  --highlight-color-dark: #ffffff;
+  --highlight-bg-dark: #191919;
 }
 
 @theme inline {
@@ -43,5 +47,37 @@ body {
   }
   100% {
     transform: scale(1) scaleX(1);
+  }
+}
+
+.highlight {
+  color: var(--highlight-color);
+  background-image: linear-gradient(var(--highlight-bg), var(--highlight-bg));
+  background-size: 110% 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform-origin: center;
+
+  animation: reveal-highlight 0.5s ease-in-out forwards;
+  animation-play-state: paused;
+}
+
+.highlight.dark {
+  color: var(--highlight-color-dark);
+  background-image: linear-gradient(
+    var(--highlight-bg-dark),
+    var(--highlight-bg-dark)
+  );
+}
+.highlight.is-visible {
+  animation-play-state: running;
+}
+
+@keyframes reveal-highlight {
+  0% {
+    background-size: 0% 80%;
+  }
+  100% {
+    background-size: 110% 80%;
   }
 }

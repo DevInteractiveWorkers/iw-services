@@ -15,10 +15,7 @@ export function VAs({
   tags?: string[];
 }) {
   return (
-    <section
-      id="our-vas"
-      className="w-full md:p-10 px-4 flex flex-col items-center gap-5"
-    >
+    <section className="w-full md:p-10 px-4 flex flex-col items-center gap-5">
       <h2
         className="font-medium text-center md:text-4xl text-3xl"
         style={{ lineHeight: 1 }}

@@ -4,7 +4,7 @@ import SignUp from "./sign-up";
 
 export default function Footer() {
   return (
-    <footer className="w-full py-10 md:gap-10 gap-5 flex flex-col justify-center items-center text-[#191919]">
+    <footer className="w-full py-10 md:gap-10 gap-5 flex flex-col justify-center items-center text-[#191919] bottom-0">
       <SignUp />
       <div className="flex justify-around items-center max-md:flex-col">
         <Image
