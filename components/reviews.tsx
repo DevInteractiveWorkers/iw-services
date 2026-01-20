@@ -102,7 +102,7 @@ export default function Reviews({ reviews }: { reviews?: ReviewProps[] }) {
   if (!reviews || reviews.length === 0) return null;
 
   return (
-    <section className="w-full flex justify-center items-center p-5">
+    <section className="w-full flex justify-center items-center overflow-x-hidden">
       <MoveButton onClick={slidePrev} direction="prev" />
       <div
         ref={containerRef}
