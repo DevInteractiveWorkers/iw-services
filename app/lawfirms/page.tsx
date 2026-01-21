@@ -9,15 +9,27 @@ import { Highlight } from "@/components/highlight";
 export default function InsuranceLanding() {
   return (
     <>
-      <Landing>
-        Professional administrative support,
-        <br />
-        at a Fraction of the Cost - We Provide
-        <br />
-        Every <Highlight>Virtual Assistant</Highlight> Your
-        <br />
-        Law Firm Requires
-      </Landing>
+      <Landing
+        title={
+          <>
+            Professional administrative support,
+            <br />
+            at a Fraction of the Cost - We Provide
+            <br />
+            Every <Highlight>Virtual Assistant</Highlight> Your
+            <br />
+            Law Firm Requires
+          </>
+        }
+        subtitle={
+          <>
+            Free up your attorneys’ time with administrative virtual
+            <br className="max-md:hidden" /> assistants. Confidential,
+            bilingual, and cost-effective
+            <br className="max-md:hidden" /> support for busy law practices.
+          </>
+        }
+      />
       <section className="w-full p-10">
         <Reviews reviews={reviews} />
       </section>
@@ -35,6 +47,7 @@ export default function InsuranceLanding() {
           { name: "Customer Service Agents" },
         ]}
         tags={["24/7 Adaptability", "Translators", "Bilingual English/Spanish"]}
+        service="lawfirms"
       />
       <BookACall
         customMessage={

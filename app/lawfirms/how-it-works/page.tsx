@@ -16,24 +16,24 @@ export default function HowItWorksPage() {
                 className="font-medium lg:text-6xl md:text-5xl text-4xl"
                 style={{ lineHeight: 1 }}
               >
-                Your <Highlight>Time</Highlight> Should
-                <br /> Go to Patiens,
-                <br /> Not Paperwork
+                FREE Your
+                <br /> <Highlight>Attorneys</Highlight> From <br />
+                Low-Value Tasks
               </h1>
               <p className="py-4">
-                Recruitment, compliance, billing, and patient
-                <br className="max-md:hidden" /> coordination all compete for
-                your limited
-                <br className="max-md:hidden" /> resources. The result?
-                Overworked staff, slower
-                <br className="max-md:hidden" /> response times, and lost
-                revenue opportunities.
+                Client intake, follow-ups, scheduling, translations
+                <br className="max-md:hidden" /> your lawyers shouldn’t be doing
+                this. Our
+                <br className="max-md:hidden" /> administrative VAs handle it
+                all under strict
+                <br className="max-md:hidden" /> confidentiality, so you can
+                maximize profitability.
               </p>
             </div>
             <Image
               className="rounded-2xl object-cover object-top-right h-min max-h-75"
               src={
-                "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/696f7f2aa5a12ea16c760168.png"
+                "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d55ed814d8cf6fe5867f05.png"
               }
               height={1080}
               width={1080}
@@ -41,9 +41,9 @@ export default function HowItWorksPage() {
             />
           </div>
           <Image
-            className="rounded-2xl object-cover object-bottom max-h-1/2 w-full mt-10"
+            className="rounded-2xl object-cover object-top max-h-1/2 w-full mt-10"
             src={
-              "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d19540fefaa978564796a0.jpeg"
+              "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d55ed88da2ad6a4bdcc943.png"
             }
             height={1080}
             width={1080}
@@ -78,11 +78,12 @@ export default function HowItWorksPage() {
               <br /> Policyholders Seamsleesly
             </ListItem>
             <ListItem icon="scaling">Cut Hiring & Training Costs</ListItem>
+            <ListItem icon="24-7">24/7 Adaptabilty</ListItem>
           </ul>
           <Image
             className="rounded-2xl object-cover object-center h-1/3 max-h-75 w-full mt-10"
             src={
-              "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d1954004a3696eabf23233.jpeg"
+              "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d55ed871c31ec04982e7d5.png"
             }
             height={1080}
             width={1080}
@@ -91,54 +92,65 @@ export default function HowItWorksPage() {
         </div>
       </section>
       <FAQ>
-        <Question question="What is a Home Care Virtual Assistant?">
-          A Home Care Virtual Assistant (VA) is a trained, remote professional
-          who supports your agency with tasks such as scheduling caregivers,
-          coordinating services, managing intakes, billing support, and client
-          communication—so your on-site team can focus on patient care.
+        <Question question="Are your virtual assistants trained for legal tasks?">
+          Absolutely. Our legal VAs are experienced in law firm operations such
+          as client intake, appointment scheduling, translation, call handling,
+          and administrative support. They’re trained to understand legal
+          terminology and workflows, so your attorneys spend less time
+          explaining and more time practicing law.
         </Question>
-        <Question question="Are your VAs experienced in the home care industry?">
-          Yes. We recruit bilingual, industry-specific professionals who
-          understand the unique workflows and compliance requirements of home
-          care agencies.
+        <Question question="Can your VAs work with case management and legal software?">
+          Yes. Our assistants are proficient in common legal platforms (Clio,
+          MyCase, PracticePanther, etc.) and can quickly adapt to your firm’s
+          specific tools to ensure seamless integration into your existing
+          processes.
         </Question>
-        <Question question="Is patient information secure and HIPAA-compliant?">
-          Absolutely. We have the resources, secure data systems, and advanced
-          tech equipment to keep your client information private and compliant.
-          Every VA is trained in confidentiality and HIPAA protocols, so you can
-          trust that sensitive data stays protected.
+        <Question question="Are your VAs bilingual?">
+          Yes. We specialize in bilingual English-Spanish professionals so your
+          firm can expand its reach, improve client service, and capture more
+          opportunities without language barriers.
         </Question>
-        <Question question="Can a VA handle scheduling across multiple locations?">
-          Yes. Our VAs are skilled at managing complex schedules for
-          multi-location or multi-disciplinary teams, ensuring seamless
-          communication between caregivers, clients, and administrators.
+        <Question question="Can your VAs support my firm after hours or across time zones?">
+          Absolutely. Our VAs are adaptable to your firm’s schedule — including
+          evenings, weekends, or multiple time zones. This 24/7 availability
+          means your clients never feel neglected, and your team can rest
+          knowing support continues around the clock.
         </Question>
-        <Question question="Do you offer bilingual or multilingual support?">
-          We do. All of our VAs are bilingual (English/Spanish) and can support
-          agencies that serve diverse client populations.
+        <Question question="Is hiring a VA cost-effective compared to in-house staff?">
+          Definitely. Our legal-trained VAs deliver top-tier support at a
+          fraction of the cost of full-time in-house employees, helping you cut
+          non-billable hours by up to 60%.
         </Question>
-        <Question question="How quickly can we get started?">
-          Most agencies are matched with a qualified VA within a few business
-          days. After a brief onboarding call, your VA can begin handling tasks
-          immediately.
+        <Question question="Can we scale the number of VAs as our firm grows?">
+          Yes. InteractiveWorkers is designed to scale with your firm. You can
+          add or adjust support as your caseload changes without worrying about
+          extra overhead or long-term contracts.
         </Question>
-        <Question question="How much does a Home Care VA cost compared to hiring in-house staff?">
-          Hiring a VA through InteractiveWorkers is a cost-effective alternative
-          to adding full-time staff. You get experienced support without the
-          overhead of benefits, payroll taxes, or long hiring cycles.
+        <Question question="How do we get started?">
+          Simply schedule a free consultation or request a customized VA
+          staffing plan. We’ll evaluate your firm’s needs, recommend the right
+          VA roles, and handle onboarding so you can start delegating securely
+          and confidently.
         </Question>
       </FAQ>
-      <BookACall>
-        Ready to{" "}
+      <BookACall
+        customMessage={
+          <>
+            Book a <br />
+            Consultation
+          </>
+        }
+      >
+        Start{" "}
         <Highlight color="#ffffff" bgColor="#191919">
-          Simplify
+          Saving
         </Highlight>{" "}
-        Your
+        Billable
         <br />
         <Highlight color="#ffffff" bgColor="#191919">
-          Home Care
+          Hours
         </Highlight>{" "}
-        Operations?
+        Today
       </BookACall>
     </>
   );
