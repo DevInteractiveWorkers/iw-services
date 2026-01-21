@@ -5,11 +5,12 @@ import VideoPlayer from "./videoplayer";
 import SignUp from "./sign-up";
 
 interface LandingProps {
-  children: React.ReactNode;
+  title: string | React.ReactNode;
+  subtitle?: string | React.ReactNode;
   videoUrl?: string;
 }
 
-export default function Landing({ children, videoUrl }: LandingProps) {
+export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
   return (
     <main className="h-dvh px-5 flex flex-col justify-center items-center gap-5">
       <Image
@@ -24,7 +25,7 @@ export default function Landing({ children, videoUrl }: LandingProps) {
         className="font-medium text-center md:text-4xl text-3xl"
         style={{ lineHeight: 1 }}
       >
-        {children}
+        {title}
       </h1>
       {videoUrl && (
         <div className="xl:max-w-3xl lg:max-w-2xl sm:max-w-xl md:h-1/3 h-1/4 object-cover rounded-2xl overflow-hidden">
@@ -40,13 +41,11 @@ export default function Landing({ children, videoUrl }: LandingProps) {
           className="xl:max-w-3xl lg:max-w-2xl sm:max-w-xl w-min md:h-1/3 h-1/4 object-cover rounded-2xl"
         />
       )} */}
-      <p className="text-center max-md:text-sm" style={{ lineHeight: 1.2 }}>
-        Save time, reduce costs, and improve patient
-        <br />
-        satisfaction with bilingual virtual assistants who
-        <br />
-        understand the home care industry.
-      </p>
+      {subtitle && (
+        <p className="text-center max-md:text-sm" style={{ lineHeight: 1.2 }}>
+          {subtitle}
+        </p>
+      )}
       <div className="grid grid-cols-1 gap-2">
         <Link
           target="_blank"

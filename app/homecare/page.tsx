@@ -9,13 +9,27 @@ import { Highlight } from "@/components/highlight";
 export default function HomeCareLanding() {
   return (
     <>
-      <Landing videoUrl="https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68e67aadffda8d5fed213422.mp4">
-        Cut Admin Time, Not Quality of Care
-        <br />
-        We can fill any <Highlight>HIPAA</Highlight> requirements
-        <br />
-        for Home Care
-      </Landing>
+      <Landing
+        title={
+          <>
+            Cut Admin Time, Not Quality of Care
+            <br />
+            We can fill any <Highlight>HIPAA</Highlight> requirements
+            <br />
+            for Home Care
+          </>
+        }
+        subtitle={
+          <>
+            Save time, reduce costs, and improve patient
+            <br />
+            satisfaction with bilingual virtual assistants who
+            <br />
+            understand the home care industry.
+          </>
+        }
+        videoUrl="https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68e67aadffda8d5fed213422.mp4"
+      />
       <section className="w-full p-10">
         <Reviews reviews={reviews} />
       </section>
@@ -37,6 +51,7 @@ export default function HomeCareLanding() {
           "Proactive Communication",
           "Bilingual English/Spanish",
         ]}
+        service="homecare"
       />
       <BookACall>
         Ready to{" "}
