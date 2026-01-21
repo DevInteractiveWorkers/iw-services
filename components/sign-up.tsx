@@ -3,7 +3,13 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-export default function SignUp({ dark }: { dark?: boolean }) {
+export default function SignUp({
+  dark,
+  className,
+}: {
+  dark?: boolean;
+  className?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -15,12 +21,15 @@ export default function SignUp({ dark }: { dark?: boolean }) {
   return (
     <>
       <button
-        className={`cursor-pointer text-white active:bg-white hover:scale-105 active:scale-95 transition-all duration-300
+        className={
+          className ??
+          `cursor-pointer text-white active:bg-white hover:scale-105 active:scale-95 transition-all duration-300
           ${
             dark
               ? "bg-[#191919] px-4 py-1 rounded-md max-md:hidden active:text-[#191919]"
               : "bg-[#DD272D] px-6 py-3 md:text-2xl rounded-2xl active:text-[#DD272D]"
-          }`}
+          }`
+        }
         onClick={() => setOpen(true)}
       >
         Sign up for our Newsletter
