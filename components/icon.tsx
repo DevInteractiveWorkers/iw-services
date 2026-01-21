@@ -44,7 +44,7 @@ export const Icon = ({
       width={size.w}
       height={size.h}
       fill={filled ? "white" : "none"}
-      viewBox={`0 0 ${size.w} ${size.h}`}
+      viewBox={`0 0 ${Number(size.w) > 30 ? "24" : size.w} ${Number(size.h) > 30 ? "24" : size.h}`}
     >
       {Array.isArray(pathData) ? (
         paths.map((d, index) =>

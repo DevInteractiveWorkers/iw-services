@@ -1,0 +1,54 @@
+"use client";
+import { Icon, IconProps } from "./icon";
+import { useEffect, useState } from "react";
+
+interface IconButtonProps extends IconProps {
+  icon: string;
+  children?: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  reversed?: boolean;
+}
+
+export const IconButton = ({
+  icon,
+  children = "",
+  className = "",
+  onClick,
+  stroke = 0.6,
+  filled,
+  reversed,
+  height = "72px",
+  width = "72px",
+}: IconButtonProps) => {
+  const [hover, setHover] = useState(false);
+  const [isPortrait, setIsPortait] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsPortait(window.screen.orientation.type.includes("portrait"));
+    }
+  }, []);
+
+  return (
+    <button
+      className={`flex items-center gap-2 cursor-pointer h-min select-none text-white ${className} ${
+        reversed && "flex-row-reverse"
+      }`}
+      onMouseOver={() => !isPortrait && setHover(true)}
+      onMouseOut={() => !isPortrait && setHover(false)}
+      onTouchStart={() => isPortrait && setHover(true)}
+      onTouchEnd={() => isPortrait && setHover(false)}
+      onClick={onClick}
+    >
+      <Icon
+        icon={icon}
+        filled={filled && hover}
+        stroke={stroke}
+        width={width}
+        height={height}
+      />
+      {children}
+    </button>
+  );
+};

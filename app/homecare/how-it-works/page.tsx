@@ -3,12 +3,13 @@ import FAQ, { Question } from "@/components/faq";
 import { Highlight } from "@/components/highlight";
 import { ListItem } from "@/components/list-item";
 import Image from "next/image";
+import "../colors.css";
 
 export default function HowItWorksPage() {
   return (
     <>
-      <section className="md:p-10 p-4 flex justify-center ">
-        <div className="lg:w-9/12 h-min">
+      <section className="md:p-10 p-4 flex justify-center max-h-dvh overflow-hidden">
+        <div className="lg:w-9/12">
           <div className="grid md:grid-cols-2 h-min">
             <div>
               <h1
@@ -40,7 +41,7 @@ export default function HowItWorksPage() {
             />
           </div>
           <Image
-            className="rounded-2xl object-cover object-bottom h-1/2 w-full mt-10"
+            className="rounded-2xl object-cover object-bottom max-h-1/2 w-full mt-10"
             src={
               "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d19540fefaa978564796a0.jpeg"
             }
@@ -52,7 +53,7 @@ export default function HowItWorksPage() {
       </section>
       <section
         id="benefits"
-        className="w-full p-10 flex justify-center min-h-dvh"
+        className="w-full px-10 flex justify-center min-h-dvh"
       >
         <div className="lg:min-w-9/12 h-min">
           <h2 className="font-medium lg:text-6xl md:text-5xl text-4xl">

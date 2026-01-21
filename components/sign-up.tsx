@@ -15,11 +15,11 @@ export default function SignUp({ dark }: { dark?: boolean }) {
   return (
     <>
       <button
-        className={`text-white cursor-pointer hover:scale-105 transition-all duration-300
+        className={`cursor-pointer text-white active:bg-white hover:scale-105 active:scale-95 transition-all duration-300
           ${
             dark
-              ? "bg-[#191919] px-4 py-1 rounded-md max-md:hidden"
-              : "bg-[#DD272D] px-6 py-3 md:text-2xl rounded-2xl"
+              ? "bg-[#191919] px-4 py-1 rounded-md max-md:hidden active:text-[#191919]"
+              : "bg-[#DD272D] px-6 py-3 md:text-2xl rounded-2xl active:text-[#DD272D]"
           }`}
         onClick={() => setOpen(true)}
       >

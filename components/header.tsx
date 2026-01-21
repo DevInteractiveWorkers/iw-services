@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import SignUp from "./sign-up";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   return (
@@ -15,6 +16,7 @@ export default function Header() {
 
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const Item = ({
     href,
@@ -38,15 +40,19 @@ export function NavBar() {
   };
 
   return (
-    <nav className="w-full flex md:justify-center justify-around items-center gap-5 z-50  top-0 left-0 pt-5">
-      <Image
-        src={"/InteractiveWorkers-logo.png"}
-        quality={100}
-        alt={""}
-        height={1080}
-        width={1080}
-        className="w-min max-h-4 object-contain"
-      />
+    <nav
+      className={`w-full flex md:justify-center justify-around items-center gap-5 z-50 pt-5 ${pathname === "/" && "absolute top-0 left-0"}`}
+    >
+      <Link target="_blank" href={"https://interactiveworkers.com/"}>
+        <Image
+          src={"/InteractiveWorkers-logo.png"}
+          quality={100}
+          alt={"InteractiveWorkers"}
+          height={1080}
+          width={1080}
+          className="w-min max-h-4 object-contain hover:scale-95 transition-all duration-150"
+        />
+      </Link>
       {/* max-lg:hidden */}
       <ul
         className={`flex gap-5  p-4 z-10 top-0 max-lg:fixed max-lg:flex-col max-lg:bg-white max-lg:shadow-lg 
