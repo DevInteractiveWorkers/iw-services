@@ -103,3 +103,49 @@ body {
     background-size: 110% 80%;
   }
 }
+
+.check-path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* run once on view */
+.check-once {
+  animation: draw-check 2s ease-out forwards;
+}
+
+/* run on hover (restarts every time) */
+svg:hover .check-path {
+  animation: draw-check-hover 3s ease-out infinite;
+}
+
+@keyframes draw-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-check-hover {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  40% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 100;
+  }
+}
+
+svg:hover .animate-slow-spin {
+  transform: rotate(360deg);
+  animation: slow-spin 1s linear infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes slow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

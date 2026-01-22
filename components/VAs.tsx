@@ -32,7 +32,9 @@ export function VAs({
           <VAItem
             key={i}
             name={va.name}
-            className={i === VAs.length - 1 ? "md:translate-x-1/2" : ""}
+            className={
+              (i + 1) % 2 && i === VAs.length - 1 ? "md:translate-x-1/2" : ""
+            }
           />
         ))}
       </div>
