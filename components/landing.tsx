@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import VideoPlayer from "./videoplayer";
 import SignUp from "./sign-up";
+import { useEffect, useRef } from "react";
 
 interface LandingProps {
   title: string | React.ReactNode;
@@ -11,9 +12,33 @@ interface LandingProps {
 }
 
 export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
+  const ref = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const el = ref.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("flip-once");
+          observer.disconnect();
+          setTimeout(() => el.classList.remove("flip-once"), 1200);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="h-dvh px-5 flex flex-col justify-center items-center gap-5">
       <Image
+        ref={ref}
         src={"/iw-icon.png"}
         alt={"iw-icon"}
         quality={100}

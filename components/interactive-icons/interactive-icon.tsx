@@ -49,7 +49,7 @@ export default function InteractiveIcon({ service }: { service: string }) {
                 strokeLinejoin="round"
               />
               <path
-                className="group-hover:Rotate-2 transition-transform duration-150"
+                className="group-hover:-rotate-2 transition-transform duration-150"
                 d="M42.0812 95.1289H18.1836V81.7305L4.79989 61.6548C3.54216 59.7685 2.87109 57.5518 2.87109 55.2844V24.3086C2.87109 21.1374 5.44206 18.5664 8.61328 18.5664C11.7845 18.5664 14.3555 21.1374 14.3555 24.3086V47.9343C14.3555 49.9647 15.1621 51.9121 16.598 53.348L27.7539 64.5039 M42.0808 95.1289V67.3469C42.0808 64.3008 40.8707 61.38 38.717 59.2263L25.6072 46.1163C23.3647 43.8738 19.7289 43.8738 17.4864 46.1163C15.2441 48.3586 15.2441 51.9945 17.4864 54.2369L27.7535 64.5039"
                 stroke="#191919"
                 strokeWidth="2"
