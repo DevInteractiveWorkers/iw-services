@@ -31,7 +31,7 @@ export default function RootLayout({
         </Highlight>{" "}
         Billable
         <br />
-        Hours
+        Hours{" "}
         <Highlight color="#ffffff" bgColor="#191919">
           Today{" "}
         </Highlight>
