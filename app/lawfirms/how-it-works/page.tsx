@@ -1,4 +1,3 @@
-import BookACall from "@/components/book-a-call";
 import FAQ, { Question } from "@/components/faq";
 import { Highlight } from "@/components/highlight";
 import { ListItem } from "@/components/list-item";
@@ -133,25 +132,6 @@ export default function HowItWorksPage() {
           and confidently.
         </Question>
       </FAQ>
-      <BookACall
-        customMessage={
-          <>
-            Book a <br />
-            Consultation
-          </>
-        }
-      >
-        Start{" "}
-        <Highlight color="#ffffff" bgColor="#191919">
-          Saving
-        </Highlight>{" "}
-        Billable
-        <br />
-        <Highlight color="#ffffff" bgColor="#191919">
-          Hours
-        </Highlight>{" "}
-        Today
-      </BookACall>
     </>
   );
 }

@@ -1,11 +1,11 @@
 "use client";
 import "./animations.css";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function InteractiveIcon({ service }: { service: string }) {
   switch (service) {
-    case "homecare":
+    case "homecare": {
       return (
         <div className="relative group z-10 my-8">
           <svg
@@ -61,9 +61,29 @@ export default function InteractiveIcon({ service }: { service: string }) {
           </svg>
         </div>
       );
-    case "lawfirms":
+    }
+    case "lawfirms": {
+      const ref = useRef<SVGSVGElement>(null);
+      const [side, setSide] = useState<"left" | "right">("left");
+
+      const dropSide = (clientX: number) => {
+        if (!ref.current) return;
+
+        const rect = ref.current.getBoundingClientRect();
+        const localX = clientX - rect.left; // mouse X inside SVG
+
+        const svgWidth = rect.width;
+        if (localX < svgWidth / 2) {
+          setSide("left");
+        } else {
+          setSide("right");
+        }
+      };
+
       return (
         <svg
+          ref={ref}
+          onMouseMove={(e) => dropSide(e.clientX)}
           className="group origin-center"
           width="104"
           height="101"
@@ -75,15 +95,26 @@ export default function InteractiveIcon({ service }: { service: string }) {
             d="M56.2606 93.1109H47.9372C47.1749 93.1109 46.556 92.5131 46.556 91.7745V2.30679C46.556 1.03506 47.6258 0 48.9401 0H55.2566C56.572 0 57.6408 1.03506 57.6408 2.30679V91.7755C57.6408 92.5131 57.0229 93.1119 56.2596 93.1119L56.2606 93.1109ZM49.3174 90.4391H54.8794V2.67177H49.3174V90.4391Z M82.5955 100.871H20.4921C18.972 100.871 17.7354 99.5769 17.7354 97.9851V93.7813C17.7354 92.1904 18.972 90.8951 20.4921 90.8951H82.5955C84.1156 90.8951 85.3523 92.1895 85.3523 93.7813V97.9851C85.3523 99.576 84.1156 100.871 82.5955 100.871ZM20.5056 93.5933C20.4825 93.6115 20.4354 93.6758 20.4354 93.7813V97.9851C20.4354 98.1021 20.4911 98.1674 20.5113 98.1779L82.5946 98.1741C82.5946 98.1674 82.6503 98.1021 82.6503 97.9851V93.7813C82.6503 93.6652 82.5946 93.6 82.5744 93.5885L20.5046 93.5923L20.5056 93.5933Z"
             fill="#191919"
           />
-          <g className="">
+          <g>
             {/* left balance */}
             <g>
               <path
-                className="origin-center transition-all duration-500 group-hover:rotate-12 group-hover:-translate-x-2"
+                className={`origin-center transition-all duration-500 ${
+                  side === "right"
+                    ? "group-hover:rotate-12 group-hover:-translate-x-2"
+                    : "group-hover:-rotate-12 group-hover:translate-x-2"
+                }
+                `}
                 d="M47.4056 18.8444H20.2107C19.4562 18.8444 18.8438 18.3485 18.8438 17.7359C18.8438 17.1233 19.4553 16.6274 20.2107 16.6274H47.4056C48.1601 16.6274 48.7726 17.1233 48.7726 17.7359C48.7726 18.3485 48.161 18.8444 47.4056 18.8444Z"
                 fill="#191919"
               />
-              <g className="origin-center transition-all duration-500 group-hover:-translate-y-1">
+              <g
+                className={`origin-center transition-all duration-500 ${
+                  side === "right"
+                    ? "group-hover:-translate-y-1"
+                    : "group-hover:translate-y-2"
+                }`}
+              >
                 <path
                   d="M2.54986 66.4226L2.02002 60.4707H34.3404L32.7509 66.4226L28.5122 71.2923L20.0347 75.6209H15.2661L7.84829 72.9155L2.54986 66.4226Z"
                   fill="#1875EE"
@@ -97,11 +128,23 @@ export default function InteractiveIcon({ service }: { service: string }) {
             {/* right balance */}
             <g>
               <path
-                className="origin-center transition-all duration-500 group-hover:rotate-12 group-hover:-translate-x-2"
+                className={`origin-center transition-all duration-500 
+                  ${
+                    side === "right"
+                      ? "group-hover:rotate-12 group-hover:-translate-x-2"
+                      : "group-hover:-rotate-12 group-hover:translate-x-2"
+                  }`}
                 d="M81.82 18.8444H57.8459C57.1203 18.8444 56.5312 18.3485 56.5312 17.7359C56.5312 17.1233 57.1194 16.6274 57.8459 16.6274H81.82C82.5456 16.6274 83.1346 17.1233 83.1346 17.7359C83.1346 18.3485 82.5465 18.8444 81.82 18.8444Z"
                 fill="#191919"
               />
-              <g className="origin-center transition-all duration-500 group-hover:translate-y-2 group-hover:-translate-x-1">
+              <g
+                className={`origin-center transition-all duration-500 
+                  ${
+                    side === "right"
+                      ? "group-hover:translate-y-2 group-hover:-translate-x-1"
+                      : "group-hover:-translate-y-1 "
+                  } `}
+              >
                 <path
                   d="M70.2208 66.4226L69.6909 60.4707H102.011L100.422 66.4226L96.1831 71.2923L87.7056 75.6209H82.937L75.5192 72.9155L70.2208 66.4226Z"
                   fill="#1875EE"
@@ -115,6 +158,7 @@ export default function InteractiveIcon({ service }: { service: string }) {
           </g>
         </svg>
       );
+    }
     case "insurance": {
       const checkRef = useRef<SVGPathElement>(null);
 

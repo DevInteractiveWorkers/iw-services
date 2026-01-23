@@ -3,7 +3,6 @@ import { reviews } from "../reviews";
 import { VAs } from "@/components/VAs";
 import Landing from "@/components/landing";
 import Reviews from "@/components/reviews";
-import BookACall from "@/components/book-a-call";
 import { Highlight } from "@/components/highlight";
 
 export default function InsuranceLanding() {
@@ -49,25 +48,6 @@ export default function InsuranceLanding() {
         tags={["24/7 Adaptability", "Translators", "Bilingual English/Spanish"]}
         service="lawfirms"
       />
-      <BookACall
-        customMessage={
-          <>
-            Book a <br />
-            Consultation
-          </>
-        }
-      >
-        Start{" "}
-        <Highlight color="#ffffff" bgColor="#191919">
-          Saving
-        </Highlight>{" "}
-        Billable
-        <br />
-        <Highlight color="#ffffff" bgColor="#191919">
-          Hours
-        </Highlight>{" "}
-        Today
-      </BookACall>
     </>
   );
 }
