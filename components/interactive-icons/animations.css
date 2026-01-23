@@ -1,0 +1,102 @@
+.check-path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* run once on view */
+.check-once {
+  animation: draw-check 2s ease-out forwards;
+}
+
+/* run on hover (restarts every time) */
+svg:hover .check-path {
+  animation: draw-check-hover 3s ease-out infinite;
+}
+
+@keyframes draw-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-check-hover {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  40% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 100;
+  }
+}
+
+svg:hover .animate-slow-spin {
+  transform: rotate(360deg);
+  animation: slow-spin 1s linear infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes slow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lock-path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* run once on view */
+.lock-once {
+  animation: draw-lock 2s ease-out forwards;
+}
+
+/* run on hover (restarts every time) */
+svg:hover .lock-path {
+  animation: draw-lock-hover 3s ease-out infinite;
+}
+
+@keyframes draw-lock {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-lcok-hover {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  40% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 100;
+  }
+}
+
+svg:hover .animate-shake {
+  animation: shake 3s linear infinite;
+  transform-origin: bottom right;
+  will-change: transform;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  45% {
+    transform: rotate(0deg);
+  }
+  48% {
+    transform: rotate(5deg) translateX(-2px);
+  }
+  52% {
+    transform: rotate(-5deg) translateX(2px);
+  }
+  55% {
+    transform: rotate(0deg);
+  }
+}

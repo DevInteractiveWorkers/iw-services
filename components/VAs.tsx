@@ -1,4 +1,4 @@
-import InteractiveIcon from "./interactive-icon";
+import InteractiveIcon from "./interactive-icons/interactive-icon";
 
 interface VAsProps {
   name: string;
