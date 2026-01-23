@@ -1,3 +1,5 @@
+"use client";
+import { useRef, useState } from "react";
 import InteractiveIcon from "./interactive-icons/interactive-icon";
 
 interface VAsProps {
@@ -51,11 +53,29 @@ export function VAs({
 }
 
 function VAItem({ name, className }: { name: string; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [side, setSide] = useState<"left" | "right">("left");
+
+  const dropSide = (clientX: number) => {
+    if (!ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const localX = clientX - rect.left; // mouse X inside SVG
+
+    const svgWidth = rect.width;
+    if (localX < svgWidth / 2) {
+      setSide("left");
+    } else {
+      setSide("right");
+    }
+  };
   return (
     <div
-      className={`border-2 py-3 px-6 rounded-2xl text-center ${className}
-        hover:scale-105 transition-transform duration-300 hover:rotate-2 bg-white cursor-default
-        max-md:w-full
+      ref={ref}
+      onMouseMove={(e) => dropSide(e.clientX)}
+      className={`border-2 py-3 px-6 rounded-2xl text-center ${className} 
+        transition-transform duration-300 bg-white cursor-default
+        max-md:w-full hover:scale-105 ${side === "left" ? "hover:rotate-2" : "hover:-rotate-2"}
       `}
     >
       <span className="md:text-2xl font-medium">{name}</span>
