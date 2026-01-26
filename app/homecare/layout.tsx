@@ -1,3 +1,5 @@
+import BookACall from "@/components/book-a-call";
+import { Highlight } from "@/components/highlight";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,5 +13,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <BookACall>
+        Ready to{" "}
+        <Highlight color="#ffffff" bgColor="#191919">
+          Simplify
+        </Highlight>{" "}
+        Your
+        <br />
+        <Highlight color="#ffffff" bgColor="#191919">
+          Home Care
+        </Highlight>{" "}
+        Operations?
+      </BookACall>
+    </>
+  );
 }

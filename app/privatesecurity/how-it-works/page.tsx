@@ -1,11 +1,9 @@
-import BookACall from "@/components/book-a-call";
-import FAQ, { Question } from "@/components/faq";
+import "../colors.css";
 import { Highlight } from "@/components/highlight";
 import { ListItem } from "@/components/list-item";
-import Image from "next/image";
-import "../colors.css";
 import HowItWorks from "@/components/how-it-works";
 import BenefitsList from "@/components/benefits-list";
+import { FAQRenderer } from "@/components/faq-renderer";
 
 export default function HowItWorksPage() {
   return (
@@ -112,26 +110,7 @@ export default function HowItWorksPage() {
           </ListItem>
         </BenefitsList>
       </section>
-      <FAQ>
-        <Question question="How can InteractiveWorkers’ Remote workers help my insurance company manage claims more efficiently?">
-          Our VAs are trained to manage calls, assign guards, coordinate shift
-          changes, and update logs in real time. This keeps your operations
-          responsive, organized, and client-ready at all times.
-        </Question>
-        <Question question="Do your VAs understand private security protocols?">
-          Yes. All our Remote workers are familiar with insurance industry
-          protocols and follow strict data security and confidentiality policies
-          to protect sensitive client information.
-        </Question>
-        <Question question="Can your VAs handle emergencies or last-minute schedule changes?">Absolutely. Our dispatchers and schedulers are experienced in crisis management and can quickly reassign personnel or escalate incidents as needed.</Question>
-        <Question question="What types of roles can you fill for a private security company?">We offer dispatchers, schedulers, HR coordinators, and call center agents—covering all back-office and communication needs so your field team can focus on protecting clients.</Question>
-        <Question question="Can you provide 24/7 support? How flexible is your coverage?">Definitely. Our legal-trained VAs deliver top-tier support at a fraction of the cost of full-time in-house employees, helping you cut non-billable hours by up to 60%.</Question>
-        <Question question="Will our clients know they’re speaking with a virtual assistant?">We integrate seamlessly with your systems and use your company’s scripts and branding so interactions feel like in-house staff—not outsourced support.</Question>
-        <Question question="Do your virtual assistants work during holidays and weekends?">Yes. Our trained security VAs provide coverage on holidays and weekends at no extra cost, ensuring your dispatch, scheduling, and call support never misses a beat. This keeps your operations running smoothly 24/7, without unexpected overtime charges.</Question>
-        <Question question="How quickly can we scale up or down?">You can add or remove VA support as contracts, events, or emergencies change. We handle recruitment and training, giving you on-demand scalability.</Question>
-        <Question question="Is bilingual support available?">Yes. All of our dispatchers and call center agents are bilingual (English/Spanish), enabling you to serve a wider client base effectively.</Question>
-        <Question question="What’s the ROI compared to hiring in-house staff?">Our clients typically reduce administrative costs by 30–50% while improving response times. You pay only for the coverage you need—no benefits, overtime fee, or recruitment costs.</Question>
-      </FAQ>
+      <FAQRenderer section="privatesecurity" />
     </>
   );
 }

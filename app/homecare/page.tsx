@@ -3,7 +3,6 @@ import { reviews } from "../reviews";
 import { VAs } from "@/components/VAs";
 import Landing from "@/components/landing";
 import Reviews from "@/components/reviews";
-import BookACall from "@/components/book-a-call";
 import { Highlight } from "@/components/highlight";
 
 export default function HomeCareLanding() {
@@ -53,18 +52,6 @@ export default function HomeCareLanding() {
         ]}
         service="homecare"
       />
-      <BookACall>
-        Ready to{" "}
-        <Highlight color="#ffffff" bgColor="#191919">
-          Simplify
-        </Highlight>{" "}
-        Your
-        <br />
-        <Highlight color="#ffffff" bgColor="#191919">
-          Home Care
-        </Highlight>{" "}
-        Operations?
-      </BookACall>
     </>
   );
 }
