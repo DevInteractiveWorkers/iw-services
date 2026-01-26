@@ -17,7 +17,7 @@ export default function HowItWorksPage() {
                 style={{ lineHeight: 1 }}
               >
                 Your <Highlight>Time</Highlight> Should
-                <br /> Go to Patiens,
+                <br /> Go to Patients,
                 <br /> Not Paperwork
               </h1>
               <p className="py-4">

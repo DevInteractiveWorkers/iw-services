@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import SignUp from "./sign-up";
+import Image from "next/image";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
@@ -29,7 +29,7 @@ export function NavBar() {
       <li>
         <Link
           href={href}
-          className="cursor-pointer group relative w-full max-md:block"
+          className="cursor-pointer group relative w-full max-md:block py-4"
           onClick={() => setIsOpen(false)}
         >
           {children}
@@ -55,7 +55,7 @@ export function NavBar() {
       </Link>
       {/* max-lg:hidden */}
       <ul
-        className={`flex gap-5  p-4 z-10 top-0 max-lg:fixed max-lg:flex-col max-lg:bg-white max-lg:shadow-lg 
+        className={`flex gap-5 z-10 top-0 max-lg:fixed max-lg:flex-col max-lg:bg-white max-lg:shadow-lg 
           max-lg:h-dvh max-lg:w-2/3 max-lg:pt-5 max-lg:px-10 max-md:px-5
           ${isOpen ? "max-lg:right-0" : "max-lg:-right-full"} transition-all duration-300`}
       >
