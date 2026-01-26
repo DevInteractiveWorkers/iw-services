@@ -48,7 +48,7 @@ export default function FAQ({ children }: FAQProps) {
 
   return (
     <section id="faq" className="px-10 flex flex-col items-center">
-      <h3 className="text-5xl font-medium pl-3 grid md:grid-cols-2">
+      <h3 className="text-5xl font-medium py-4 grid md:grid-cols-2">
         <span className="md:text-right text-left md:pr-3">
           Have more
           <br className="max-md:hidden" /> questions?

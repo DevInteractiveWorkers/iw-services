@@ -8,7 +8,7 @@ export default function BookACall({
   customMessage?: string | React.ReactNode;
 }) {
   return (
-    <div className="md:px-10 px-5 pb-10 flex justify-center">
+    <div className="md:px-10 px-5 flex justify-center">
       <div
         className="bg-(--service-bg) text-(--service-color) font-medium px-10 py-8 rounded-2xl md:text-6xl sm:text-4xl text-3xl text-center"
         style={{ lineHeight: 1 }}
