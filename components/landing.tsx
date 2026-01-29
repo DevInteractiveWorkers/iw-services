@@ -36,7 +36,7 @@ export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
   }, []);
 
   return (
-    <main className="h-dvh px-5 flex flex-col justify-center items-center gap-5">
+    <main className="h-svh px-5 flex flex-col justify-center items-center gap-5">
       <Image
         ref={ref}
         src={"/iw-icon.png"}
@@ -47,7 +47,7 @@ export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
         className="w-min max-h-20 object-contain flip-logo"
       />
       <h1
-        className="font-medium text-center md:text-4xl text-3xl"
+        className={`font-medium text-center ${videoUrl ? "md:text-4xl text-3xl " : "lg:text-6xl md:text-5xl sm:text-4xl text-3xl "}`}
         style={{ lineHeight: 1 }}
       >
         {title}
@@ -57,15 +57,6 @@ export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
           <VideoPlayer videoUrl={videoUrl} />
         </div>
       )}
-      {/* {videoUrl && (
-        <video
-          src={videoUrl}
-          autoPlay
-          loop
-          muted
-          className="xl:max-w-3xl lg:max-w-2xl sm:max-w-xl w-min md:h-1/3 h-1/4 object-cover rounded-2xl"
-        />
-      )} */}
       {subtitle && (
         <p className="text-center max-md:text-sm" style={{ lineHeight: 1.2 }}>
           {subtitle}

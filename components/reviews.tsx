@@ -118,6 +118,9 @@ export default function Reviews({ reviews }: { reviews?: ReviewProps[] }) {
         onPointerLeave={onPointerUp}
         onMouseEnter={pauseAutoplay}
         onMouseLeave={resumeAutoplay}
+        onMouseDown={() => onPointerDown}
+        onMouseMove={() => onPointerMove}
+        onMouseUp={() => onPointerUp}
       >
         {items.map((review, index) => (
           <div key={index} className="min-w-full select-none">

@@ -9,6 +9,7 @@ interface VideoPlayerProps {
   onPlay?: () => void;
   cover?: boolean;
   controls?: boolean;
+  thumbnail?: string;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
@@ -19,6 +20,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   onPlay,
   cover = false,
   controls = true,
+  thumbnail,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
