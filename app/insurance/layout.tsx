@@ -21,7 +21,7 @@ export default function RootLayout({
         customMessage={
           <>
             Book a Free
-            <br />
+            <br className="max-lg:hidden" />
             Strategy Call
           </>
         }
@@ -30,7 +30,7 @@ export default function RootLayout({
           Fast
         </Highlight>{" "}
         Response, Lower
-        <br />
+        <br className="max-lg:hidden" />
         Costs-
         <Highlight color="#ffffff" bgColor="#191919">
           Starting

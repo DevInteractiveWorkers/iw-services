@@ -22,7 +22,7 @@ export default function RootLayout({
           Simplify
         </Highlight>{" "}
         Your
-        <br />
+        <br className="max-lg:hidden" />
         <Highlight color="#ffffff" bgColor="#191919">
           Home Care
         </Highlight>{" "}

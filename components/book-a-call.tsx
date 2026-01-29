@@ -24,7 +24,7 @@ export default function BookACall({
             {customMessage ?? (
               <>
                 Book Your Free
-                <br />
+                <br className="max-lg:hidden" />
                 15-Minute Call
               </>
             )}

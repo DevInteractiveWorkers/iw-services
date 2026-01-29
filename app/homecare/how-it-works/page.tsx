@@ -13,8 +13,8 @@ export default function HowItWorksPage() {
           title={
             <>
               Your <Highlight>Time</Highlight> Should
-              <br /> Go to Patients,
-              <br /> Not Paperwork
+              <br className="max-lg:hidden" /> Go to Patients,
+              <br className="max-lg:hidden" /> Not Paperwork
             </>
           }
           paragraph={
@@ -43,7 +43,7 @@ export default function HowItWorksPage() {
           title={
             <>
               Here's How InteractiveWorkers
-              <br />
+              <br className="max-lg:hidden" />
               Makes <Highlight>Home Care</Highlight> Easier:
             </>
           }
@@ -53,18 +53,19 @@ export default function HowItWorksPage() {
         >
           <ListItem icon="check-page">
             On-site Virtual Assistance
-            <br /> (Full commitment and confidentiality)
+            <br className="max-lg:hidden" /> (Full commitment and
+            confidentiality)
           </ListItem>
           <ListItem icon="direct-access">
             Direct Access to Efficiency
-            <br /> Trackers and CCTV Footage
+            <br className="max-lg:hidden" /> Trackers and CCTV Footage
           </ListItem>
           <ListItem icon="tech-support">
             Included Tech Support and HR Crew
           </ListItem>
           <ListItem icon="serve-speaking">
             Serve Spanish-Speaking
-            <br /> Policyholders Seamsleesly
+            <br className="max-lg:hidden" /> Policyholders Seamsleesly
           </ListItem>
           <ListItem icon="scaling">Cut Hiring & Training Costs</ListItem>
         </BenefitsList>

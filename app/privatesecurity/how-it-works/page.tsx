@@ -12,8 +12,9 @@ export default function HowItWorksPage() {
         <HowItWorks
           title={
             <>
-              Our Support =<br />
-              <Highlight>More Solutions</Highlight> <br />
+              Our Support =<br className="max-lg:hidden" />
+              <Highlight>More Solutions</Highlight>{" "}
+              <br className="max-lg:hidden" />
               We Cover Every Shift
             </>
           }
@@ -42,7 +43,7 @@ export default function HowItWorksPage() {
           src="https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/69736fd1a87bebde16503ffc.png"
           title={
             <>
-              24/7 Dispatch <br />
+              24/7 Dispatch <br className="max-lg:hidden" />
               You Can Depend On
             </>
           }
@@ -56,53 +57,54 @@ export default function HowItWorksPage() {
         >
           <ListItem icon="24-7">
             <strong>24/7 call handling</strong>
-            <br /> without butnout or overtime
+            <br className="max-lg:hidden" /> without butnout or overtime
           </ListItem>
           <ListItem icon="direct-access">
             <strong>Instant guard deployment remote support</strong>
-            <br /> for emergencies and after-hours incidents
+            <br className="max-lg:hidden" /> for emergencies and after-hours
+            incidents
           </ListItem>
           <ListItem icon="tech-support">
             <strong>Accurate shift scheduling</strong>
-            <br />
+            <br className="max-lg:hidden" />
             to avoid coverage gaps
           </ListItem>
           <ListItem icon="serve-speaking">
             <strong>Seamless communication</strong>
-            <br />
+            <br className="max-lg:hidden" />
             between yout office, guards, and clients
           </ListItem>
         </BenefitsList>
         <BenefitsList>
           <ListItem icon="24-7">
             <strong>Reduce missing calls and response</strong>
-            <br />
+            <br className="max-lg:hidden" />
             delays by up to 50% with dedicated virtual
-            <br /> dispatchers.
+            <br className="max-lg:hidden" /> dispatchers.
           </ListItem>
           <ListItem icon="direct-access">
             <strong>Cut overtime and payroll costs while</strong>
-            <br />
+            <br className="max-lg:hidden" />
             maintaining round the-clock coverage
           </ListItem>
           <ListItem icon="tech-support">
             <strong>Scale instantly during emergencies or</strong>
-            <br />
+            <br className="max-lg:hidden" />
             contract expansions without recruiting headaches.
           </ListItem>
           <ListItem icon="serve-speaking">
             <strong>Access bilingual, secuirity-trained VAs</strong>
-            <br />
+            <br className="max-lg:hidden" />
             who understand industry protocols.
           </ListItem>
           <ListItem icon="check-page">
             <strong>On-site Virtual Assistance</strong>
-            <br />
+            <br className="max-lg:hidden" />
             (Full commitment and confidentiality)
           </ListItem>
           <ListItem icon="direct-access">
             <strong>Direct Access to Efficiency Trackers</strong>
-            <br />
+            <br className="max-lg:hidden" />
             and CCTV Footage
           </ListItem>
           <ListItem icon="tech-support">

@@ -12,9 +12,9 @@ export default function PriavetSecurityLanding() {
         title={
           <>
             24/7 Remote Dispatch
-            <br />
+            <br className="max-lg:hidden" />
             for Every Operation,
-            <br />
+            <br className="max-lg:hidden" />
             <Highlight>Ready to Deploy</Highlight>
           </>
         }

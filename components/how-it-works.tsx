@@ -16,11 +16,13 @@ export default function HowItWorks({
   alt = "service",
 }: HowItWorksProps) {
   return (
-    <div className="lg:w-9/12">
-      <div className={`flex h-min ${reverse && "flex-row-reverse"} gap-5`}>
+    <div className="lg:w-9/12 md:w-11/12 max-h-svh flex flex-col justify-around">
+      <div
+        className={`flex h-min ${reverse && "md:flex-row-reverse"} max-md:flex-col-reverse gap-5`}
+      >
         <div className={`${imageSrc && "md:w-1/2"}`}>
           <h1
-            className="font-medium lg:text-6xl md:text-5xl text-4xl"
+            className="font-medium xl:text-6xl md:text-5xl text-4xl"
             style={{ lineHeight: 1 }}
           >
             {title}
@@ -39,7 +41,7 @@ export default function HowItWorks({
       </div>
       {Array.isArray(imageSrc) && imageSrc.length === 2 && (
         <Image
-          className="rounded-2xl object-cover object-top max-h-1/2 w-full mt-10"
+          className="rounded-2xl object-cover object-top max-h-1/2 w-full"
           src={imageSrc[1]}
           height={1080}
           width={1080}

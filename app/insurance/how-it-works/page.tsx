@@ -12,9 +12,10 @@ export default function HowItWorksPage() {
         <HowItWorks
           title={
             <>
-              When <Highlight>Policyholders</Highlight> <br />
+              When <Highlight>Policyholders</Highlight>{" "}
+              <br className="max-lg:hidden" />
               Wait, Satisfaction
-              <br />
+              <br className="max-lg:hidden" />
               Drops
             </>
           }
@@ -45,7 +46,7 @@ export default function HowItWorksPage() {
           title={
             <>
               Here's How InteractiveWorkers Scales
-              <br />
+              <br className="max-lg:hidden" />
               Your <Highlight>Insurance Companies</Highlight> Operations:
             </>
           }
@@ -55,15 +56,16 @@ export default function HowItWorksPage() {
         >
           <ListItem icon="check-page">
             On-site Virtual Assistance
-            <br /> (Full commitment and confidentiality)
+            <br className="max-lg:hidden" /> (Full commitment and
+            confidentiality)
           </ListItem>
           <ListItem icon="direct-access">
             Direct Access to Efficiency
-            <br /> Trackers and CCTV Footage
+            <br className="max-lg:hidden" /> Trackers and CCTV Footage
           </ListItem>
           <ListItem icon="tech-support">Included Tech Support</ListItem>
           <ListItem icon="serve-speaking">
-            Reduce Service Times & <br />
+            Reduce Service Times & <br className="max-lg:hidden" />
             Backlogs
           </ListItem>
         </BenefitsList>

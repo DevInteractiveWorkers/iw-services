@@ -12,18 +12,18 @@ export default function HomeCareLanding() {
         title={
           <>
             Cut Admin Time, Not Quality of Care
-            <br />
+            <br className="max-lg:hidden" />
             We can fill any <Highlight>HIPAA</Highlight> requirements
-            <br />
+            <br className="max-lg:hidden" />
             for Home Care
           </>
         }
         subtitle={
           <>
             Save time, reduce costs, and improve patient
-            <br />
+            <br className="max-lg:hidden" />
             satisfaction with bilingual virtual assistants who
-            <br />
+            <br className="max-lg:hidden" />
             understand the home care industry.
           </>
         }

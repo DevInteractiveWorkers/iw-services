@@ -16,7 +16,7 @@ export default function BenefitsList({
 }: BenefitsListProps) {
   return (
     <div
-      className={`lg:w-9/12 flex flex-col ${text || src ? "min-h-dvh justify-around py-10" : "h-min"}`}
+      className={`lg:w-9/12 md:w-11/12 flex flex-col ${text || src ? "min-h-dvh justify-around py-10" : "h-min"}`}
     >
       {title && (
         <h2 className="font-medium lg:text-6xl md:text-5xl text-4xl">

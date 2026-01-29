@@ -59,7 +59,7 @@ export default function FAQ({ children }: FAQProps) {
         </span>
       </h3>
 
-      <div className="mt-6 lg:w-9/12">
+      <div className="mt-6 lg:w-9/12 md:w-11/12">
         {items.map((child, i) => {
           if (React.isValidElement<FAQQuestionProps>(child)) {
             return React.cloneElement(child, {

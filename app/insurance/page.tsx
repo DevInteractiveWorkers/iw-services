@@ -13,11 +13,11 @@ export default function InsuranceLanding() {
         title={
           <>
             End-ti-End Insurance
-            <br />
+            <br className="max-lg:hidden" />
             <Highlight>Operations</Highlight> Support
-            <br />
+            <br className="max-lg:hidden" />
             Every Remote Worker
-            <br />
+            <br className="max-lg:hidden" />
             You Need Under One Roof
           </>
         }
