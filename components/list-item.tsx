@@ -13,7 +13,7 @@ export function ListItem({
 }) {
   return (
     <li className="flex gap-5 items-center">
-      <div className="service p-4 rounded-full">
+      <div className="service p-4 rounded-full flip-logo">
         <Icon icon={icon} width="30" height="30" />
       </div>
       <span

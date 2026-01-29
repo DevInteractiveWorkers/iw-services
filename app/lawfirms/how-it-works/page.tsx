@@ -31,7 +31,7 @@ export default function HowItWorksPage() {
           }
           imageSrc={[
             "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d55ed814d8cf6fe5867f05.png",
-            "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d55ed814d8cf6fe5867f05.png",
+            "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/68d55ed88da2ad6a4bdcc943.png",
           ]}
           alt="lawfirms-va"
         />
