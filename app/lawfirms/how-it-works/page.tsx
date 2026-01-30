@@ -45,7 +45,7 @@ export default function HowItWorksPage() {
             <>
               Here's How InteractiveWorkers
               <br className="max-lg:hidden" />
-              Makes <Highlight>Home Care</Highlight> Easier:
+              Handle <Highlight>Law Firms</Highlight> Tasks:
             </>
           }
           src={

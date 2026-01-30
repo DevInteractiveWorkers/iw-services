@@ -50,8 +50,8 @@ export default function HowItWorksPage() {
           text={
             <>
               With <strong>InteractiveWorkers</strong>, you can scale your
-              dispatc coverage at a fraction of the cost of hiring in-housem
-              withour compromising on reliability or secuirity.
+              dispatch coverage at a fraction of the cost of hiring in-house,
+              without compromising on reliability or security.
             </>
           }
         >
@@ -72,7 +72,7 @@ export default function HowItWorksPage() {
           <ListItem icon="serve-speaking">
             <strong>Seamless communication</strong>
             <br className="max-lg:hidden" />
-            between yout office, guards, and clients
+            between your office, guards, and clients
           </ListItem>
         </BenefitsList>
         <BenefitsList>

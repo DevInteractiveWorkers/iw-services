@@ -41,6 +41,8 @@ export default function PriavetSecurityLanding() {
           { name: "Insurance Agents" },
           { name: "Translators" },
           { name: "Intake Specialist" },
+          { name: "Dispatcher" },
+          { name: "Schedulers" },
         ]}
         tags={[
           "Trained in Confidentiality and Security Protocols",

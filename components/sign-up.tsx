@@ -61,7 +61,7 @@ function Modal({ onClose }: { onClose: () => void }) {
       <div className="absolute inset-0 bg-black/60" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-2xl  z-10 overflow-hidden">
+      <div className="relative w-full max-w-2xl z-10 overflow-hidden flex justify-center items-center">
         {/* Close button */}
         <button
           onClick={onClose}
@@ -72,12 +72,7 @@ function Modal({ onClose }: { onClose: () => void }) {
 
         <iframe
           src="https://api.leadconnectorhq.com/widget/form/ZEseYSVkwkB9sjZqhqZR"
-          style={{
-            width: "100%",
-            height: "100%",
-            border: "none",
-            boxShadow: "none",
-          }}
+          className="w-full h-full min-h-[70svh] flex justify-center items-center"
           title="Newsletter contact form"
           data-form-id="ZEseYSVkwkB9sjZqhqZR"
         />

@@ -16,7 +16,7 @@ export default function HowItWorks({
   alt = "service",
 }: HowItWorksProps) {
   return (
-    <div className="lg:w-9/12 md:w-11/12 max-h-svh flex flex-col justify-around">
+    <div className="lg:[@media(min-height:800px)]:w-9/12 md:w-11/12 [@media(min-height:800px)]:max-h-svh flex flex-col justify-around">
       <div
         className={`flex h-min ${reverse && "md:flex-row-reverse"} max-md:flex-col-reverse gap-5`}
       >
@@ -41,7 +41,7 @@ export default function HowItWorks({
       </div>
       {Array.isArray(imageSrc) && imageSrc.length === 2 && (
         <Image
-          className="rounded-2xl object-cover object-top max-h-1/2 w-full"
+          className="rounded-2xl object-cover [@media(min-height:800px)]:object-top [@media(max-height:800px)]:mt-5 max-h-1/2 w-full"
           src={imageSrc[1]}
           height={1080}
           width={1080}

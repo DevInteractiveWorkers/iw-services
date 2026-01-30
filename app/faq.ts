@@ -225,7 +225,7 @@ export const FAQSections: Record<FAQSectionKey, FAQ[]> = {
     {
       question: "Can you provide 24/7 support? How flexible is your coverage?",
       answer: `
-          Definitely. Our legal-trained VAs deliver top-tier support at a
+          Definitely. Our security-trained VAs deliver top-tier support at a
           fraction of the cost of full-time in-house employees, helping you cut
           non-billable hours by up to 60%.
         `,

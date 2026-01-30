@@ -44,10 +44,10 @@ export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
         quality={100}
         height={1080}
         width={1080}
-        className="w-min max-h-20 object-contain flip-logo"
+        className="w-min [@media(min-height:800px)]:max-h-20 max-h-10 object-contain flip-logo"
       />
       <h1
-        className={`font-medium text-center ${videoUrl ? "md:text-4xl text-3xl " : "lg:text-6xl md:text-5xl sm:text-4xl text-3xl "}`}
+        className={`font-medium text-center ${videoUrl ? "[@media(min-height:800px)]:md:text-4xl [@media(min-height:800px)]:text-3xl text-2xl" : "lg:text-6xl md:text-5xl sm:text-4xl text-3xl "}`}
         style={{ lineHeight: 1 }}
       >
         {title}
@@ -58,7 +58,10 @@ export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
         </div>
       )}
       {subtitle && (
-        <p className="text-center max-md:text-sm" style={{ lineHeight: 1.2 }}>
+        <p
+          className="text-center max-md:text-sm [@media(min-height:800px)]:landing"
+          style={{ lineHeight: 1.2 }}
+        >
           {subtitle}
         </p>
       )}
@@ -66,11 +69,11 @@ export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
         <Link
           target="_blank"
           href={"https://calendly.com/interactiveworkersgm/30min"}
-          className="bg-(--service-bg) text-(--service-color) font-medium px-4 py-2 rounded-2xl md:text-4xl text-xl cursor-pointer
+          className="bg-(--service-bg) text-(--service-color) font-medium px-4 py-2 rounded-2xl [@media(min-height:800px)]:md:text-4xl text-xl cursor-pointer
             hover:scale-109 transition-all duration-300 active:bg-(--service-color) active:text-(--service-bg) active:scale-95"
         >
-          Book Your Free
-          <br className="max-md:hidden" />
+          Book Your Free{" "}
+          <br className="max-md:hidden [@media(max-height:800px)]:hidden" />{" "}
           15-Minute Call
         </Link>
         <SignUp

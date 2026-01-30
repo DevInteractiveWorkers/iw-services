@@ -12,7 +12,7 @@ export default function InsuranceLanding() {
       <Landing
         title={
           <>
-            End-ti-End Insurance
+            End-to-End Insurance
             <br className="max-lg:hidden" />
             <Highlight>Operations</Highlight> Support
             <br className="max-lg:hidden" />
