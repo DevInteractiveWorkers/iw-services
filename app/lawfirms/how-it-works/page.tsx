@@ -14,8 +14,7 @@ export default function HowItWorksPage() {
             <>
               FREE Your
               <br className="max-lg:hidden" /> <Highlight>Attorneys</Highlight>{" "}
-              From <br className="max-lg:hidden" />
-              Low-Value Tasks
+              From <br className="max-lg:hidden" /> Low-Value Tasks
             </>
           }
           paragraph={
@@ -44,8 +43,8 @@ export default function HowItWorksPage() {
           title={
             <>
               Here's How InteractiveWorkers
-              <br className="max-lg:hidden" />
-              Handle <Highlight>Law Firms</Highlight> Tasks:
+              <br className="max-lg:hidden" /> Handle{" "}
+              <Highlight>Law Firms</Highlight> Tasks:
             </>
           }
           src={

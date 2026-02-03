@@ -12,12 +12,11 @@ export default function InsuranceLanding() {
         title={
           <>
             Professional administrative support,
-            <br className="max-lg:hidden" />
-            at a Fraction of the Cost - We Provide
-            <br className="max-lg:hidden" />
-            Every <Highlight>Virtual Assistant</Highlight> Your
-            <br className="max-lg:hidden" />
-            Law Firm Requires
+            <br className="max-lg:hidden" /> at a Fraction of the Cost - We
+            Provide
+            <br className="max-lg:hidden" /> Every{" "}
+            <Highlight>Virtual Assistant</Highlight> Your
+            <br className="max-lg:hidden" /> Law Firm Requires
           </>
         }
         subtitle={

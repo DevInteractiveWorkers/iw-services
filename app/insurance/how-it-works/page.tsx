@@ -13,10 +13,8 @@ export default function HowItWorksPage() {
           title={
             <>
               When <Highlight>Policyholders</Highlight>{" "}
-              <br className="max-lg:hidden" />
-              Wait, Satisfaction
-              <br className="max-lg:hidden" />
-              Drops
+              <br className="max-lg:hidden" /> Wait, Satisfaction
+              <br className="max-lg:hidden" /> Drops
             </>
           }
           paragraph={
@@ -46,8 +44,8 @@ export default function HowItWorksPage() {
           title={
             <>
               Here's How InteractiveWorkers Scales
-              <br className="max-lg:hidden" />
-              Your <Highlight>Insurance Companies</Highlight> Operations:
+              <br className="max-lg:hidden" /> Your{" "}
+              <Highlight>Insurance Companies</Highlight> Operations:
             </>
           }
           src={
@@ -65,8 +63,7 @@ export default function HowItWorksPage() {
           </ListItem>
           <ListItem icon="tech-support">Included Tech Support</ListItem>
           <ListItem icon="serve-speaking">
-            Reduce Service Times & <br className="max-lg:hidden" />
-            Backlogs
+            Reduce Service Times & <br className="max-lg:hidden" /> Backlogs
           </ListItem>
         </BenefitsList>
       </section>

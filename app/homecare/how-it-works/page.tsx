@@ -43,8 +43,8 @@ export default function HowItWorksPage() {
           title={
             <>
               Here's How InteractiveWorkers
-              <br className="max-lg:hidden" />
-              Makes <Highlight>Home Care</Highlight> Easier:
+              <br className="max-lg:hidden" /> Makes{" "}
+              <Highlight>Home Care</Highlight> Easier:
             </>
           }
           src={

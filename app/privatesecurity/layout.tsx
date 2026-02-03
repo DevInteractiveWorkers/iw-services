@@ -20,8 +20,7 @@ export default function RootLayout({
         customMessage={
           <>
             Book a Free
-            <br className="max-lg:hidden" />
-            Strategy Call
+            <br className="max-lg:hidden" /> Strategy Call
           </>
         }
       >
@@ -30,8 +29,7 @@ export default function RootLayout({
           Saving
         </Highlight>{" "}
         Billable
-        <br className="max-lg:hidden" />
-        Hours{" "}
+        <br className="max-lg:hidden" /> Hours{" "}
         <Highlight color="#ffffff" bgColor="#191919">
           Today{" "}
         </Highlight>

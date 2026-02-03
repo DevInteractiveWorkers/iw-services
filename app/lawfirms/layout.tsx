@@ -20,8 +20,7 @@ export default function RootLayout({
       <BookACall
         customMessage={
           <>
-            Book a <br className="max-lg:hidden" />
-            Consultation
+            Book a <br className="max-lg:hidden" /> Consultation
           </>
         }
       >
@@ -30,7 +29,7 @@ export default function RootLayout({
           Saving
         </Highlight>{" "}
         Billable
-        <br className="max-lg:hidden" />
+        <br className="max-lg:hidden" />{" "}
         <Highlight color="#ffffff" bgColor="#191919">
           Hours
         </Highlight>{" "}
