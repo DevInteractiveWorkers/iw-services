@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, use } from "react";
 import { IconButton } from "./icon-button";
 
 interface VideoPlayerProps {
@@ -27,9 +27,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [videoDuration, setVideoDuration] = useState(0);
   const [videoCurrentTime, setVideoCurrentTime] = useState(0);
-  const [progressHover, setProgressHover] = useState("0%");
+  const [progressHover, setProgressHover] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState<number>(0.5);
+  const [prevVolume, setPreviousVolume] = useState<number | null>(null);
   const [showVolumeMenu, setShowVolumeMenu] = useState(false);
   const volumeIcon =
     volume === 0 ? "volume-mute" : volume <= 0.5 ? "volume-down" : "volume-up";
@@ -101,7 +102,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     const hoverX = event.clientX - bar.left;
     const percent = (hoverX / bar.width) * 100;
 
-    setProgressHover(`${percent}%`);
+    setProgressHover(percent);
   };
 
   // --------- Play / Pause / Replay ----------
@@ -168,6 +169,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             filled={!showReplay}
             fillOnHover={!showReplay}
             icon={showReplay ? "replay" : isVideoPlaying ? "pause" : "play"}
+            className={
+              "hover:opacity-80 opacity-50 hover:shadow-lg rounded-full transition-all duration-300"
+            }
             onClick={handleVideoControls}
           />
 
@@ -181,17 +185,25 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 onClick={() => videoRef.current?.requestFullscreen()}
               />
               {/* Volume */}
-              <div className="relative">
+              <div
+                className="relative"
+                onMouseEnter={() => setShowVolumeMenu(true)}
+                onMouseLeave={() => setShowVolumeMenu(false)}
+              >
                 <IconButton
                   icon={volumeIcon}
                   filled
+                  stroke={0}
                   className="text-white w-7"
-                  onClick={() => setShowVolumeMenu((s) => !s)}
+                  onClick={() => {
+                    setVolume(prevVolume ?? 0);
+                    setPreviousVolume(volume ?? 0);
+                  }}
                 />
 
                 {/* Popup menu */}
                 {showVolumeMenu && (
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/70 p-3 rounded-xl shadow-lg flex flex-col items-center gap-2 z-20 -rotate-90">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/20 p-3 rounded-xl shadow-lg flex flex-col items-center gap-2 z-20 -rotate-90">
                     <input
                       type="range"
                       min={0}
@@ -201,7 +213,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                       onChange={(e) =>
                         handleVolumeChange(parseFloat(e.target.value))
                       }
-                      className="w-24 accent-white cursor-pointer"
+                      className="w-24 accent-[#DD272D] cursor-pointer"
                     />
                   </div>
                 )}
@@ -212,17 +224,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 className="md:w-9/12 w-8/12 h-1 hover:h-2 transition-all bg-gray-400 rounded-full cursor-pointer relative"
                 onClick={handleProgressClick}
                 onMouseMove={handleProgressHover}
-                onMouseLeave={() => setProgressHover("0%")}
+                onMouseLeave={() => setProgressHover(0)}
               >
                 {/* Hover bar */}
                 <div
-                  className="bg-white/60 h-full rounded-full absolute"
-                  style={{ width: progressHover }}
-                ></div>
-
+                  className={"bg-white/60 h-full rounded-full absolute"}
+                  style={{ width: `${progressHover}%` }}
+                />
                 {/* Current progress */}
                 <div
-                  className="bg-[#C1272D] h-full rounded-full absolute"
+                  className="bg-[#DD272D] h-full rounded-full absolute"
                   style={{
                     width:
                       videoDuration > 0
