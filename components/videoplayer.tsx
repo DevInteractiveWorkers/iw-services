@@ -29,6 +29,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [videoCurrentTime, setVideoCurrentTime] = useState(0);
   const [progressHover, setProgressHover] = useState("0%");
   const [isLoaded, setIsLoaded] = useState(false);
+  const [volume, setVolume] = useState(0.5);
+  const [showVolumeMenu, setShowVolumeMenu] = useState(false);
+  const volumeIcon =
+    volume === 0 ? "volume-mute" : volume <= 0.5 ? "volume-down" : "volume-up";
 
   // --------- Time formatting ----------
   const formatTime = (seconds: number) => {
@@ -60,6 +64,23 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       video.removeEventListener("canplaythrough", handleCanPlayThrough);
     };
   }, []);
+
+  // --------- Volume Set Up ----------
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.volume = 0.5; // start at 50%
+  }, []);
+
+  const handleVolumeChange = (v: number) => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const newValue = Math.min(1, Math.max(0, v));
+    video.volume = newValue;
+    setVolume(newValue);
+  };
 
   // --------- Progress bar click ----------
   const handleProgressClick = (event: React.MouseEvent) => {
@@ -159,6 +180,32 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 stroke={1}
                 onClick={() => videoRef.current?.requestFullscreen()}
               />
+              {/* Volume */}
+              <div className="relative">
+                <IconButton
+                  icon={volumeIcon}
+                  filled
+                  className="text-white w-7"
+                  onClick={() => setShowVolumeMenu((s) => !s)}
+                />
+
+                {/* Popup menu */}
+                {showVolumeMenu && (
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/70 p-3 rounded-xl shadow-lg flex flex-col items-center gap-2 z-20 -rotate-90">
+                    <input
+                      type="range"
+                      min={0}
+                      max={1}
+                      step={0.01}
+                      value={volume}
+                      onChange={(e) =>
+                        handleVolumeChange(parseFloat(e.target.value))
+                      }
+                      className="w-24 accent-white cursor-pointer"
+                    />
+                  </div>
+                )}
+              </div>
 
               {/* Progress bar */}
               <div
