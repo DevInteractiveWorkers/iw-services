@@ -54,7 +54,13 @@ export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
       </h1>
       {videoUrl && (
         <div className="xl:max-w-3xl lg:max-w-2xl sm:max-w-xl md:h-1/3 h-1/4 object-cover rounded-2xl overflow-hidden">
-          <VideoPlayer videoUrl={videoUrl} />
+          <VideoPlayer
+            videoUrl={videoUrl}
+            muted={false}
+            thumbnail={
+              "https://yopcmybykbvmdejvgffw.supabase.co/storage/v1/object/public/youtube-thumbnails/images/1760727564027_Home_Care_Thumbnail"
+            }
+          />
         </div>
       )}
       {subtitle && (

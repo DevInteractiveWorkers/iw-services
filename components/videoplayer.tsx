@@ -27,18 +27,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [videoDuration, setVideoDuration] = useState<number>(0);
   const [videoCurrentTime, setVideoCurrentTime] = useState<number>(0);
   const [progressHover, setProgressHover] = useState<number>(0);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const handleVideoControls = () => {
-    if (!isLoaded) return; // prevent play before ready
-    if (isVideoPlaying) {
-      videoRef.current?.pause();
-      setIsVideoPlaying(false);
-    } else {
-      videoRef.current?.play();
-      setIsVideoPlaying(true);
-    }
-  };
+  const [isLoaded, setIsLoaded] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -74,6 +63,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       setVideoCurrentTime(newTime);
     }
   };
+  const handleVideoControls = () => {
+    if (!isLoaded) return; // prevent play before ready
+    if (isVideoPlaying) {
+      videoRef.current?.pause();
+      setIsVideoPlaying(false);
+    } else {
+      videoRef.current?.play();
+      setIsVideoPlaying(true);
+    }
+  };
 
   const handleProgressHover = (event: React.MouseEvent) => {
     setProgressHover(event.nativeEvent.offsetX);
@@ -81,6 +80,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   return (
     <div className="relative w-full h-full overflow-hidden">
+      <img
+        src={thumbnail}
+        className={`w-full h-full absolute ${isVideoPlaying ? "opacity-0" : "opacity-100"} transition-opacity duration-150`}
+      />
       {/* Video */}
       <video
         ref={videoRef}
@@ -88,34 +91,32 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         width={width}
         height={height}
         playsInline
-        loop
         className={`select-none pointer-events-none w-full h-full transition-all duration-700 ${
           cover ? "object-cover" : "object-contain"
         } ${isLoaded ? "blur-0" : "blur-md brightness-75"}`}
         onTimeUpdate={(e) => setVideoCurrentTime(e.currentTarget.currentTime)}
         onPlay={() => onPlay?.()}
-      >
-        <source src={videoUrl} />
-        Your browser does not support the video tag.
-      </video>
+        src={videoUrl}
+      />
 
       {/* Overlay */}
       {controls && (
         <div
-          className={`absolute bg-(--service-bg-dark)/20 w-full h-full flex justify-center items-center z-10 top-0 left-0 transition-all duration-300 ${
+          className={`text-white absolute bg-(--service-bg-dark)/20 w-full h-full flex justify-center items-center z-10 top-0 left-0 transition-all duration-300 ${
             isLoaded ? "opacity-0 hover:opacity-100" : "opacity-100"
           }`}
         >
           <IconButton
-            filled={videoCurrentTime === videoDuration ? false : true}
+            filled
+            fillOnHover={videoCurrentTime === videoDuration ? false : true}
             icon={
-              !isLoaded
-                ? "loader" // optional spinner icon
-                : videoCurrentTime === videoDuration
-                  ? "replay"
-                  : isVideoPlaying
-                    ? "pause"
-                    : "play"
+              isVideoPlaying
+                ? "pause"
+                : videoCurrentTime == 0 ||
+                    videoCurrentTime !== 0 ||
+                    videoCurrentTime === videoDuration
+                  ? "play"
+                  : "replay"
             }
             onClick={handleVideoControls}
           />

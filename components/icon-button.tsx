@@ -8,6 +8,7 @@ interface IconButtonProps extends IconProps {
   className?: string;
   onClick?: () => void;
   reversed?: boolean;
+  fillOnHover?: boolean;
 }
 
 export const IconButton = ({
@@ -18,6 +19,7 @@ export const IconButton = ({
   stroke = 0.6,
   filled,
   reversed,
+  fillOnHover,
   height = "72px",
   width = "72px",
 }: IconButtonProps) => {
@@ -32,7 +34,7 @@ export const IconButton = ({
 
   return (
     <button
-      className={`flex items-center gap-2 cursor-pointer h-min select-none text-white ${className} ${
+      className={`flex items-center gap-2 cursor-pointer h-min select-none ${className} ${
         reversed && "flex-row-reverse"
       }`}
       onMouseOver={() => !isPortrait && setHover(true)}
@@ -43,7 +45,7 @@ export const IconButton = ({
     >
       <Icon
         icon={icon}
-        filled={filled && hover}
+        filled={(filled && !fillOnHover) || (fillOnHover && hover)}
         stroke={stroke}
         width={width}
         height={height}

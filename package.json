@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "iw-particles": "^1.0.1",
-    "next": "16.1.3",
+    "next": "^16.1.6",
+    "node-fetch": "^3.3.2",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },

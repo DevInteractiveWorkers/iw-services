@@ -43,7 +43,7 @@ export const Icon = ({
       xmlns="http://www.w3.org/2000/svg"
       width={size.w}
       height={size.h}
-      fill={filled ? "white" : "none"}
+      fill={filled ? "currentColor" : "none"}
       viewBox={`0 0 ${Number(size.w) > 30 ? "24" : size.w} ${Number(size.h) > 30 ? "24" : size.h}`}
     >
       {Array.isArray(pathData) ? (
