@@ -2,6 +2,7 @@
 import "./animations.css";
 
 import { useEffect, useRef, useState } from "react";
+import GeneralIcon from "./general";
 
 export default function InteractiveIcon({ service }: { service: string }) {
   switch (service) {
@@ -341,6 +342,9 @@ export default function InteractiveIcon({ service }: { service: string }) {
           </g>
         </svg>
       );
+    }
+    default: {
+      return <GeneralIcon />;
     }
   }
 }

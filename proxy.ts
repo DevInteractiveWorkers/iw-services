@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const ALLOWED_SUBDOMAINS = [
+  "services",
   "homecare",
   "insurance",
   "lawfirms",
