@@ -3,6 +3,7 @@ import { FAQRenderer } from "@/components/faq-renderer";
 import { Highlight } from "@/components/highlight";
 import HowItWorks from "@/components/how-it-works";
 import { ListItem } from "@/components/list-item";
+import { VAItem } from "@/components/VAs";
 
 export default function WhoWeArePage() {
   return (
@@ -36,85 +37,47 @@ export default function WhoWeArePage() {
             </>
           }
           imageSrc={[
-            "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/69736fd19683af457c871cdb.png",
-            "https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/69736fd115885e28e3c99666.png",
+            "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb8327c94c7e4e68fc60.png",
+            "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb8306cfeed5501ea4b8.png",
           ]}
           alt="private-security-va"
           reverse
         />
       </section>
-      <section
-        id="benefits"
-        className="w-full px-10 flex flex-col justify-around items-center min-h-dvh"
-      >
+      <section id="highlights" className="w-full px-10 flex justify-around">
         <BenefitsList
-          src="https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/69736fd1a87bebde16503ffc.png"
           title={
             <>
-              24/7 Dispatch <br className="max-lg:hidden" /> You Can Depend On
-            </>
-          }
-          text={
-            <>
-              With <strong>InteractiveWorkers</strong>, you can scale your
-              dispatch coverage at a fraction of the cost of hiring in-house,
-              without compromising on reliability or security.
+              Key <Highlight>Highlights:</Highlight>
             </>
           }
         >
-          <ListItem icon="24-7">
-            <strong>24/7 call handling</strong>
-            <br className="max-lg:hidden" /> without butnout or overtime
+          <ListItem icon="check" filled size={24}>
+            <VAItem name={"100% Trained and vetted proffesionals"} />
           </ListItem>
-          <ListItem icon="direct-access">
-            <strong>Instant guard deployment remote support</strong>
-            <br className="max-lg:hidden" /> for emergencies and after-hours
-            incidents
+          <ListItem icon="check" filled size={24}>
+            <VAItem name={"English and bilingual (Spanish) support options"} />
           </ListItem>
-          <ListItem icon="tech-support">
-            <strong>Accurate shift scheduling</strong>
-            <br className="max-lg:hidden" /> to avoid coverage gaps
+          <ListItem icon="check" filled size={24}>
+            <VAItem name={"Secure, reliable, and fully remote integrations"} />
           </ListItem>
-          <ListItem icon="serve-speaking">
-            <strong>Seamless communication</strong>
-            <br className="max-lg:hidden" /> between your office, guards, and
-            clients
+          <ListItem icon="check" filled size={24}>
+            <VAItem
+              name={"Scalable Support - from part-time to full-time VAs"}
+            />
           </ListItem>
         </BenefitsList>
-        <BenefitsList>
-          <ListItem icon="24-7">
-            <strong>Reduce missing calls and response</strong>
-            <br className="max-lg:hidden" /> delays by up to 50% with dedicated
-            virtual
-            <br className="max-lg:hidden" /> dispatchers.
-          </ListItem>
-          <ListItem icon="direct-access">
-            <strong>Cut overtime and payroll costs while</strong>
-            <br className="max-lg:hidden" /> maintaining round the-clock
-            coverage
-          </ListItem>
-          <ListItem icon="tech-support">
-            <strong>Scale instantly during emergencies or</strong>
-            <br className="max-lg:hidden" /> contract expansions without
-            recruiting headaches.
-          </ListItem>
-          <ListItem icon="serve-speaking">
-            <strong>Access bilingual, secuirity-trained VAs</strong>
-            <br className="max-lg:hidden" /> who understand industry protocols.
-          </ListItem>
-          <ListItem icon="check-page">
-            <strong>On-site Virtual Assistance</strong>
-            <br className="max-lg:hidden" /> (Full commitment and
-            confidentiality)
-          </ListItem>
-          <ListItem icon="direct-access">
-            <strong>Direct Access to Efficiency Trackers</strong>
-            <br className="max-lg:hidden" /> and CCTV Footage
-          </ListItem>
-          <ListItem icon="tech-support">
-            <strong>Included Tech Support</strong>
-          </ListItem>
-        </BenefitsList>
+      </section>
+      <section id="what-we-offer" className="w-full px-10 flex justify-around">
+        <div className={`lg:w-9/12 md:w-11/12 flex flex-col`}>
+          <h3 className="font-medium lg:text-6xl md:text-5xl text-4xl">
+            What We Offer
+          </h3>
+          <p className="lg:text-5xl md:text-4xl text-3xl">
+            Our <Highlight>Virtual Assistants</Highlight> Handle the Details,
+            <br /> so - You Don't Have To
+          </p>
+        </div>
       </section>
       <FAQRenderer section="privatesecurity" />
     </>
