@@ -16,40 +16,94 @@ export default function GeneralIcon() {
 
     const rect = ref.current.getBoundingClientRect();
 
-    const newShot = {
-      x: Math.random() * rect.width,
-      y: Math.random() * rect.height,
-    };
+    const modeRand = Math.random();
+
+    let newShot;
+
+    if (modeRand < 0.6) {
+      // 🎯 HIT (60%)
+      const randomIndex = Math.floor(
+        Math.random() * hitPointsRef.current.length,
+      );
+
+      const path = hitPointsRef.current[randomIndex];
+
+      const svgPoint = getRandomPointInPath(path);
+
+      // convert SVG → DOM space
+      newShot = {
+        x: svgPoint.x,
+        y: svgPoint.y,
+      };
+    } else if (modeRand < 0.8) {
+      // ❌ MISS LEFT (20%)
+      newShot = {
+        x: -20,
+        y: Math.random() * rect.height,
+      };
+    } else {
+      // ❌ MISS RIGHT (20%)
+      newShot = {
+        x: rect.width + 20,
+        y: Math.random() * rect.height,
+      };
+    }
 
     setShot(newShot);
     setHits(new Set());
 
-    const point = svgRef.current.createSVGPoint();
-    point.x = newShot.x + rect.left;
-    point.y = newShot.y + rect.top;
+    // 👇 only check hits if inside bounds
+    if (newShot.x >= 0 && newShot.x <= rect.width) {
+      const point = svgRef.current.createSVGPoint();
+      point.x = newShot.x + rect.left;
+      point.y = newShot.y + rect.top;
 
-    hitPointsRef.current.forEach((path, index) => {
-      const ctm = path.getScreenCTM();
-      if (!ctm) return;
+      hitPointsRef.current.forEach((path, index) => {
+        const ctm = path.getScreenCTM();
+        if (!ctm) return;
 
-      const transformedPoint = point.matrixTransform(ctm.inverse());
+        const transformedPoint = point.matrixTransform(ctm.inverse());
 
-      if (path.isPointInFill(transformedPoint)) {
-        console.log("HIT:", index);
+        if (path.isPointInFill(transformedPoint)) {
+          console.log("HIT:", index);
 
-        setTimeout(() => {
-          setHits((prev) => {
-            const next = new Set(prev);
-            next.add(index);
-            return next;
-          });
-        }, 600);
-      }
-    });
+          setTimeout(() => {
+            setHits((prev) => {
+              const next = new Set(prev);
+              next.add(index);
+              return next;
+            });
+          }, 600);
+        }
+      });
+    }
 
-    // 👇 restart animation
+    // restart animation
     setAnimate(false);
     requestAnimationFrame(() => setAnimate(true));
+  };
+
+  const getRandomPointInPath = (path: SVGPathElement) => {
+    const bbox = path.getBBox();
+
+    for (let i = 0; i < 20; i++) {
+      const x = bbox.x + Math.random() * bbox.width;
+      const y = bbox.y + Math.random() * bbox.height;
+
+      const pt = svgRef.current!.createSVGPoint();
+      pt.x = x;
+      pt.y = y;
+
+      if (path.isPointInFill(pt)) {
+        return { x, y };
+      }
+    }
+
+    // fallback (center of bbox)
+    return {
+      x: bbox.x + bbox.width / 2,
+      y: bbox.y + bbox.height / 2,
+    };
   };
 
   useEffect(() => shoot(), []);

@@ -6,17 +6,17 @@
 }
 
 .arrow.shoot {
-  animation: shot 0.8s forwards ease-in-out;
+  animation: shot 0.7s forwards ease-in;
 }
 
 @keyframes shot {
-  from {
+  0% {
     transform: translate(120%, 50%) rotate(135deg);
   }
   50% {
-    transform: translate(100%, -50%) rotate(90deg);
+    transform: translate(120%, -50%) rotate(90deg);
   }
-  to {
+  100% {
     transform: translate(var(--end-x), var(--end-y)) rotate(0deg);
   }
 }
