@@ -1,9 +1,12 @@
 import BenefitsList from "@/components/benefits-list";
+import Carousel from "@/components/carousel";
 import { FAQRenderer } from "@/components/faq-renderer";
 import { Highlight } from "@/components/highlight";
 import HowItWorks from "@/components/how-it-works";
 import { ListItem } from "@/components/list-item";
+import WhatWeOfferCard from "@/components/services/what-we-offer-card";
 import { VAItem } from "@/components/VAs";
+import Image from "next/image";
 
 export default function WhoWeArePage() {
   return (
@@ -68,18 +71,58 @@ export default function WhoWeArePage() {
           </ListItem>
         </BenefitsList>
       </section>
-      <section id="what-we-offer" className="w-full px-10 flex justify-around">
+      <section
+        id="what-we-offer"
+        className="w-full md:px-10 px-4 flex flex-col justify-around items-center"
+      >
         <div className={`lg:w-9/12 md:w-11/12 flex flex-col`}>
           <h3 className="font-medium lg:text-6xl md:text-5xl text-4xl">
             What We Offer
           </h3>
-          <p className="lg:text-5xl md:text-4xl text-3xl">
+          <p className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl">
             Our <Highlight>Virtual Assistants</Highlight> Handle the Details,
-            <br /> so - You Don't Have To
+            <br className="max-xl:hidden" /> so - You Don't Have To
           </p>
         </div>
+        <div className="lg:w-9/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4">
+          <Image
+            className="rounded-2xl object-cover object-center h-max md:max-h-[70svh] max-h-[30svh] w-full"
+            src={
+              "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb832b7a6ecd79d8621b.png"
+            }
+            alt={"what-we-offer"}
+            width={1080}
+            height={1080}
+          />
+          <Carousel>
+            <WhatWeOfferCard
+              title="Administratrive Support"
+              description="Inbox management, calendar coordination, data entry, and report preparation - our VAs keep your operations running smoothly behind the scenes."
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb83db7c222f715fccc7.png"
+            />
+            <WhatWeOfferCard
+              title="Customer Service & Communication"
+              description="Professional call handling, client follow-ups, and bilingual support to ensure your customers always feel heard and cared for."
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb8380b446d0fbbe8a3d.png"
+            />
+            <WhatWeOfferCard
+              title="Scheduling & Coordination"
+              description="Appointment setting, meeting logistics, and workflow organization - because your time should go where it matters most."
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb83190683601a6c61e8.png"
+            />
+            <WhatWeOfferCard
+              title="Sales & Lead Management"
+              description="CRM updates, lead tracking, and pipeline coordination that help your team convert faster and stay organized."
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb83db7c222f715fccc8.png"
+            />
+            <WhatWeOfferCard
+              title="Bilingual & Translation Support"
+              description="Break barriers with English/Spanish bilingual VAs trained to communicate effectively with your clients and partners."
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb8327c94c7e4e68fc61.png"
+            />
+          </Carousel>
+        </div>
       </section>
-      <FAQRenderer section="privatesecurity" />
     </>
   );
 }
