@@ -5,6 +5,7 @@ import { Highlight } from "@/components/highlight";
 import HowItWorks from "@/components/how-it-works";
 import { ListItem } from "@/components/list-item";
 import WhatWeOfferCard from "@/components/services/what-we-offer-card";
+import WhyUsCard from "@/components/services/why-us-card";
 import { VAItem } from "@/components/VAs";
 import Image from "next/image";
 
@@ -75,7 +76,7 @@ export default function WhoWeArePage() {
         id="what-we-offer"
         className="w-full md:px-10 px-4 flex flex-col justify-around items-center"
       >
-        <div className={`lg:w-9/12 md:w-11/12 flex flex-col`}>
+        <div className={`lg:w-10/12 md:w-11/12 flex flex-col`}>
           <h3 className="font-medium lg:text-6xl md:text-5xl text-4xl">
             What We Offer
           </h3>
@@ -84,7 +85,7 @@ export default function WhoWeArePage() {
             <br className="max-xl:hidden" /> so - You Don't Have To
           </p>
         </div>
-        <div className="lg:w-9/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4">
+        <div className="lg:w-10/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4">
           <Image
             className="rounded-2xl object-cover object-center h-max md:max-h-[70svh] max-h-[30svh] w-full"
             src={
@@ -121,6 +122,53 @@ export default function WhoWeArePage() {
               src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb8327c94c7e4e68fc61.png"
             />
           </Carousel>
+        </div>
+      </section>
+      <section
+        id="why-us"
+        className="w-full md:px-10 px-4 flex flex-col justify-around items-center"
+      >
+        <div className="lg:w-10/12 md:w-11/12 grid grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4">
+          <h4 className="font-medium lg:text-6xl md:text-5xl text-4xl">
+            Why Businesses Choose
+            <br className="max-md:hidden" /> InteractiveWorkers
+          </h4>
+          <p className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl">
+            We help you <Highlight>reclaim time, reduce costs</Highlight>,
+            <br className="max-md:hidden" /> and <Highlight>simplify</Highlight>{" "}
+            operations - all with a human touch.
+            <br className="max-xl:hidden" />
+          </p>
+          <div className="w-full flex items-center justify-center">
+            <div className="group grid md:grid-cols-2 grid-cols-1 md:w-9/12">
+              <WhyUsCard
+                title={"Cost-Efficient Growth:"}
+                description={"Save up to 70% compared to in-house hires."}
+                className="md:bg-[#191919] md:rounded-tl-2xl"
+              />
+              <WhyUsCard
+                title={"More Time, Less Stress:"}
+                description={"Focus on strategy, not admin."}
+                className="md:bg-[#2B2B2B] md:rounded-tr-2xl"
+              />
+              <WhyUsCard
+                title={"Human Connection:"}
+                description={
+                  "Real professionals, not bots - trained to represent your brand."
+                }
+                className="md:bg-[#2B2B2B] md:rounded-bl-2xl"
+              />
+              <WhyUsCard
+                title={"Scalable & Flexible:"}
+                description={"Add or adjust support as your business evolves."}
+              />
+              <WhyUsCard
+                title={"Reliable & Secure:"}
+                description={"Trained in confidentiality and data compliance."}
+                className="md:bg-[#2B2B2B] md:rounded-b-2xl md:col-start-2"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </>

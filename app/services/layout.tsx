@@ -13,16 +13,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <>
-      {children}
-      <BookACall>
-        <Highlight color="#ffffff" bgColor="#191919">
-          More Quality
-        </Highlight>
-        , Less Overload
-        <br className="max-lg:hidden" /> Discover Reliable VAs
-      </BookACall>
-    </>
-  );
+  return <>{children}</>;
 }

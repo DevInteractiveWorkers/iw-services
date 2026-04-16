@@ -1,3 +1,5 @@
+import BookACall from "@/components/book-a-call";
+import { Highlight } from "@/components/highlight";
 import Landing from "@/components/landing";
 import { VAs } from "@/components/VAs";
 
@@ -34,6 +36,13 @@ export default function ServicesPage() {
         ]}
         service="general"
       />
+      <BookACall>
+        <Highlight color="#ffffff" bgColor="#191919">
+          More Quality
+        </Highlight>
+        , Less Overload
+        <br className="max-lg:hidden" /> Discover Reliable VAs
+      </BookACall>
     </>
   );
 }
