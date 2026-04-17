@@ -31,7 +31,7 @@ export default function HowItWorks({
         </div>
         {imageSrc && (
           <Image
-            className="rounded-2xl object-cover object-top-right h-full md:w-1/2 max-h-80"
+            className="rounded-2xl object-cover object-top-right h-full md:w-1/2"
             src={Array.isArray(imageSrc) ? imageSrc[0] : imageSrc}
             height={1080}
             width={1080}
@@ -41,7 +41,7 @@ export default function HowItWorks({
       </div>
       {Array.isArray(imageSrc) && imageSrc.length === 2 && (
         <Image
-          className="rounded-2xl object-cover [@media(min-height:800px)]:object-top [@media(max-height:800px)]:mt-5 max-h-1/2 w-full"
+          className="rounded-2xl object-cover [@media(min-height:800px)]:object-center [@media(max-height:800px)]:mt-5 max-h-1/2 w-full"
           src={imageSrc[1]}
           height={1080}
           width={1080}

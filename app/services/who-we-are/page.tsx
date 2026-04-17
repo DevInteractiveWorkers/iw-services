@@ -50,7 +50,10 @@ export default function WhoWeArePage() {
           reverse
         />
       </section>
-      <section id="highlights" className="w-full px-10 flex justify-around">
+      <section
+        id="highlights"
+        className="w-full md:px-10 px-4 flex justify-around"
+      >
         <BenefitsList
           title={
             <>
@@ -87,7 +90,7 @@ export default function WhoWeArePage() {
             <br className="max-xl:hidden" /> so - You Don't Have To
           </p>
         </div>
-        <div className="lg:w-10/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4 h-[50svh]">
+        <div className="lg:w-10/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4 md:h-[50svh]">
           <Image
             className="rounded-2xl object-cover object-center h-max md:max-h-[50svh] max-h-[30svh] w-full"
             src={

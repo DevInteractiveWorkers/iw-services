@@ -44,7 +44,7 @@ export function NavBar() {
 
   return (
     <nav
-      className={`w-full flex md:justify-center justify-around items-center gap-5 z-50 pt-5 ${pathname === "/" && "absolute top-0 left-0"}`}
+      className={`w-full md:grid md:grid-cols-3 md:justify-items-center flex md:justify-center justify-around items-center gap-5 z-50 pt-5 ${pathname === "/" && "absolute top-0 left-0"}`}
     >
       <Link target="_blank" href={"https://interactiveworkers.com/"}>
         <Image

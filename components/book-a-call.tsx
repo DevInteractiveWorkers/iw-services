@@ -10,7 +10,7 @@ export default function BookACall({
   if ((customMessage && !children) || (!customMessage && !children))
     return (
       <div className="md:px-10 px-5 flex justify-center">
-        <div className="flex justify-center pt-5">
+        <div className="flex justify-center pt-5 font-medium rounded-2xl md:text-6xl sm:text-4xl text-3xl text-center">
           <Link
             target="_blank"
             href={"https://calendly.com/interactiveworkersgm/30min"}

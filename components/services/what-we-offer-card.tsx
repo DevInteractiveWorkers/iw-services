@@ -15,7 +15,7 @@ export default function WhatWeOfferCard({
 }: CardProps) {
   return (
     <div
-      className={`p-4 min-w-full md:h-[50svh] max-h-[70svh] select-none rounded-xl flex gap-2 group-even:justify-between
+      className={`p-4 min-w-full md:h-[50svh] md:max-h-[70svh] h-min select-none rounded-xl flex gap-2 group-even:justify-between
         group-even:bg-[#dd272d] group-even:flex-col-reverse bg-[#191919] flex-col`}
     >
       {src && (
