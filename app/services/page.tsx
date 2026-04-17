@@ -27,7 +27,10 @@ export default function ServicesPage() {
         header={<>Who We Are & Why It Matters</>}
         VAs={[
           { name: "100% Trained and vetted professionals" },
-          { name: "English and Bilingual (Spansih) Support options" },
+          {
+            name: "English and Bilingual (Spansih) Support options",
+            href: "/who-we-are#what-we-offer",
+          },
         ]}
         tags={[
           "24/7 Adaptability",

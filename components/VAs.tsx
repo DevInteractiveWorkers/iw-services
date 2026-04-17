@@ -5,6 +5,7 @@ import Link from "next/link";
 
 interface VAsProps {
   name: string;
+  href?: string;
 }
 
 export function VAs({
@@ -35,6 +36,7 @@ export function VAs({
           <VAItem
             key={i}
             name={va.name}
+            href={va.href}
             className={
               (i + 1) % 2 && i === VAs.length - 1 ? "md:translate-x-1/2" : ""
             }
@@ -57,10 +59,8 @@ export function VAItem({
   name,
   className,
   href = "",
-}: {
-  name: string;
+}: VAsProps & {
   className?: string;
-  href?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [side, setSide] = useState<"left" | "right">("left");
