@@ -69,17 +69,16 @@ export function NavBar() {
           <>
             <Item href={"/"}>Home</Item>
             <Item href={"/who-we-are"}>Who We Are</Item>
-            <Item href={"/#our-vas"}>Our VAs</Item>
-            <Item href={"/how-it-works#benefits"}>Benefits</Item>
-            <Item href={"/how-it-works#faq"}>FAQ</Item>
+            <Item href={"/who-we-are#key-highlights"}>Key Highlights</Item>
+            <Item href={"/who-we-are#benefits"}>Benefits</Item>
           </>
         ) : (
           <>
-            {/* <Item href={"/"}>Home</Item>
+            <Item href={"/"}>Home</Item>
             <Item href={"/how-it-works"}>See How it Works</Item>
             <Item href={"/#our-vas"}>Our VAs</Item>
             <Item href={"/how-it-works#benefits"}>Benefits</Item>
-            <Item href={"/how-it-works#faq"}>FAQ</Item> */}
+            <Item href={"/how-it-works#faq"}>FAQ</Item>
           </>
         )}
       </ul>
