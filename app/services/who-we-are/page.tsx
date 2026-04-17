@@ -181,7 +181,7 @@ export default function WhoWeArePage() {
           <h5 className="font-medium lg:text-6xl md:text-5xl text-4xl text-center">
             Getting Started is <Highlight>Simple</Highlight>
           </h5>
-          <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4 w-10/12">
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4 md:w-10/12">
             <StepCard step={1}>
               Tell us what you need - fill out a quick discovery form.
             </StepCard>
