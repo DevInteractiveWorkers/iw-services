@@ -1,9 +1,11 @@
 import BenefitsList from "@/components/benefits-list";
+import BookACall from "@/components/book-a-call";
 import Carousel from "@/components/carousel";
 import { FAQRenderer } from "@/components/faq-renderer";
 import { Highlight } from "@/components/highlight";
 import HowItWorks from "@/components/how-it-works";
 import { ListItem } from "@/components/list-item";
+import StepCard from "@/components/services/step-cards";
 import WhatWeOfferCard from "@/components/services/what-we-offer-card";
 import WhyUsCard from "@/components/services/why-us-card";
 import { VAItem } from "@/components/VAs";
@@ -169,6 +171,43 @@ export default function WhoWeArePage() {
               />
             </div>
           </div>
+        </div>
+      </section>
+      <section
+        id="getting-started"
+        className="w-full md:px-10 px-4 flex flex-col justify-around items-center"
+      >
+        <div className="lg:w-10/12 md:w-11/12 grid grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4 justify-items-center">
+          <h5 className="font-medium lg:text-6xl md:text-5xl text-4xl text-center">
+            Getting Started is <Highlight>Simple</Highlight>
+          </h5>
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4 w-10/12">
+            <StepCard step={1}>
+              Tell us what you need - fill out a quick discovery form.
+            </StepCard>
+            <StepCard step={2}>
+              We match you with trained VAs that fit your goals and workflow.
+            </StepCard>
+            <StepCard step={3}>Get started in days - not weeks.</StepCard>
+          </div>
+          <h6 className="font-medium lg:text-6xl md:text-5xl text-4xl text-center">
+            Let's Build Your Dream
+            <br className="max-md:hidden" /> Support Team
+          </h6>
+          <p className="lg:text-4xl md:text-3xl sm:text-2xl text-xl text-center">
+            Our Virtual Assistants help your
+            <br className="max-md:hidden" /> business grow faster - with less
+            stress
+            <br className="max-md:hidden" /> and more results.
+          </p>
+          <BookACall
+            customMessage={
+              <>
+                Book Your
+                <br className="max-md:hidden" /> Discovery Call Today
+              </>
+            }
+          />
         </div>
       </section>
     </>

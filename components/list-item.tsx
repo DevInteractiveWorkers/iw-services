@@ -31,7 +31,7 @@ export function ListItem({
           ["--service-color" as any]: color,
           ["--service-bg" as any]: bgColor,
         }}
-        className="text-2xl font-medium"
+        className="text-2xl font-medium w-full"
       >
         {children}
       </span>
