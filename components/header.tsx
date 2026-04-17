@@ -5,6 +5,7 @@ import SignUp from "./sign-up";
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useSubdomain } from "@/lib/useSubdomain";
 
 export default function Header() {
   return (
@@ -17,6 +18,8 @@ export default function Header() {
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const subdomain = useSubdomain();
+  const isServices = subdomain === "services";
 
   const Item = ({
     href,
@@ -62,11 +65,23 @@ export function NavBar() {
         <li className="flex justify-end">
           <MenuButton onClick={() => setIsOpen(!isOpen)} icon="close" />
         </li>
-        <Item href={"/"}>Home</Item>
-        <Item href={"/how-it-works"}>See How it Works</Item>
-        <Item href={"/#our-vas"}>Our VAs</Item>
-        <Item href={"/how-it-works#benefits"}>Benefits</Item>
-        <Item href={"/how-it-works#faq"}>FAQ</Item>
+        {isServices ? (
+          <>
+            <Item href={"/"}>Home</Item>
+            <Item href={"/who-we-are"}>Who We Are</Item>
+            <Item href={"/#our-vas"}>Our VAs</Item>
+            <Item href={"/how-it-works#benefits"}>Benefits</Item>
+            <Item href={"/how-it-works#faq"}>FAQ</Item>
+          </>
+        ) : (
+          <>
+            {/* <Item href={"/"}>Home</Item>
+            <Item href={"/how-it-works"}>See How it Works</Item>
+            <Item href={"/#our-vas"}>Our VAs</Item>
+            <Item href={"/how-it-works#benefits"}>Benefits</Item>
+            <Item href={"/how-it-works#faq"}>FAQ</Item> */}
+          </>
+        )}
       </ul>
       <SignUp dark />
       <MenuButton onClick={() => setIsOpen(!isOpen)} />
