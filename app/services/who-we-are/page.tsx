@@ -76,7 +76,7 @@ export default function WhoWeArePage() {
       </section>
       <section
         id="what-we-offer"
-        className="w-full md:px-10 px-4 flex flex-col justify-around items-center"
+        className="w-full md:p-10 p-4 flex flex-col justify-around items-center"
       >
         <div className={`lg:w-10/12 md:w-11/12 flex flex-col`}>
           <h3 className="font-medium lg:text-6xl md:text-5xl text-4xl">
@@ -87,9 +87,9 @@ export default function WhoWeArePage() {
             <br className="max-xl:hidden" /> so - You Don't Have To
           </p>
         </div>
-        <div className="lg:w-10/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4">
+        <div className="lg:w-10/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4 h-[50svh]">
           <Image
-            className="rounded-2xl object-cover object-center h-max md:max-h-[70svh] max-h-[30svh] w-full"
+            className="rounded-2xl object-cover object-center h-max md:max-h-[50svh] max-h-[30svh] w-full"
             src={
               "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb832b7a6ecd79d8621b.png"
             }
@@ -128,9 +128,9 @@ export default function WhoWeArePage() {
       </section>
       <section
         id="why-us"
-        className="w-full md:px-10 px-4 flex flex-col justify-around items-center"
+        className="w-full md:p-10 p-4 flex flex-col justify-around items-center"
       >
-        <div className="lg:w-10/12 md:w-11/12 grid grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4">
+        <div className="lg:w-10/12 md:w-11/12 grid grid-cols-1 md:gap-10 max-md:px-2 gap-4">
           <h4 className="font-medium lg:text-6xl md:text-5xl text-4xl">
             Why Businesses Choose
             <br className="max-md:hidden" /> InteractiveWorkers
@@ -175,7 +175,7 @@ export default function WhoWeArePage() {
       </section>
       <section
         id="getting-started"
-        className="w-full md:px-10 px-4 flex flex-col justify-around items-center"
+        className="w-full md:p-10 p-4 flex flex-col justify-around items-center"
       >
         <div className="lg:w-10/12 md:w-11/12 grid grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4 justify-items-center">
           <h5 className="font-medium lg:text-6xl md:text-5xl text-4xl text-center">
