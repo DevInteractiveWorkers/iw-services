@@ -9,12 +9,28 @@
   animation: shot 0.7s forwards ease-in;
 }
 
+.arrow.shoot .nailed {
+  animation: nail 0.7s forwards ease-in;
+}
+
+@keyframes nail {
+  0% {
+    fill: white;
+  }
+  100% {
+    opacity: black;
+  }
+}
+
 @keyframes shot {
   0% {
     transform: translate(120%, 50%) rotate(135deg);
   }
   50% {
     transform: translate(120%, -50%) rotate(90deg);
+  }
+  80% {
+    scale: 1.5;
   }
   100% {
     transform: translate(var(--end-x), var(--end-y)) rotate(0deg);
