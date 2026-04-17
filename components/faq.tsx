@@ -29,7 +29,7 @@ export function Question({
         <div
           className={`transition-all duration-150 ${isOpen ? "" : "rotate-180"}`}
         >
-          <Icon icon="chevron-up" width="25" height="25" stroke={2} />
+          <Icon icon="chevron-up" size={25} stroke={2} />
         </div>
         {question}
       </span>
