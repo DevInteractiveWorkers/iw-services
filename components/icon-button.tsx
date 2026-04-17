@@ -20,8 +20,7 @@ export const IconButton = ({
   filled,
   reversed,
   fillOnHover,
-  height = "72px",
-  width = "72px",
+  size,
 }: IconButtonProps) => {
   const [hover, setHover] = useState(false);
   const [isPortrait, setIsPortait] = useState(false);
@@ -47,8 +46,7 @@ export const IconButton = ({
         icon={icon}
         filled={(filled && !fillOnHover) || (fillOnHover && hover)}
         stroke={stroke}
-        width={width}
-        height={height}
+        size={size}
       />
       {children}
     </button>
