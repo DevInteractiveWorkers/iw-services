@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import InteractiveIcon from "./interactive-icons/interactive-icon";
+import InteractiveIcon from "./icon/interactive-icons/interactive-icon";
 import Link from "next/link";
 
 interface VAsProps {

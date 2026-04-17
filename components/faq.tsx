@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Icon } from "./icon";
+import { Icon } from "./icon/icon";
 
 interface FAQProps {
   children: React.ReactNode;

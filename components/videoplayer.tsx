@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, use } from "react";
-import { IconButton } from "./icon-button";
+import { IconButton } from "./icon/icon-button";
 
 interface VideoPlayerProps {
   videoUrl: string;

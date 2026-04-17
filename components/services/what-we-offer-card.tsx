@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Icon } from "../icon";
+import { Icon } from "../icon/icon";
 
 type CardProps = {
   title: string;
