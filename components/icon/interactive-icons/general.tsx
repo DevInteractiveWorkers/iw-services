@@ -7,53 +7,84 @@ export default function GeneralIcon() {
   const ref = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const hitPointsRef = useRef<SVGPathElement[]>([]);
+  const attemptRef = useRef(0); // ✅ deterministic sequence
+
   const [shot, setShot] = useState({ x: 0, y: 0 });
   const [hits, setHits] = useState<Set<number>>(new Set());
   const [animate, setAnimate] = useState(false);
+  const [isFailed, setIsFailed] = useState(false); // ✅ failed state
 
   const shoot = () => {
     if (!ref.current || !svgRef.current) return;
 
     const rect = ref.current.getBoundingClientRect();
 
-    const modeRand = Math.random();
+    // reset state per shot
+    setHits(new Set());
+    setIsFailed(false);
 
-    let newShot;
+    const attempt = attemptRef.current++;
+    let newShot: { x: number; y: number };
 
-    if (modeRand < 0.6) {
-      // 🎯 HIT (60%)
-      const randomIndex = Math.floor(
-        Math.random() * hitPointsRef.current.length,
-      );
+    // ✅ 1. FIRST SHOT: always bullseye (index 1)
+    if (attempt === 0) {
+      const path = hitPointsRef.current[1];
+      const pt = getRandomPointInPath(path);
 
-      const path = hitPointsRef.current[randomIndex];
-
-      const svgPoint = getRandomPointInPath(path);
-
-      // convert SVG → DOM space
       newShot = {
-        x: svgPoint.x,
-        y: svgPoint.y,
-      };
-    } else if (modeRand < 0.8) {
-      // ❌ MISS LEFT (20%)
-      newShot = {
-        x: -20,
-        y: Math.random() * rect.height,
+        x: rect.width / 2,
+        y: rect.height / 2,
       };
     } else {
-      // ❌ MISS RIGHT (20%)
-      newShot = {
-        x: rect.width + 20,
-        y: Math.random() * rect.height,
-      };
+      // ✅ 2. DETERMINISTIC PATTERN
+      // cycle pattern instead of pure randomness
+      const pattern = attempt % 6;
+
+      const randomSide = Math.round(Math.random() * 10) % 2;
+
+      if (pattern === 0 || pattern === 3) {
+        // 🎯 strong hit (center bias)
+        const path =
+          hitPointsRef.current[
+            pattern === 0 ? 1 : Math.floor(Math.random() * 3)
+          ];
+        const pt = getRandomPointInPath(path);
+        newShot = { x: pt.x, y: pt.y };
+      } else if (pattern === 1 || pattern === 4) {
+        // 🎯 edge/outer hit
+        const index = 2 + ((attempt + 1) % 5);
+        const path = hitPointsRef.current[index % hitPointsRef.current.length];
+        const pt = getRandomPointInPath(path);
+        newShot = { x: pt.x, y: pt.y };
+      } else if (pattern === 2) {
+        // ❌ near miss (left/right but still visible height)
+        newShot = {
+          x: randomSide ? 20 : rect.width + 20,
+          y: rect.height * 0.5,
+        };
+      } else {
+        // ❌ full failure → drop to "floor"
+        const fallOut = randomSide ? -25 : rect.width + 25;
+        newShot = {
+          x: fallOut,
+          y: rect.height,
+        };
+      }
+      if (newShot.x > rect.width || newShot.x < 0) {
+        setIsFailed(true);
+        newShot.y = rect.height;
+      } // ✅ trigger failed class
     }
 
     setShot(newShot);
-    setHits(new Set());
 
     // 👇 only check hits if inside bounds
-    if (newShot.x >= 0 && newShot.x <= rect.width) {
+    if (
+      newShot.x >= 0 &&
+      newShot.x <= rect.width &&
+      newShot.y >= 0 &&
+      newShot.y <= rect.height
+    ) {
       const point = svgRef.current.createSVGPoint();
       point.x = newShot.x + rect.left;
       point.y = newShot.y + rect.top;
@@ -99,7 +130,6 @@ export default function GeneralIcon() {
       }
     }
 
-    // fallback (center of bbox)
     return {
       x: bbox.x + bbox.width / 2,
       y: bbox.y + bbox.height / 2,
@@ -114,18 +144,17 @@ export default function GeneralIcon() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          shoot(); // 👈 trigger first shot
-          observer.disconnect(); // run once
+          shoot();
+          observer.disconnect();
         }
       },
-      { threshold: 0.3 }, // adjust if needed
+      { threshold: 0.3 },
     );
 
     observer.observe(el);
 
     return () => observer.disconnect();
   }, []);
-
   return (
     <div
       ref={ref}
@@ -160,7 +189,7 @@ export default function GeneralIcon() {
             }}
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M43 37.3535C39.9798 37.3535 37.5122 39.7273 37.3613 42.71L37.3564 43.002C37.3564 46.0222 39.7273 48.4878 42.71 48.6387L43 48.6465C46.016 48.6416 48.4879 46.2696 48.6387 43.29L48.6436 42.998C48.6436 39.9778 46.2727 37.5122 43.29 37.3613L43 37.3535ZM43.9141 42.084C43.6633 41.8331 43.3225 41.708 43 41.708V41.6963C42.6679 41.6957 42.3353 41.8257 42.084 42.0859C41.8331 42.3367 41.708 42.6775 41.708 43H41.6963C41.6957 43.3321 41.8257 43.6647 42.0859 43.916C42.3367 44.1669 42.6775 44.292 43 44.292V44.3037C43.3321 44.3043 43.6647 44.1743 43.916 43.9141C44.1669 43.6633 44.292 43.3225 44.292 43H44.3037C44.3043 42.6679 44.1743 42.3353 43.9141 42.084Z"
+            d="M37.3613 42.71C37.5122 39.7273 39.9798 37.3535 43 37.3535L43.29 37.3613C46.2727 37.5122 48.6436 39.9778 48.6436 42.998L48.6387 43.29C48.4879 46.2696 46.016 48.6416 43 48.6465L42.71 48.6387C39.7273 48.4878 37.3564 46.0222 37.3564 43.002L37.3613 42.71Z"
             className="transition-all duration-150"
             fill={hits.has(1) ? "#DD272D" : "transparent"}
           />
@@ -239,7 +268,7 @@ export default function GeneralIcon() {
         viewBox="0 0 86 86"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={`arrow absolute -translate-1/2 ${animate ? "shoot" : ""}`}
+        className={`arrow absolute -translate-1/2 ${animate ? "shoot" : ""} ${isFailed ? "failed" : ""}`}
         style={{
           ["--end-x" as any]: `${shot.x}px`,
           ["--end-y" as any]: `${shot.y}px`,

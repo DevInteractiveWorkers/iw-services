@@ -6,15 +6,23 @@
 }
 
 .arrow.shoot {
+  --rotation: 0deg;
   animation: shot 0.7s forwards ease-in;
 }
 
-.arrow.shoot .nailed {
+.arrow.failed {
+  --rotation: -45deg;
+}
+
+.arrow.shoot:not(.failed) .nailed {
   animation: nail 0.7s forwards ease-in;
 }
 
 @keyframes nail {
   0% {
+    fill: white;
+  }
+  99% {
     fill: white;
   }
   100% {
@@ -33,6 +41,6 @@
     scale: 1.5;
   }
   100% {
-    transform: translate(var(--end-x), var(--end-y)) rotate(0deg);
+    transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotation));
   }
 }
