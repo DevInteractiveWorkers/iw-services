@@ -1,17 +1,19 @@
 import Image from "next/image";
-import { Icon } from "../icon/icon";
+import { Icon, IconProps } from "../icon/icon";
 
 type CardProps = {
   title: string;
   description: string;
   src?: string;
-  icon?: string;
-};
+} & IconProps;
+
 export default function WhatWeOfferCard({
   title,
   description,
   src,
   icon = "check",
+  size = 34,
+  viewBox,
 }: CardProps) {
   return (
     <div
@@ -28,7 +30,13 @@ export default function WhatWeOfferCard({
             className="max-h-[50svh] w-full object-cover select-none rounded-2xl"
           />
           <div className="absolute p-4 flex items-center justify-center rounded-full flip-logo bottom-4 right-4 group-even:bg-white bg-[#dd272d] text-white group-even:text-[#dd272d]">
-            <Icon icon={icon} filled={true} color={"currentColor"} />
+            <Icon
+              icon={icon}
+              filled={true}
+              color={"currentColor"}
+              size={size}
+              viewBox={viewBox}
+            />{" "}
           </div>
         </div>
       )}

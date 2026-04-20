@@ -61,16 +61,16 @@ export default function WhoWeArePage() {
             </>
           }
         >
-          <ListItem icon="check" filled size={24}>
+          <ListItem icon="check" filled size={24} color="white">
             <VAItem name={"100% Trained and vetted proffesionals"} />
           </ListItem>
-          <ListItem icon="check" filled size={24}>
+          <ListItem icon="check" filled size={24} color="white">
             <VAItem name={"English and bilingual (Spanish) support options"} />
           </ListItem>
-          <ListItem icon="check" filled size={24}>
+          <ListItem icon="check" filled size={24} color="white">
             <VAItem name={"Secure, reliable, and fully remote integrations"} />
           </ListItem>
-          <ListItem icon="check" filled size={24}>
+          <ListItem icon="check" filled size={24} color="white">
             <VAItem
               name={"Scalable Support - from part-time to full-time VAs"}
             />
@@ -102,26 +102,36 @@ export default function WhoWeArePage() {
           />
           <Carousel>
             <WhatWeOfferCard
+              icon="folder"
+              viewBox={"0 0 37 25"}
               title="Administratrive Support"
               description="Inbox management, calendar coordination, data entry, and report preparation - our VAs keep your operations running smoothly behind the scenes."
               src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb83db7c222f715fccc7.png"
             />
             <WhatWeOfferCard
+              icon="phone"
+              viewBox={"-3 -2 30 43"}
               title="Customer Service & Communication"
               description="Professional call handling, client follow-ups, and bilingual support to ensure your customers always feel heard and cared for."
               src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb8380b446d0fbbe8a3d.png"
             />
             <WhatWeOfferCard
+              icon="calendar"
+              viewBox={"0 0 35 29"}
               title="Scheduling & Coordination"
               description="Appointment setting, meeting logistics, and workflow organization - because your time should go where it matters most."
               src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb83190683601a6c61e8.png"
             />
             <WhatWeOfferCard
+              icon="laptop"
+              viewBox={"0 0 43 26"}
               title="Sales & Lead Management"
               description="CRM updates, lead tracking, and pipeline coordination that help your team convert faster and stay organized."
               src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb83db7c222f715fccc8.png"
             />
             <WhatWeOfferCard
+              icon="chat"
+              viewBox={"0 0 39 26"}
               title="Bilingual & Translation Support"
               description="Break barriers with English/Spanish bilingual VAs trained to communicate effectively with your clients and partners."
               src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69dfcb8327c94c7e4e68fc61.png"
@@ -147,16 +157,22 @@ export default function WhoWeArePage() {
           <div className="w-full flex items-center justify-center">
             <div className="group grid md:grid-cols-2 grid-cols-1 md:w-9/12">
               <WhyUsCard
+                icon="suitcase"
+                viewBox={"0 0 39 32"}
                 title={"Cost-Efficient Growth:"}
                 description={"Save up to 70% compared to in-house hires."}
                 className="md:bg-[#191919] md:rounded-tl-2xl"
               />
               <WhyUsCard
+                icon="clock"
+                viewBox={"0 0 35 40"}
                 title={"More Time, Less Stress:"}
                 description={"Focus on strategy, not admin."}
                 className="md:bg-[#2B2B2B] md:rounded-tr-2xl"
               />
               <WhyUsCard
+                icon="human-plus"
+                viewBox={"0 12 68 39"}
                 title={"Human Connection:"}
                 description={
                   "Real professionals, not bots - trained to represent your brand."
@@ -164,10 +180,14 @@ export default function WhoWeArePage() {
                 className="md:bg-[#2B2B2B] md:rounded-bl-2xl"
               />
               <WhyUsCard
+                icon="scalable-support"
+                viewBox={"0 2 41 36"}
                 title={"Scalable & Flexible:"}
                 description={"Add or adjust support as your business evolves."}
               />
               <WhyUsCard
+                icon="computer"
+                viewBox={"0 0 38 33"}
                 title={"Reliable & Secure:"}
                 description={"Trained in confidentiality and data compliance."}
                 className="md:bg-[#2B2B2B] md:rounded-b-2xl md:col-start-2"

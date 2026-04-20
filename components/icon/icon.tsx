@@ -9,6 +9,7 @@ export interface IconProps {
   stroke?: number;
   size?: number; // 👈 unified size prop
   color?: string;
+  viewBox?: string | { width: number; height?: number };
 }
 
 export const Icon = ({
@@ -17,6 +18,7 @@ export const Icon = ({
   stroke,
   size = 30,
   color,
+  viewBox,
 }: IconProps) => {
   const pathData = icons[icon];
   if (!pathData) return null;
@@ -25,16 +27,20 @@ export const Icon = ({
 
   return (
     <svg
-      className="w-full h-full overflow-visible"
-      style={{ width: size }}
-      viewBox={`0 0 ${size} ${size}`} // ✅ ALWAYS consistent
+      className={`overflow-visible`}
+      style={{ width: size, height: size }}
+      viewBox={
+        typeof viewBox === "string"
+          ? viewBox
+          : `0 0 ${viewBox?.width ?? size} ${viewBox?.height ?? viewBox?.width ?? size}`
+      } // ✅ ALWAYS consistent
       xmlns="http://www.w3.org/2000/svg"
       fill={filled ? (color ?? "currentColor") : "none"}
       stroke={!filled ? (color ?? "currentColor") : undefined}
       strokeWidth={stroke}
       strokeLinecap="round"
       strokeLinejoin="round"
-      preserveAspectRatio="xMidYMid meet" // ✅ keeps perfect centering
+      preserveAspectRatio="xMidYMid slice" // ✅ keeps perfect centering
     >
       {paths.map((d, index) => (
         <path key={index} d={d} />
