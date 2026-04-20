@@ -28,7 +28,7 @@ export default function ServicesPage() {
         VAs={[
           { name: "100% Trained and vetted professionals" },
           {
-            name: "English and Bilingual (Spansih) Support options",
+            name: "English and Bilingual (Spanish) Support options",
             href: "/who-we-are#what-we-offer",
           },
         ]}
@@ -39,7 +39,14 @@ export default function ServicesPage() {
         ]}
         service="general"
       />
-      <BookACall>
+      <BookACall
+        customMessage={
+          <>
+            Book a Free
+            <br className="max-md:hidden" /> Strategy Call
+          </>
+        }
+      >
         <Highlight color="#ffffff" bgColor="#191919">
           More Quality
         </Highlight>

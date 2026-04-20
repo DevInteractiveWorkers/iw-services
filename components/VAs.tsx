@@ -82,7 +82,7 @@ export function VAItem({
     <div
       ref={ref}
       className={`relative ${side === "left" ? "hover:rotate-2" : "hover:-rotate-2"} 
-      active:rotate-0 relative transition-transform duration-300 hover:scale-105 group/va-link`}
+      active:rotate-0 relative transition-transform duration-300 hover:scale-105 ${href ? "group/va-link" : ""}`}
     >
       <div
         onMouseMove={(e) => dropSide(e.clientX)}
@@ -95,11 +95,13 @@ export function VAItem({
         {href && (
           <div
             className={
-              "absolute top-0 left-0 w-0 -z-10 h-full bg-[#c7c7c7] group-active/va-link:w-full transition-all duration-150"
+              "absolute top-0 left-0 w-0 -z-10 h-full bg-[#DD272D] group-active/va-link:w-full transition-all duration-150"
             }
           />
         )}
-        <span className="md:text-2xl font-medium z-10">{name}</span>
+        <span className="md:text-2xl font-medium z-10 group-active/va-link:text-white transition-all duration-150">
+          {name}
+        </span>
       </div>
       {href && (
         <Link href={href}>
@@ -109,12 +111,12 @@ export function VAItem({
             viewBox="0 0 43 43"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-full -translate-y-1/2 right-0 -translate-x-full hover:scale-90 transition-all duration-100"
+            className="absolute top-full -translate-y-1/2 right-0 -translate-x-full hover:scale-90 transition-all duration-100 border-2 rounded-full"
           >
-            <circle cx="21.5" cy="21.5" r="21.5" fill="#2E4582" />
+            <circle cx="21.5" cy="21.5" r="21.5" fill="white" />
             <path
               d="M32.7071 22.2071C33.0976 21.8166 33.0976 21.1834 32.7071 20.7929L26.3431 14.4289C25.9526 14.0384 25.3195 14.0384 24.9289 14.4289C24.5384 14.8195 24.5384 15.4526 24.9289 15.8431L30.5858 21.5L24.9289 27.1569C24.5384 27.5474 24.5384 28.1805 24.9289 28.5711C25.3195 28.9616 25.9526 28.9616 26.3431 28.5711L32.7071 22.2071ZM11 21.5L11 22.5L32 22.5L32 21.5L32 20.5L11 20.5L11 21.5Z"
-              fill="white"
+              fill="#DD272D"
             />
           </svg>
         </Link>

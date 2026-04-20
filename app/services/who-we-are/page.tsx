@@ -48,6 +48,7 @@ export default function WhoWeArePage() {
           ]}
           alt="private-security-va"
           reverse
+          href="/"
         />
       </section>
       <section

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface HowItWorksProps {
   title: string | React.ReactNode;
@@ -6,6 +7,7 @@ interface HowItWorksProps {
   imageSrc: string | string[];
   reverse?: boolean;
   alt?: string;
+  href?: string;
 }
 
 export default function HowItWorks({
@@ -14,6 +16,7 @@ export default function HowItWorks({
   imageSrc,
   reverse,
   alt = "service",
+  href,
 }: HowItWorksProps) {
   return (
     <div className="lg:[@media(min-height:800px)]:w-9/12 md:w-11/12 [@media(min-height:800px)]:max-h-svh flex flex-col justify-around">
@@ -30,13 +33,33 @@ export default function HowItWorks({
           <p className="py-4">{paragraph}</p>
         </div>
         {imageSrc && (
-          <Image
-            className="rounded-2xl object-cover object-top-right h-full md:w-1/2"
-            src={Array.isArray(imageSrc) ? imageSrc[0] : imageSrc}
-            height={1080}
-            width={1080}
-            alt={alt}
-          />
+          <div className="h-full md:w-1/2 relative">
+            <Image
+              className="rounded-2xl object-cover object-top-right"
+              src={Array.isArray(imageSrc) ? imageSrc[0] : imageSrc}
+              height={1080}
+              width={1080}
+              alt={alt}
+            />
+            {href && (
+              <Link href={href}>
+                <svg
+                  width="35"
+                  height="35"
+                  viewBox="0 0 43 43"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="absolute top-0 z-10 translate-y-full right-0 translate-x-1/2 hover:-scale-90 transition-all duration-100 -scale-100"
+                >
+                  <circle cx="21.5" cy="21.5" r="21.5" fill="#DD272D" />
+                  <path
+                    d="M32.7071 22.2071C33.0976 21.8166 33.0976 21.1834 32.7071 20.7929L26.3431 14.4289C25.9526 14.0384 25.3195 14.0384 24.9289 14.4289C24.5384 14.8195 24.5384 15.4526 24.9289 15.8431L30.5858 21.5L24.9289 27.1569C24.5384 27.5474 24.5384 28.1805 24.9289 28.5711C25.3195 28.9616 25.9526 28.9616 26.3431 28.5711L32.7071 22.2071ZM11 21.5L11 22.5L32 22.5L32 21.5L32 20.5L11 20.5L11 21.5Z"
+                    fill="white"
+                  />
+                </svg>
+              </Link>
+            )}
+          </div>
         )}
       </div>
       {Array.isArray(imageSrc) && imageSrc.length === 2 && (
