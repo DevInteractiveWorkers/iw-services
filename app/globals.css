@@ -75,8 +75,15 @@ body {
   animation-play-state: paused;
 }
 
+/* Customizes the highlight color for the entire page For older Firefox versions, use the -moz- prefix */
+*::selection,
+*::-moz-selection {
+  background-color: hsl(from var(--service-bg) h s l / 0.9);
+  color: white;
+}
+
 .service {
-  color: var(--service-color);
+  color: var(--service-color) / 50;
   background-image: linear-gradient(var(--service-bg), var(--service-bg));
   background-size: 100% 100%;
 }
