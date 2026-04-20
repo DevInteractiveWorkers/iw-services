@@ -7,7 +7,9 @@
 
 .arrow.shoot {
   --rotation: 0deg;
-  animation: shot 0.7s forwards ease-in;
+  animation:
+    shot 0.7s ease-in forwards,
+    shake 2s ease-in 0.7s forwards infinite;
 }
 
 .arrow.failed {
@@ -41,6 +43,23 @@
     scale: 1.5;
   }
   100% {
+    transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotation));
+  }
+}
+
+@keyframes shake {
+  70% {
+    transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotation));
+  }
+  75% {
+    transform: translate(var(--end-x), var(--end-y))
+      rotate(calc(var(--rotation) - 5deg));
+  }
+  85% {
+    transform: translate(var(--end-x), var(--end-y))
+      rotate(calc(var(--rotation) + 5deg));
+  }
+  90% {
     transform: translate(var(--end-x), var(--end-y)) rotate(var(--rotation));
   }
 }

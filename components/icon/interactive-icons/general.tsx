@@ -268,7 +268,7 @@ export default function GeneralIcon() {
         viewBox="0 0 86 86"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={`arrow absolute -translate-1/2 ${animate ? "shoot" : ""} ${isFailed ? "failed" : ""}`}
+        className={`arrow absolute -translate-1/2 ${animate ? "shoot cursor-pointer" : ""} ${isFailed ? "failed" : ""}`}
         style={{
           ["--end-x" as any]: `${shot.x}px`,
           ["--end-y" as any]: `${shot.y}px`,
