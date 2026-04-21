@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import InteractiveIcon from "./icon/interactive-icons/interactive-icon";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface VAsProps {
   name: string;
@@ -31,7 +31,9 @@ export function VAs({
         {header}
       </h2>
 
-      <div className="md:grid flex flex-col gap-5 grid-cols-2 flex-wrap justify-center items-center">
+      <div
+        className={`md:grid flex flex-col gap-5 ${VAs.length <= 2 ? "" : "grid-cols-2"} flex-wrap justify-center items-center`}
+      >
         {VAs.map((va, i) => (
           <VAItem
             key={i}
@@ -62,6 +64,9 @@ export function VAItem({
 }: VAsProps & {
   className?: string;
 }) {
+  const router = useRouter();
+  const path = window.location.toString() + "/" + href;
+
   const ref = useRef<HTMLDivElement>(null);
   const [side, setSide] = useState<"left" | "right">("left");
 
@@ -69,27 +74,25 @@ export function VAItem({
     if (!ref.current) return;
 
     const rect = ref.current.getBoundingClientRect();
-    const localX = clientX - rect.left; // mouse X inside SVG
+    const localX = clientX - rect.left;
+    const midpoint = rect.width / 2;
 
-    const svgWidth = rect.width;
-    if (localX < svgWidth / 2) {
-      setSide("left");
-    } else {
-      setSide("right");
-    }
+    setSide(localX < midpoint ? "left" : "right");
   };
   return (
     <div
-      ref={ref}
-      className={`relative ${side === "left" ? "hover:rotate-2" : "hover:-rotate-2"} 
-      active:rotate-0 relative transition-transform duration-300 hover:scale-105 ${href ? "group/va-link" : ""}`}
+      className={`relative ${href ? "group/va-link" : ""}`}
+      onClick={() => {
+        if (href) router.push(path);
+      }}
     >
       <div
+        ref={ref}
         onMouseMove={(e) => dropSide(e.clientX)}
-        className={`border-2 py-3 px-6 rounded-2xl text-center ${className} 
-        cursor-default relative
-        max-md:w-full overflow-hidden
-      `}
+        className={`relative border-2 py-3 px-6 rounded-2xl text-center 
+          ${className} ${side === "left" ? "hover:rotate-2" : "hover:-rotate-2"} 
+          ${href ? "group/va-link cursor-pointer active:rotate-0" : "cursor-default"} 
+          transition-transform duration-300 hover:scale-105 max-md:w-full overflow-hidden`}
       >
         <div className={"absolute top-0 left-0 w-full -z-10 h-full bg-white"} />
         {href && (
@@ -104,22 +107,20 @@ export function VAItem({
         </span>
       </div>
       {href && (
-        <Link href={href}>
-          <svg
-            width="35"
-            height="35"
-            viewBox="0 0 43 43"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-full -translate-y-1/2 right-0 -translate-x-full hover:scale-90 transition-all duration-100 border-2 rounded-full"
-          >
-            <circle cx="21.5" cy="21.5" r="21.5" fill="white" />
-            <path
-              d="M32.7071 22.2071C33.0976 21.8166 33.0976 21.1834 32.7071 20.7929L26.3431 14.4289C25.9526 14.0384 25.3195 14.0384 24.9289 14.4289C24.5384 14.8195 24.5384 15.4526 24.9289 15.8431L30.5858 21.5L24.9289 27.1569C24.5384 27.5474 24.5384 28.1805 24.9289 28.5711C25.3195 28.9616 25.9526 28.9616 26.3431 28.5711L32.7071 22.2071ZM11 21.5L11 22.5L32 22.5L32 21.5L32 20.5L11 20.5L11 21.5Z"
-              fill="#DD272D"
-            />
-          </svg>
-        </Link>
+        <svg
+          width="35"
+          height="35"
+          viewBox="0 0 43 43"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute top-full -translate-y-1/2 right-0 -translate-x-full hover:scale-90 transition-all duration-100 border-2 rounded-full cursor-pointer"
+        >
+          <circle cx="21.5" cy="21.5" r="21.5" fill="white" />
+          <path
+            d="M32.7071 22.2071C33.0976 21.8166 33.0976 21.1834 32.7071 20.7929L26.3431 14.4289C25.9526 14.0384 25.3195 14.0384 24.9289 14.4289C24.5384 14.8195 24.5384 15.4526 24.9289 15.8431L30.5858 21.5L24.9289 27.1569C24.5384 27.5474 24.5384 28.1805 24.9289 28.5711C25.3195 28.9616 25.9526 28.9616 26.3431 28.5711L32.7071 22.2071ZM11 21.5L11 22.5L32 22.5L32 21.5L32 20.5L11 20.5L11 21.5Z"
+            fill="#DD272D"
+          />
+        </svg>
       )}
     </div>
   );
