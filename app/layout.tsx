@@ -1,6 +1,6 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
 import { ParticlesBG } from "@/components/particles-bg";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
