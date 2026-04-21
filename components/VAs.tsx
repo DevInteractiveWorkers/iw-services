@@ -2,6 +2,7 @@
 import { useRef, useState } from "react";
 import InteractiveIcon from "./icon/interactive-icons/interactive-icon";
 import { useRouter } from "next/navigation";
+import { useLocation } from "@/lib/useLocation";
 
 interface VAsProps {
   name: string;
@@ -65,7 +66,8 @@ export function VAItem({
   className?: string;
 }) {
   const router = useRouter();
-  const path = window.location.toString() + "/" + href;
+  const url = useLocation();
+  const path = url + "/" + href;
 
   const ref = useRef<HTMLDivElement>(null);
   const [side, setSide] = useState<"left" | "right">("left");

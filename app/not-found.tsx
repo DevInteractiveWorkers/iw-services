@@ -1,5 +1,5 @@
 "use client";
-import { useSubdomain } from "@/lib/useSubdomain";
+import { useSubdomain } from "@/lib/useLocation";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import SignUp from "./sign-up";
-import { useSubdomain } from "@/lib/useSubdomain";
+import { useSubdomain } from "@/lib/useLocation";
 import { usePathname } from "next/navigation";
 
 export default function Footer() {

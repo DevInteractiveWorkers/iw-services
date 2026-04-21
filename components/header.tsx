@@ -5,7 +5,7 @@ import SignUp from "./sign-up";
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { useSubdomain } from "@/lib/useSubdomain";
+import { useSubdomain } from "@/lib/useLocation";
 
 export default function Header() {
   return (

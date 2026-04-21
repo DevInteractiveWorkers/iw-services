@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
 
+export function useLocation() {
+  const [location, setLocation] = useState<string | null>(null);
+  useEffect(() => {
+    const url = window.location.toString();
+    setLocation(url);
+  }, []);
+  return location;
+}
+
 export function useSubdomain() {
   const [subdomain, setSubdomain] = useState<string | null>(null);
 
