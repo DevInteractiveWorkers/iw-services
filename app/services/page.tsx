@@ -7,6 +7,7 @@ export default function ServicesPage() {
   return (
     <>
       <Landing
+        videoUrl="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69e9186ba1636a6c65402e79.mp4"
         title={
           <>
             Reduce Overload, Not Quality
