@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, use } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { IconButton } from "./icon/icon-button";
 
 interface VideoPlayerProps {
@@ -24,18 +24,21 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [videoDuration, setVideoDuration] = useState(0);
-  const [videoCurrentTime, setVideoCurrentTime] = useState(0);
-  const [progressHover, setProgressHover] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [volume, setVolume] = useState<number>(0.5);
-  const [prevVolume, setPreviousVolume] = useState<number | null>(null);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [progressHover, setProgressHover] = useState(0);
+  const [volume, setVolume] = useState(0.5);
+  const [prevVolume, setPrevVolume] = useState<number | null>(null);
   const [showVolumeMenu, setShowVolumeMenu] = useState(false);
+
+  const video = videoRef.current;
+
   const volumeIcon =
     volume === 0 ? "volume-mute" : volume <= 0.5 ? "volume-down" : "volume-up";
 
-  // --------- Time formatting ----------
+  // ---------- Helpers ----------
   const formatTime = (seconds: number) => {
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60)
@@ -44,36 +47,46 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     return `${m}:${s}`;
   };
 
-  // --------- Init video events ----------
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+  const isEnded = duration > 0 && currentTime >= duration - 0.05;
 
-    const setDuration = () => setVideoDuration(video.duration);
+  // ---------- Init ----------
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const handleLoadedMetadata = () => setDuration(v.duration);
 
     const handleCanPlayThrough = () => {
       setIsLoaded(true);
-      video.play().catch(() => {});
-      setIsVideoPlaying(true);
+      v.play().catch(() => {});
     };
 
-    video.addEventListener("loadedmetadata", setDuration);
-    video.addEventListener("canplaythrough", handleCanPlayThrough);
+    const handleTimeUpdate = () => setCurrentTime(v.currentTime);
+    const handlePlay = () => {
+      setIsPlaying(true);
+      onPlay?.();
+    };
+    const handlePause = () => setIsPlaying(false);
+
+    // initial volume
+    v.volume = volume;
+
+    v.addEventListener("loadedmetadata", handleLoadedMetadata);
+    v.addEventListener("canplaythrough", handleCanPlayThrough);
+    v.addEventListener("timeupdate", handleTimeUpdate);
+    v.addEventListener("play", handlePlay);
+    v.addEventListener("pause", handlePause);
 
     return () => {
-      video.removeEventListener("loadedmetadata", setDuration);
-      video.removeEventListener("canplaythrough", handleCanPlayThrough);
+      v.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      v.removeEventListener("canplaythrough", handleCanPlayThrough);
+      v.removeEventListener("timeupdate", handleTimeUpdate);
+      v.removeEventListener("play", handlePlay);
+      v.removeEventListener("pause", handlePause);
     };
-  }, []);
+  }, [onPlay, volume]);
 
-  // --------- Volume Set Up ----------
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.volume = 0.5; // start at 50%
-  }, []);
-
+  // ---------- Volume ----------
   const handleVolumeChange = (v: number) => {
     const video = videoRef.current;
     if (!video) return;
@@ -81,109 +94,116 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     const newValue = Math.min(1, Math.max(0, v));
     video.volume = newValue;
     setVolume(newValue);
-  };
 
-  // --------- Progress bar click ----------
-  const handleProgressClick = (event: React.MouseEvent) => {
-    if (!isLoaded) return;
-
-    const bar = event.currentTarget.getBoundingClientRect();
-    const clickX = event.clientX - bar.left;
-    const newTime = (clickX / bar.width) * videoDuration;
-
-    if (videoRef.current) {
-      videoRef.current.currentTime = newTime;
+    if (newValue > 0) {
+      setPrevVolume(newValue);
     }
   };
 
-  // --------- Hover preview ----------
-  const handleProgressHover = (event: React.MouseEvent) => {
-    const bar = event.currentTarget.getBoundingClientRect();
-    const hoverX = event.clientX - bar.left;
-    const percent = (hoverX / bar.width) * 100;
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
 
-    setProgressHover(percent);
+    if (volume === 0) {
+      const restored = prevVolume ?? 0.5;
+      video.volume = restored;
+      setVolume(restored);
+    } else {
+      setPrevVolume(volume);
+      video.volume = 0;
+      setVolume(0);
+    }
   };
 
-  // --------- Play / Pause / Replay ----------
-  const handleVideoControls = () => {
+  // ---------- Controls ----------
+  const handleTogglePlay = () => {
     const video = videoRef.current;
     if (!video || !isLoaded) return;
 
-    const isEnd = videoCurrentTime >= videoDuration - 0.05;
-
-    if (isEnd) {
+    if (isEnded) {
       video.currentTime = 0;
       video.play();
-      setIsVideoPlaying(true);
       return;
     }
 
-    if (isVideoPlaying) {
-      video.pause();
-      setIsVideoPlaying(false);
-    } else {
+    if (video.paused) {
       video.play();
-      setIsVideoPlaying(true);
+    } else {
+      video.pause();
     }
   };
 
-  const showReplay = videoCurrentTime >= videoDuration - 0.05;
+  const handleProgressClick = (event: React.MouseEvent) => {
+    if (!video || !duration) return;
 
+    const rect = event.currentTarget.getBoundingClientRect();
+    const percent = (event.clientX - rect.left) / rect.width;
+    video.currentTime = percent * duration;
+  };
+
+  const handleProgressHover = (event: React.MouseEvent) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const percent = (event.clientX - rect.left) / rect.width;
+    setProgressHover(Math.max(0, Math.min(100, percent * 100)));
+  };
+
+  const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+  // ---------- UI ----------
   return (
     <div className="relative w-full h-full overflow-hidden">
       {/* Thumbnail */}
       {thumbnail && (
         <img
           src={thumbnail}
-          className={`w-full h-full absolute ${
-            isVideoPlaying ? "opacity-0" : "opacity-100"
-          } transition-opacity duration-150`}
+          alt="Video thumbnail"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 pointer-events-none ${
+            isPlaying ? "opacity-0" : "opacity-100"
+          }`}
         />
       )}
 
       {/* Video */}
       <video
         ref={videoRef}
+        src={videoUrl}
         muted={muted}
+        playsInline
         width={width}
         height={height}
-        playsInline
-        className={`select-none pointer-events-none w-full h-full transition-all duration-700 ${
+        className={`w-full h-full select-none pointer-events-none transition-all duration-700 ${
           cover ? "object-cover" : "object-contain"
         } ${isLoaded ? "blur-0" : "blur-md brightness-75"}`}
-        onTimeUpdate={(e) => setVideoCurrentTime(e.currentTarget.currentTime)}
-        onPlay={() => onPlay?.()}
-        src={videoUrl}
       />
 
-      {/* Overlay controls */}
+      {/* Controls */}
       {controls && (
         <div
-          className={`text-white absolute bg-black/20 w-full h-full flex justify-center items-center z-10 top-0 left-0 transition-all duration-300 ${
+          className={`absolute inset-0 z-10 flex items-center justify-center bg-black/20 text-white transition-opacity duration-300 ${
             isLoaded ? "opacity-0 hover:opacity-100" : "opacity-100"
           }`}
         >
           {/* Play / Pause / Replay */}
           <IconButton
-            filled={!showReplay}
-            fillOnHover={!showReplay}
-            icon={showReplay ? "replay" : isVideoPlaying ? "pause" : "play"}
-            className={
-              "hover:opacity-80 opacity-50 hover:shadow-lg rounded-full transition-all duration-300"
-            }
-            onClick={handleVideoControls}
+            filled={!isEnded}
+            size={50}
+            viewBox={"0 0 24 24"}
+            fillOnHover={!isEnded}
+            icon={isEnded ? "replay" : isPlaying ? "pause" : "play"}
+            className="opacity-50 hover:opacity-80 hover:shadow-lg rounded-full transition-all duration-300"
+            onClick={handleTogglePlay}
           />
 
           {isLoaded && (
-            <div className="flex absolute bottom-0 w-full justify-evenly items-center gap-2 px-4 pb-2">
+            <div className="absolute bottom-0 w-full flex items-center justify-evenly gap-2 px-4 pb-2">
               {/* Fullscreen */}
               <IconButton
                 icon="expand"
-                className="text-white w-7"
+                className="w-7 text-white"
                 stroke={1}
                 onClick={() => videoRef.current?.requestFullscreen()}
               />
+
               {/* Volume */}
               <div
                 className="relative"
@@ -194,16 +214,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                   icon={volumeIcon}
                   filled
                   stroke={0}
-                  className="text-white w-7"
-                  onClick={() => {
-                    setVolume(prevVolume ?? 0);
-                    setPreviousVolume(volume ?? 0);
-                  }}
+                  className="w-7 text-white"
+                  onClick={toggleMute}
                 />
 
-                {/* Popup menu */}
                 {showVolumeMenu && (
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/20 p-3 rounded-xl shadow-lg flex flex-col items-center gap-2 z-20 -rotate-90">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 bg-black/20 p-3 rounded-xl shadow-lg flex flex-col items-center gap-2">
                     <input
                       type="range"
                       min={0}
@@ -221,32 +237,28 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
               {/* Progress bar */}
               <div
-                className="md:w-9/12 w-8/12 h-1 hover:h-2 transition-all bg-gray-400 rounded-full cursor-pointer relative"
+                className="relative md:w-9/12 w-8/12 h-1 hover:h-2 transition-all bg-gray-400 rounded-full cursor-pointer"
                 onClick={handleProgressClick}
                 onMouseMove={handleProgressHover}
                 onMouseLeave={() => setProgressHover(0)}
               >
-                {/* Hover bar */}
+                {/* Hover */}
                 <div
-                  className={"bg-white/60 h-full rounded-full absolute"}
+                  className="absolute h-full rounded-full bg-white/60"
                   style={{ width: `${progressHover}%` }}
                 />
-                {/* Current progress */}
+
+                {/* Progress */}
                 <div
-                  className="bg-[#DD272D] h-full rounded-full absolute"
-                  style={{
-                    width:
-                      videoDuration > 0
-                        ? `${(videoCurrentTime / videoDuration) * 100}%`
-                        : "0%",
-                  }}
-                ></div>
+                  className="absolute h-full rounded-full bg-[#DD272D]"
+                  style={{ width: `${progressPercent}%` }}
+                />
               </div>
 
               {/* Time */}
-              <div className="text-white md:text-sm text-xs flex">
-                {videoCurrentTime > 0 ? formatTime(videoCurrentTime) : "--:--"}{" "}
-                / {videoDuration > 0 ? formatTime(videoDuration) : "--:--"}
+              <div className="text-xs md:text-sm flex">
+                {currentTime > 0 ? formatTime(currentTime) : "--:--"} /{" "}
+                {duration > 0 ? formatTime(duration) : "--:--"}
               </div>
             </div>
           )}
