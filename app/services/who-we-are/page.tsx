@@ -1,7 +1,6 @@
 import BenefitsList from "@/components/benefits-list";
 import BookACall from "@/components/book-a-call";
 import Carousel from "@/components/carousel";
-import { FAQRenderer } from "@/components/faq-renderer";
 import { Highlight } from "@/components/highlight";
 import HowItWorks from "@/components/how-it-works";
 import { ListItem } from "@/components/list-item";
