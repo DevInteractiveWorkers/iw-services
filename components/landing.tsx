@@ -9,9 +9,15 @@ interface LandingProps {
   title: string | React.ReactNode;
   subtitle?: string | React.ReactNode;
   videoUrl?: string;
+  thumbnail?: string;
 }
 
-export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
+export default function Landing({
+  title,
+  subtitle,
+  videoUrl,
+  thumbnail,
+}: LandingProps) {
   const ref = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
@@ -57,9 +63,7 @@ export default function Landing({ title, subtitle, videoUrl }: LandingProps) {
           <VideoPlayer
             videoUrl={videoUrl}
             muted={false}
-            thumbnail={
-              "https://yopcmybykbvmdejvgffw.supabase.co/storage/v1/object/public/youtube-thumbnails/images/1760727564027_Home_Care_Thumbnail"
-            }
+            thumbnail={thumbnail}
           />
         </div>
       )}

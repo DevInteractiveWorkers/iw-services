@@ -7,7 +7,6 @@ export default function ServicesPage() {
   return (
     <>
       <Landing
-        videoUrl="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69e9186ba1636a6c65402e79.mp4"
         title={
           <>
             Reduce Overload, Not Quality
@@ -23,6 +22,8 @@ export default function ServicesPage() {
             <br /> to customer support.
           </>
         }
+        videoUrl="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69e9186ba1636a6c65402e79.mp4"
+        thumbnail="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69e91fc8717d5dd4e11ea388.jpeg"
       />
       <VAs
         header={<>Who We Are & Why It Matters</>}
