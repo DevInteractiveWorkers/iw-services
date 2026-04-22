@@ -26,6 +26,7 @@ export default function HomeCareLanding() {
           </>
         }
         videoUrl="https://storage.googleapis.com/msgsndr/dtfCxBE6SEYaCMFTlgu5/media/69820688cf8ac032935b5dfe.webm"
+        thumbnail="https://yopcmybykbvmdejvgffw.supabase.co/storage/v1/object/public/youtube-thumbnails/images/1760727564027_Home_Care_Thumbnail"
       />
       <section className="w-full p-10">
         <Reviews reviews={reviews} />
