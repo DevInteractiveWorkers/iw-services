@@ -18,8 +18,7 @@ export default function WhoWeArePage() {
         <HowItWorks
           title={
             <>
-              Who
-              <Highlight>We Are</Highlight>
+              Who <Highlight>We Are</Highlight>
             </>
           }
           paragraph={
