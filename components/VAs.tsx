@@ -83,7 +83,7 @@ export function VAItem({
   };
   return (
     <div
-      className={`relative ${href ? "group/va-link" : ""}`}
+      className={`relative w-full ${href ? "group/va-link" : ""}`}
       onClick={() => {
         if (href) router.push(path);
       }}

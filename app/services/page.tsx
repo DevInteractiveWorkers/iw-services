@@ -14,31 +14,34 @@ export default function ServicesPage() {
             Assistants for Every Business
           </>
         }
-        subtitle={
-          <>
-            Delegate your daily tasks and focus on what drives growth.
-            <br />
-            Our professional Virtual Assistants handle the rest - from admin
-            <br /> to customer support.
-          </>
-        }
+        // subtitle={
+        //   <>
+        //     Delegate your daily tasks and focus on what drives growth.
+        //     <br />
+        //     Our professional Virtual Assistants handle the rest - from admin
+        //     <br /> to customer support.
+        //   </>
+        // }
         videoUrl="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69e9186ba1636a6c65402e79.mp4"
         thumbnail="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69e91fc8717d5dd4e11ea388.jpeg"
       />
       <VAs
-        header={<>Who We Are & Why It Matters</>}
+        header={<>Why Us?</>}
         VAs={[
-          { name: "100% Trained and vetted professionals" },
+          { name: "Full confidentiality of your data, end-to-end encrypted" },
           {
-            name: "English and Bilingual (Spanish) Support options",
+            name: "Bilingual (English and Spanish)",
             href: "/who-we-are#what-we-offer",
           },
+          { name: "24/7 Adaptability" },
+          { name: "Proactive Communication" },
+          { name: "Hours covered onsite from our satellite offices" },
         ]}
-        tags={[
-          "24/7 Adaptability",
-          "Proactive Comunnication",
-          "Bilingual English/Spanish",
-        ]}
+        // tags={[
+        //   "24/7 Adaptability",
+        //   "Proactive Comunnication",
+        //   "Bilingual English/Spanish",
+        // ]}
         service="general"
       />
       <BookACall
