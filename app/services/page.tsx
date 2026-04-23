@@ -1,6 +1,8 @@
+import BenefitsList from "@/components/benefits-list";
 import BookACall from "@/components/book-a-call";
 import { Highlight } from "@/components/highlight";
 import Landing from "@/components/landing";
+import { ListItem } from "@/components/list-item";
 import { VAs } from "@/components/VAs";
 
 export default function ServicesPage() {
@@ -37,6 +39,7 @@ export default function ServicesPage() {
           { name: "Proactive Communication" },
           { name: "Hours covered onsite from our satellite offices" },
         ]}
+        tags={["Find the right virtual assistant for every task."]}
         // tags={[
         //   "24/7 Adaptability",
         //   "Proactive Comunnication",
@@ -44,6 +47,82 @@ export default function ServicesPage() {
         // ]}
         service="general"
       />
+      <section
+        id="positions"
+        className="w-full md:p-10 px-4 flex flex-col items-center gap-5"
+      >
+        <h3 className="font-medium lg:text-6xl md:text-5xl text-4xl text-center capitalize">
+          Stop doing it all by yourself
+          <br className="max-md:hidden" /> We've got the{" "}
+          <Highlight>right support</Highlight>
+        </h3>
+        <div className="w-full grid grid-cols-2 justify-items-center">
+          <BenefitsList align="end">
+            <ListItem
+              icon={"24-7"}
+              viewBox="3 1 24 24"
+              color="white"
+              align="end"
+            >
+              Dispatchers
+            </ListItem>
+            <ListItem
+              icon={"scalable-support"}
+              viewBox={"5 4 30 30"}
+              color="white"
+              align="end"
+            >
+              General Virtual Assistants
+            </ListItem>
+            <ListItem
+              icon={"calendar"}
+              viewBox={"3 2 25 25"}
+              color="white"
+              align="end"
+            >
+              Schedulers
+            </ListItem>
+            <ListItem
+              icon={"thumb-up"}
+              viewBox={"7 10 40 40"}
+              color="white"
+              align="end"
+            >
+              Costumer Care
+            </ListItem>
+            <ListItem
+              icon={"suitcase"}
+              viewBox={"0 0 39 32"}
+              color="white"
+              align="end"
+            >
+              Intake Specialists
+            </ListItem>
+          </BenefitsList>
+          <BenefitsList>
+            <ListItem icon={"tech-support"} viewBox={"4 2 20 20"} color="white">
+              Social Media Managers
+            </ListItem>
+            <ListItem icon={"computer"} viewBox={"0 0 38 33"} color="white">
+              Graphic Designers
+            </ListItem>
+            <ListItem icon={"web-status"} viewBox={"-5 0 80 50"} color="white">
+              Web Developers
+            </ListItem>
+            <ListItem
+              icon={"play"}
+              viewBox={"4.5 4.5 15 15"}
+              filled={false}
+              color="white"
+            >
+              Video Editors
+            </ListItem>
+            <ListItem icon={"human-plus"} viewBox={"0 12 68 39"} color="white">
+              Many more...
+            </ListItem>
+          </BenefitsList>
+        </div>
+      </section>
       <BookACall
         customMessage={
           <>

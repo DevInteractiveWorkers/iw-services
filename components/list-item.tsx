@@ -1,29 +1,42 @@
-import { Icon } from "./icon/icon";
+import { Icon, IconProps } from "./icon/icon";
+
+export interface ListItemProps extends IconProps {
+  children: React.ReactNode;
+  bgColor?: string;
+  align?: "start" | "end";
+}
 
 export function ListItem({
   children,
   icon,
   filled = true,
+  stroke,
+  size = 30,
   color,
   bgColor,
-  size = 30,
-}: {
-  children: React.ReactNode;
-  icon: string;
-  filled?: boolean;
-  color?: string;
-  bgColor?: string;
-  size?: number;
-}) {
+  viewBox,
+  align = "start",
+}: ListItemProps) {
   return (
-    <li className="flex gap-5 items-center">
+    <li
+      className={`flex gap-5 items-center ${align === "start" ? "flex-row" : "flex-row-reverse"}`}
+    >
       <div
-        className="service p-4 flex items-center justify-center rounded-full flip-logo"
+        className={
+          "service p-4 flex items-center justify-center rounded-full flip-logo"
+        }
         style={{
           background: bgColor,
         }}
       >
-        <Icon icon={icon} filled={filled} color={color} size={size} />
+        <Icon
+          icon={icon}
+          filled={filled}
+          color={color}
+          size={size}
+          stroke={stroke}
+          viewBox={viewBox}
+        />
       </div>
 
       <span

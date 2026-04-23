@@ -34,7 +34,7 @@ export const Highlight = ({ children, color, bgColor }: HighlightProps) => {
   return (
     <span
       ref={ref}
-      className="highlight inline-block relative"
+      className="highlight contain-inline-size relative"
       style={{
         // ✅ component-scoped CSS variables
         ["--service-color" as any]: color,
