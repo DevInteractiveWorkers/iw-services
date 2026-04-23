@@ -7,7 +7,7 @@ import { ListItem } from "@/components/list-item";
 import StepCard from "@/components/services/step-cards";
 import WhatWeOfferCard from "@/components/services/what-we-offer-card";
 import WhyUsCard from "@/components/services/why-us-card";
-import { VAItem } from "@/components/VAs";
+import { VAItem, VAs } from "@/components/VAs";
 import Image from "next/image";
 
 export default function WhoWeArePage() {
@@ -50,31 +50,22 @@ export default function WhoWeArePage() {
         />
       </section>
       <section
-        id="highlights"
+        id="key-highlights"
         className="w-full md:px-10 px-4 flex justify-around"
       >
-        <BenefitsList
-          title={
-            <>
-              Key <Highlight>Highlights:</Highlight>
-            </>
+        <VAs
+          header={
+            <span className="font-medium lg:text-6xl md:text-5xl text-4xl">
+              Key <Highlight>Highlights</Highlight>
+            </span>
           }
-        >
-          <ListItem icon="check" filled size={24} color="white">
-            <VAItem name={"100% Trained and vetted proffesionals"} />
-          </ListItem>
-          <ListItem icon="check" filled size={24} color="white">
-            <VAItem name={"English and bilingual (Spanish) support options"} />
-          </ListItem>
-          <ListItem icon="check" filled size={24} color="white">
-            <VAItem name={"Secure, reliable, and fully remote integrations"} />
-          </ListItem>
-          <ListItem icon="check" filled size={24} color="white">
-            <VAItem
-              name={"Scalable Support - from part-time to full-time VAs"}
-            />
-          </ListItem>
-        </BenefitsList>
+          VAs={[
+            { name: "100% Trained and vetted proffesionals" },
+            { name: "Bilingual (English and Spanish)" },
+            { name: "Secure, reliable, and fully remote integrations" },
+            { name: "Scalable Support - from part-time to full-time VAs" },
+          ]}
+        ></VAs>
       </section>
       <section
         id="what-we-offer"
@@ -139,7 +130,7 @@ export default function WhoWeArePage() {
         </div>
       </section>
       <section
-        id="why-us"
+        id="benefits"
         className="w-full md:p-10 p-4 flex flex-col justify-around items-center"
       >
         <div className="lg:w-10/12 md:w-11/12 grid grid-cols-1 md:gap-10 max-md:px-2 gap-4">
