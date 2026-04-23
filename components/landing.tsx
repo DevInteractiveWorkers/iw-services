@@ -53,7 +53,14 @@ export default function Landing({
         className="w-min [@media(min-height:800px)]:max-h-20 max-h-10 object-contain flip-logo"
       />
       <h1
-        className={`font-medium text-center ${videoUrl ? "[@media(min-height:800px)]:md:text-4xl [@media(min-height:800px)]:text-3xl text-2xl" : "lg:text-6xl md:text-5xl sm:text-4xl text-3xl "}`}
+        className={`font-medium text-center 
+          ${
+            videoUrl
+              ? subtitle
+                ? "[@media(min-height:800px)]:md:text-4xl [@media(min-height:800px)]:text-3xl text-2xl"
+                : "[@media(min-height:800px)]:md:text-6xl [@media(min-height:800px)]:text-4xl text-2xl"
+              : "lg:text-6xl md:text-5xl sm:text-4xl text-3xl "
+          }`}
         style={{ lineHeight: 1 }}
       >
         {title}
