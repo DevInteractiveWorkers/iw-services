@@ -77,14 +77,16 @@ export default function WhoWeArePage() {
             <br className="max-xl:hidden" /> so - You Don't Have To
           </p>
         </div>
-        <div className="lg:w-10/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4 md:h-[50svh]">
-          <Image
-            className="rounded-2xl object-cover object-center h-max md:max-h-[50svh] max-h-[30svh] w-full"
-            src={"/assets/top-view-co-workers-planning-strategy.png"}
-            alt={"what-we-offer"}
-            width={1080}
-            height={1080}
-          />
+        <div className="lg:w-10/12 md:w-11/12 grid md:grid-cols-2 grid-cols-1 md:gap-10 md:py-10 py-4 max-md:px-2 gap-4 md:h-[50svh] items-stretch">
+          <div className="relative h-full w-full">
+            <Image
+              className="rounded-2xl object-cover object-center"
+              src={"/assets/top-view-co-workers-planning-strategy.png"}
+              alt={"what-we-offer"}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+          </div>
           <Carousel>
             <WhatWeOfferCard
               icon="folder"
@@ -140,20 +142,20 @@ export default function WhoWeArePage() {
             <br className="max-xl:hidden" />
           </p>
           <div className="w-full flex items-center justify-center">
-            <div className="group grid md:grid-cols-2 grid-cols-1 md:w-9/12">
+            <div className="group grid md:grid-cols-2 grid-cols-1 xl:w-3/5 md:w-9/12 gap-5">
               <WhyUsCard
                 icon="suitcase"
                 viewBox={"0 0 39 32"}
                 title={"Cost-Efficient Growth:"}
                 description={"Save up to 70% compared to in-house hires."}
-                className="md:bg-[#191919] md:rounded-tl-2xl"
+                className="bg-[#2B2B2B] rounded-2xl"
               />
               <WhyUsCard
                 icon="clock"
                 viewBox={"0 0 35 40"}
                 title={"More Time, Less Stress:"}
                 description={"Focus on strategy, not admin."}
-                className="md:bg-[#2B2B2B] md:rounded-tr-2xl"
+                className="bg-[#2B2B2B] rounded-2xl"
               />
               <WhyUsCard
                 icon="human-plus"
@@ -162,20 +164,21 @@ export default function WhoWeArePage() {
                 description={
                   "Real professionals, not bots - trained to represent your brand."
                 }
-                className="md:bg-[#2B2B2B] md:rounded-bl-2xl"
+                className="bg-[#2B2B2B] rounded-2xl"
               />
               <WhyUsCard
                 icon="scalable-support"
                 viewBox={"0 2 41 36"}
                 title={"Scalable & Flexible:"}
                 description={"Add or adjust support as your business evolves."}
+                className="bg-[#2B2B2B] rounded-2xl"
               />
               <WhyUsCard
                 icon="computer"
                 viewBox={"0 0 38 33"}
                 title={"Reliable & Secure:"}
                 description={"Trained in confidentiality and data compliance."}
-                className="md:bg-[#2B2B2B] md:rounded-b-2xl md:col-start-2"
+                className="bg-[#2B2B2B] rounded-2xl md:translate-x-1/2"
               />
             </div>
           </div>
