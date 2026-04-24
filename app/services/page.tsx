@@ -127,7 +127,7 @@ export default function ServicesPage() {
         customMessage={
           <>
             Book a Free
-            <br className="max-md:hidden" /> Strategy Call
+            <br className="max-md:hidden" /> Discovery Call
           </>
         }
       >
