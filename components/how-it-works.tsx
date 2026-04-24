@@ -19,26 +19,29 @@ export default function HowItWorks({
   href,
 }: HowItWorksProps) {
   return (
-    <div className="lg:[@media(min-height:800px)]:w-9/12 md:w-11/12 [@media(min-height:800px)]:max-h-svh flex flex-col justify-around">
+    <div className="lg:[@media(min-height:800px)]:w-9/12 md:w-11/12 [@media(min-height:800px)]:max-h-svh flex flex-col justify-around gap-5">
       <div
-        className={`flex h-min ${reverse && "md:flex-row-reverse"} max-md:flex-col-reverse gap-5`}
+        className={`flex items-stretch h-min ${
+          reverse && "md:flex-row-reverse"
+        } max-md:flex-col-reverse gap-5`}
       >
-        <div className={`${imageSrc && "md:w-1/2"}`}>
+        <div className={`${imageSrc && "md:w-1/2"} h-full flex flex-col`}>
           <h1
             className="font-medium xl:text-6xl md:text-5xl text-4xl"
             style={{ lineHeight: 1 }}
           >
             {title}
           </h1>
-          <p className="py-4">{paragraph}</p>
+          <p className="py-4 flex-1 md:text-xl">{paragraph}</p>
         </div>
         {imageSrc && (
           <div className="h-full md:w-1/2 relative">
             <Image
-              className="rounded-2xl object-cover object-top-right"
+              className="rounded-2xl object-cover"
               src={Array.isArray(imageSrc) ? imageSrc[0] : imageSrc}
-              height={1080}
-              width={1080}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              quality={100}
               alt={alt}
             />
             {href && (
