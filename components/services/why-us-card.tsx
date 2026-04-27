@@ -1,4 +1,5 @@
 import { Icon, IconProps } from "../icon/icon";
+import TiltCard from "../tilt-card";
 
 type CardProps = {
   title: string;
@@ -15,7 +16,7 @@ export default function WhyUsCard({
   viewBox,
 }: CardProps) {
   return (
-    <div
+    <TiltCard
       className={`p-4 ${className} flex flex-col items-center gap-4 flex-[30svw] group/us-card h-full`}
     >
       <div className="flex flex-col items-center gap-4">
@@ -33,6 +34,6 @@ export default function WhyUsCard({
         <label className="text-2xl font-medium text-white">{title}</label>
       </div>
       <p className="text-xl text-white text-center">{description}</p>
-    </div>
+    </TiltCard>
   );
 }

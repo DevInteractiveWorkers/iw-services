@@ -44,7 +44,7 @@ export function ListItem({
           ["--service-color" as any]: color,
           ["--service-bg" as any]: bgColor,
         }}
-        className="text-2xl font-medium w-full"
+        className={`text-2xl font-medium w-full ${align === "start" ? "text-start" : "text-end"}`}
       >
         {children}
       </span>

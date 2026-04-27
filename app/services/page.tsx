@@ -1,11 +1,15 @@
+"use client";
+
 import BenefitsList from "@/components/benefits-list";
 import BookACall from "@/components/book-a-call";
 import { Highlight } from "@/components/highlight";
 import Landing from "@/components/landing";
 import { ListItem } from "@/components/list-item";
 import { VAs } from "@/components/VAs";
+import { useIsMobile } from "@/lib/useMobile";
 
 export default function ServicesPage() {
+  const isMobile = useIsMobile();
   return (
     <>
       <Landing
@@ -56,46 +60,25 @@ export default function ServicesPage() {
           <br className="max-md:hidden" /> We've got the{" "}
           <Highlight>right support</Highlight>
         </h3>
-        <div className="w-full grid grid-cols-2 justify-items-center">
-          <BenefitsList align="end">
-            <ListItem
-              icon={"24-7"}
-              viewBox="3 1 24 24"
-              color="white"
-              align="end"
-            >
+        <div className="w-full grid md:grid-cols-2 md:justify-items-center">
+          <BenefitsList align={isMobile ? "start" : "end"}>
+            <ListItem icon={"24-7"} viewBox="3 1 24 24" color="white">
               Dispatchers
             </ListItem>
             <ListItem
               icon={"scalable-support"}
               viewBox={"5 4 30 30"}
               color="white"
-              align="end"
             >
               General Virtual Assistants
             </ListItem>
-            <ListItem
-              icon={"calendar"}
-              viewBox={"3 2 25 25"}
-              color="white"
-              align="end"
-            >
+            <ListItem icon={"calendar"} viewBox={"3 2 25 25"} color="white">
               Schedulers
             </ListItem>
-            <ListItem
-              icon={"thumb-up"}
-              viewBox={"7 10 40 40"}
-              color="white"
-              align="end"
-            >
+            <ListItem icon={"thumb-up"} viewBox={"7 10 40 40"} color="white">
               Costumer Care
             </ListItem>
-            <ListItem
-              icon={"suitcase"}
-              viewBox={"0 0 39 32"}
-              color="white"
-              align="end"
-            >
+            <ListItem icon={"suitcase"} viewBox={"0 0 39 32"} color="white">
               Intake Specialists
             </ListItem>
           </BenefitsList>
