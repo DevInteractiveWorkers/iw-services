@@ -91,7 +91,7 @@ export default function WhoWeArePage() {
             <WhatWeOfferCard
               icon="folder"
               viewBox={"0 0 37 25"}
-              title="Administratrive Support"
+              title="Administrative Support"
               description="Inbox management, calendar coordination, data entry, and report preparation - our VAs keep your operations running smoothly behind the scenes."
               src="/assets/iw-co-workers-2.jpg"
             />
