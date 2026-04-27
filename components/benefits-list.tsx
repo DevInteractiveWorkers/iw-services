@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
-import { ListItem, ListItemProps } from "./list-item";
+import React from "react";
+import { ListItemProps } from "./list-item";
 
 interface BenefitsListProps {
   title?: string | React.ReactNode;
@@ -21,18 +21,18 @@ export default function BenefitsList({
 }: BenefitsListProps) {
   return (
     <div
-      className={`lg:w-10/12 md:w-11/12 flex flex-col ${text || src ? "min-h-dvh justify-around py-10" : "h-min"} 
-      ${align === "start" ? "items-start" : "items-end"}`}
+      className={`lg:w-10/12 md:w-11/12 flex flex-col 
+        ${text || src ? "min-h-dvh justify-around py-10" : "h-min"} 
+        ${align === "start" ? "items-start" : "items-end"}`}
     >
       {title && (
         <h2 className="font-medium lg:text-6xl md:text-5xl text-4xl">
           {title}
         </h2>
       )}
-      <ul className="grid grid-cols-1 gap-5 md:w-9/12 my-5">
+      <ul className="grid grid-cols-1 gap-5 md:w-9/12 my-2.5">
         {React.Children.map(children, (child, i) => {
           if (!React.isValidElement(child)) return child;
-
           return React.cloneElement<ListItemProps>(child, {
             align: align,
             key: i,
