@@ -47,7 +47,7 @@ export default function TiltCard({ children, className }: CardProps) {
       onMouseLeave={handleMouseLeave}
       className={`transition-transform ${className}`}
       style={{
-        transform: `perspective(800px) rotateX(${-tilt.x}deg) rotateY(${tilt.y}deg)`,
+        transform: `perspective(500px) rotateX(${-tilt.x}deg) rotateY(${tilt.y}deg)`,
         animationDelay: `${delay}ms`,
       }}
     >
