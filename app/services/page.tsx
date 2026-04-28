@@ -76,7 +76,7 @@ export default function ServicesPage() {
               Schedulers
             </ListItem>
             <ListItem icon={"thumb-up"} viewBox={"7 10 40 40"} color="white">
-              Costumer Care
+              Customer Care
             </ListItem>
             <ListItem icon={"suitcase"} viewBox={"0 0 39 32"} color="white">
               Intake Specialists

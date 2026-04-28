@@ -37,7 +37,7 @@ export default function HowItWorks({
         {imageSrc && (
           <div className="h-full md:w-1/2 relative">
             <Image
-              className="rounded-2xl object-cover"
+              className="rounded-2xl object-cover object-[0_30%]"
               src={Array.isArray(imageSrc) ? imageSrc[0] : imageSrc}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
