@@ -9,26 +9,26 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
 
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+  const [isDraggingState, setIsDraggingState] = useState(false);
+  const [offset, setOffset] = useState(0);
 
   const startX = useRef(0);
-  const deltaX = useRef(0);
+  const currentX = useRef(0);
   const isDragging = useRef(false);
 
   const total = items.length;
 
-  // 👉 NEXT
   const slideNext = () => {
     setCurrent((prev) => (prev + 1) % total);
   };
 
-  // 👉 PREV
   const slidePrev = () => {
     setCurrent((prev) => (prev - 1 + total) % total);
   };
 
   // 👉 AUTOPLAY
   useEffect(() => {
-    if (!autoplay) return;
+    if (!autoplay || isDragging.current) return;
 
     const id = setInterval(slideNext, 3000);
     return () => clearInterval(id);
@@ -37,29 +37,39 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
   // 👉 DRAG START
   const onPointerDown = (e: React.PointerEvent) => {
     isDragging.current = true;
+    setIsDraggingState(true);
+
     startX.current = e.clientX;
-    deltaX.current = 0;
+    currentX.current = e.clientX;
+
     setAutoplay(false);
   };
 
   // 👉 DRAG MOVE
   const onPointerMove = (e: React.PointerEvent) => {
     if (!isDragging.current) return;
-    deltaX.current = e.clientX - startX.current;
+
+    currentX.current = e.clientX;
+    const delta = currentX.current - startX.current;
+
+    setOffset(delta);
   };
 
   // 👉 DRAG END
   const onPointerUp = () => {
     if (!isDragging.current) return;
 
+    const delta = currentX.current - startX.current;
+
     isDragging.current = false;
+    setIsDraggingState(false);
 
-    if (Math.abs(deltaX.current) > 50) {
-      if (deltaX.current < 0) slideNext();
-      else slidePrev();
-    }
+    const threshold = 60;
 
-    deltaX.current = 0;
+    if (delta < -threshold) slideNext();
+    else if (delta > threshold) slidePrev();
+
+    setOffset(0);
   };
 
   if (!items.length) return null;
@@ -67,8 +77,9 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
   return (
     <section className="w-full flex items-center relative">
       <MoveButton onClick={slidePrev} direction="prev" />
+
       <div
-        className="overflow-x-hidden cursor-grab active:cursor-grabbing"
+        className="overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -77,16 +88,23 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
         onMouseLeave={() => setAutoplay(true)}
       >
         <div
-          className="flex w-full "
+          className="flex w-full"
           style={{
-            transform: `translateX(-${current * 100}%)`,
-            transition: "transform 500ms ease",
+            transform: `translateX(calc(-${current * 100}% + ${offset}px))`,
+            transition: isDraggingState ? "none" : "transform 400ms ease",
           }}
         >
           {items.map((item, index) => (
             <div
               key={index}
-              className={`min-w-full max-w-full h-min select-none ${current === index ? "opacity-100" : "opacity-0 scale-90"} transition-all duration-150 group`}
+              className={`min-w-full max-w-full h-min select-none 
+                ${
+                  isDraggingState
+                    ? "scale-90 opacity-50"
+                    : current === index
+                      ? "opacity-100"
+                      : "opacity-0 scale-90"
+                } transition-all duration-200 group`}
             >
               {item}
             </div>
@@ -110,7 +128,11 @@ function MoveButton({
   return (
     <button
       onClick={onClick}
-      className={`z-10 cursor-pointer absolute ${direction === "prev" ? "left-0 -translate-x-full" : "right-0 translate-x-full"}`}
+      className={`z-10 cursor-pointer absolute ${
+        direction === "prev"
+          ? "left-2 md:-translate-x-full"
+          : "right-2 md:translate-x-full"
+      }`}
     >
       <svg className="w-6 h-6 text-[#191919]" viewBox="0 0 24 24" fill="none">
         {direction === "prev" ? (
