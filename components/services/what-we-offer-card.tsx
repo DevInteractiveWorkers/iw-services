@@ -21,13 +21,13 @@ export default function WhatWeOfferCard({
         group-even:bg-[#dd272d] group-even:flex-col-reverse bg-[#191919] flex-col`}
     >
       {src && (
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden rounded-2xl">
           <Image
             src={src}
             alt={"img-" + title}
             width={1080}
             height={1080}
-            className="max-h-[50svh] w-full object-cover select-non pointer-events-none rounded-2xl"
+            className="max-h-[50svh] w-full object-cover select-non pointer-events-none"
           />
           <div className="absolute p-4 flex items-center justify-center rounded-full flip-logo bottom-4 right-4 group-even:bg-white bg-[#dd272d] text-white group-even:text-[#dd272d]">
             <Icon
@@ -36,7 +36,7 @@ export default function WhatWeOfferCard({
               color={"currentColor"}
               size={size}
               viewBox={viewBox}
-            />{" "}
+            />
           </div>
         </div>
       )}
