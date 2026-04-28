@@ -40,7 +40,7 @@ export default function WhoWeArePage() {
               paperwork.
             </>
           }
-          imageSrc={["/assets/iw-hero.png", "/assets/iw-co-workers-3.png"]}
+          imageSrc={["/assets/iw-hero.webp", "/assets/iw-co-workers-3.webp"]}
           alt="services"
           reverse
           href="/"
@@ -81,7 +81,7 @@ export default function WhoWeArePage() {
           <div className="relative h-full w-full">
             <Image
               className="rounded-2xl object-cover object-center"
-              src={"/assets/top-view-co-workers-planning-strategy.png"}
+              src={"/assets/top-view-co-workers-planning-strategy.webp"}
               alt={"what-we-offer"}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
@@ -93,35 +93,35 @@ export default function WhoWeArePage() {
               viewBox={"0 0 37 25"}
               title="Administrative Support"
               description="Inbox management, calendar coordination, data entry, and report preparation - our VAs keep your operations running smoothly behind the scenes."
-              src="/assets/iw-meeting.jpg"
+              src="/assets/iw-meeting.webp"
             />
             <WhatWeOfferCard
               icon="phone"
               viewBox={"-3 -2 30 43"}
               title="Customer Service & Communication"
               description="Professional call handling, client follow-ups, and bilingual support to ensure your customers always feel heard and cared for."
-              src="/assets/iw-hero-6.jpg"
+              src="/assets/iw-hero-6.webp"
             />
             <WhatWeOfferCard
               icon="calendar"
               viewBox={"0 0 35 29"}
               title="Scheduling & Coordination"
               description="Appointment setting, meeting logistics, and workflow organization - because your time should go where it matters most."
-              src="/assets/iw-meeting-3.jpg"
+              src="/assets/iw-meeting-3.webp"
             />
             <WhatWeOfferCard
               icon="laptop"
               viewBox={"0 0 43 26"}
               title="Sales & Lead Management"
               description="CRM updates, lead tracking, and pipeline coordination that help your team convert faster and stay organized."
-              src="/assets/iw-strategy-2.jpg"
+              src="/assets/iw-strategy-2.webp"
             />
             <WhatWeOfferCard
               icon="chat"
               viewBox={"0 0 39 26"}
               title="Bilingual & Translation Support"
               description="Break barriers with English/Spanish bilingual VAs trained to communicate effectively with your clients and partners."
-              src="/assets/iw-team-3.jpg"
+              src="/assets/iw-team-3.webp"
             />
           </Carousel>
         </div>
