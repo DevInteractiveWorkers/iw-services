@@ -97,7 +97,14 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
           {items.map((item, index) => (
             <div
               key={index}
-              className={`min-w-full max-w-full h-min select-none ${current === index ? "opacity-100" : "opacity-0 scale-90"} transition-all duration-150 group`}
+              className={`min-w-full max-w-full h-min select-none 
+                ${
+                  isDraggingState
+                    ? "scale-90 opacity-50"
+                    : current === index
+                      ? "opacity-100"
+                      : "opacity-0 scale-90"
+                } transition-all duration-200 group`}
             >
               {item}
             </div>
