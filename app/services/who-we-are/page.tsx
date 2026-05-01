@@ -41,8 +41,8 @@ export default function WhoWeArePage() {
             </>
           }
           imageSrc={[
-            "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f1157640534248c5a83c83.webp",
-            "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f11576011ebfb8f9288ee2.webp",
+            "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c29107cf68d3e59467ca.webp",
+            "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c2910cd613c4f18faa71.webp",
           ]}
           alt="services"
           reverse
@@ -85,7 +85,7 @@ export default function WhoWeArePage() {
             <Image
               className="rounded-2xl object-cover object-center"
               src={
-                "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f1157667b2088f501ad41a.png"
+                "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c291bbacf0a0560b594a.webp"
               }
               alt={"what-we-offer"}
               fill
@@ -98,7 +98,7 @@ export default function WhoWeArePage() {
               viewBox={"0 0 37 25"}
               title="Administrative Support"
               description="Inbox management, calendar coordination, data entry, and report preparation - our VAs keep your operations running smoothly behind the scenes."
-              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f1157640534248c5a83c84.webp"
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c2910cd613c4f18faa76.webp"
             />
             <WhatWeOfferCard
               icon="phone"
@@ -112,21 +112,21 @@ export default function WhoWeArePage() {
               viewBox={"0 0 35 29"}
               title="Scheduling & Coordination"
               description="Appointment setting, meeting logistics, and workflow organization - because your time should go where it matters most."
-              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f11576d0efad0b4cc4aea4.webp"
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c29107cf68d3e59467c9.webp"
             />
             <WhatWeOfferCard
               icon="laptop"
               viewBox={"0 0 43 26"}
               title="Sales & Lead Management"
               description="CRM updates, lead tracking, and pipeline coordination that help your team convert faster and stay organized."
-              src="/assets/iw-strategy-2.webp"
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c2910cd613c4f18faa75.webp"
             />
             <WhatWeOfferCard
               icon="chat"
               viewBox={"0 0 39 26"}
               title="Bilingual & Translation Support"
               description="Break barriers with English/Spanish bilingual VAs trained to communicate effectively with your clients and partners."
-              src="/assets/iw-team-3.webp"
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c2918831cb2c6c7eac99.webp"
             />
           </Carousel>
         </div>
