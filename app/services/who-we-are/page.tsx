@@ -40,7 +40,10 @@ export default function WhoWeArePage() {
               paperwork.
             </>
           }
-          imageSrc={["/assets/iw-hero.webp", "/assets/iw-co-workers-3.webp"]}
+          imageSrc={[
+            "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f1157640534248c5a83c83.webp",
+            "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f11576011ebfb8f9288ee2.webp",
+          ]}
           alt="services"
           reverse
           href="/"
@@ -81,7 +84,9 @@ export default function WhoWeArePage() {
           <div className="relative h-full w-full">
             <Image
               className="rounded-2xl object-cover object-center"
-              src={"/assets/top-view-co-workers-planning-strategy.webp"}
+              src={
+                "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f1157667b2088f501ad41a.png"
+              }
               alt={"what-we-offer"}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
@@ -93,21 +98,21 @@ export default function WhoWeArePage() {
               viewBox={"0 0 37 25"}
               title="Administrative Support"
               description="Inbox management, calendar coordination, data entry, and report preparation - our VAs keep your operations running smoothly behind the scenes."
-              src="/assets/iw-meeting.webp"
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f1157640534248c5a83c84.webp"
             />
             <WhatWeOfferCard
               icon="phone"
               viewBox={"-3 -2 30 43"}
               title="Customer Service & Communication"
               description="Professional call handling, client follow-ups, and bilingual support to ensure your customers always feel heard and cared for."
-              src="/assets/iw-hero-6.webp"
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f11576eecc3af70a04a226.webp"
             />
             <WhatWeOfferCard
               icon="calendar"
               viewBox={"0 0 35 29"}
               title="Scheduling & Coordination"
               description="Appointment setting, meeting logistics, and workflow organization - because your time should go where it matters most."
-              src="/assets/iw-meeting-3.webp"
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f11576d0efad0b4cc4aea4.webp"
             />
             <WhatWeOfferCard
               icon="laptop"
