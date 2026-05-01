@@ -134,23 +134,17 @@ function MoveButton({
           : "right-2 md:translate-x-full"
       }`}
     >
-      <svg className="w-6 h-6 text-[#191919]" viewBox="0 0 24 24" fill="none">
+      <svg
+        width="8"
+        height="15"
+        viewBox="0 0 8 15"
+        fill="#191919"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         {direction === "prev" ? (
-          <path
-            d="m15 19-7-7 7-7"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d="M8 15L0 7.49503L8 0" fill="#191919" />
         ) : (
-          <path
-            d="m9 5 7 7-7 7"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d="M1.31134e-06 -6.99382e-07L8 7.50497L0 15" fill="#191919" />
         )}
       </svg>
     </button>
