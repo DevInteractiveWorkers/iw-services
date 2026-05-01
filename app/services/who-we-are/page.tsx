@@ -84,9 +84,7 @@ export default function WhoWeArePage() {
           <div className="relative h-full w-full">
             <Image
               className="rounded-2xl object-cover object-center"
-              src={
-                "https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c291bbacf0a0560b594a.webp"
-              }
+              src="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69f4c291bbacf0a0560b594a.webp"
               alt={"what-we-offer"}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
