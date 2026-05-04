@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Icon, IconProps } from "../icon/icon";
+import FlipElement from "../flip-element";
 
 type CardProps = {
   title: string;
@@ -29,7 +30,7 @@ export default function WhatWeOfferCard({
             height={1080}
             className="max-h-[50svh] w-full object-cover select-non pointer-events-none"
           />
-          <div className="absolute p-4 flex items-center justify-center rounded-full flip-logo bottom-4 right-4 group-even:bg-white bg-[#dd272d] text-white group-even:text-[#dd272d]">
+          <FlipElement className="absolute p-4 flex items-center justify-center rounded-full bottom-4 right-4 group-even:bg-white bg-[#dd272d] text-white group-even:text-[#dd272d]">
             <Icon
               icon={icon}
               filled={true}
@@ -37,7 +38,7 @@ export default function WhatWeOfferCard({
               size={size}
               viewBox={viewBox}
             />
-          </div>
+          </FlipElement>
         </div>
       )}
       <p className="text-lg flex flex-col gap-2 text-white">

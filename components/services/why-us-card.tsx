@@ -1,3 +1,4 @@
+import FlipElement from "../flip-element";
 import { Icon, IconProps } from "../icon/icon";
 import TiltCard from "../tilt-card";
 
@@ -20,8 +21,9 @@ export default function WhyUsCard({
       className={`p-4 ${className} flex flex-col items-center gap-4 flex-[30svw] group/us-card h-full`}
     >
       <div className="flex flex-col items-center gap-4">
-        <div
-          className={`p-4 flex items-center justify-center rounded-full flip-logo bottom-4 right-4 bg-[#dd272d] text-white max-w-20 aspect-square`}
+        <FlipElement
+          onView={false}
+          className={`p-4 flex items-center justify-center rounded-full bottom-4 right-4 bg-[#dd272d] text-white max-w-20 aspect-square`}
         >
           <Icon
             icon={icon}
@@ -30,7 +32,7 @@ export default function WhyUsCard({
             size={size}
             viewBox={viewBox}
           />
-        </div>
+        </FlipElement>
         <label className="text-2xl font-medium text-white">{title}</label>
       </div>
       <p className="text-xl text-white text-center">{description}</p>

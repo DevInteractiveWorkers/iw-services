@@ -33,16 +33,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.flip-once {
-  animation: flip-scale 1.2s ease-in-out forwards;
-}
-
-.flip-logo {
+.flip-item {
   display: inline-block;
-  /* will-change: transform; */
 }
 
-.flip-logo:hover {
+.flip-once {
   animation: flip-scale 1.2s ease-in-out forwards;
 }
 

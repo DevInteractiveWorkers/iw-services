@@ -4,6 +4,7 @@ import Image from "next/image";
 import VideoPlayer from "./videoplayer";
 import SignUp from "./sign-up";
 import { useEffect, useRef } from "react";
+import FlipElement from "./flip-element";
 
 interface LandingProps {
   title: string | React.ReactNode;
@@ -18,40 +19,18 @@ export default function Landing({
   videoUrl,
   thumbnail,
 }: LandingProps) {
-  const ref = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-
-    const el = ref.current;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add("flip-once");
-          observer.disconnect();
-          setTimeout(() => el.classList.remove("flip-once"), 1200);
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    observer.observe(el);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <main className="h-svh px-5 flex flex-col justify-center items-center gap-5">
-      <Image
-        ref={ref}
-        src={"/iw-icon.png"}
-        alt={"iw-icon"}
-        quality={100}
-        height={1080}
-        width={1080}
-        className="w-min [@media(min-height:800px)]:max-h-20 max-h-10 object-contain flip-logo"
-      />
+      <FlipElement>
+        <Image
+          src={"/iw-icon.png"}
+          alt={"iw-icon"}
+          quality={100}
+          height={1080}
+          width={1080}
+          className="w-min [@media(min-height:800px)]:max-h-20 max-h-10 object-contain"
+        />
+      </FlipElement>
       <h1
         className={`font-medium text-center 
           ${
