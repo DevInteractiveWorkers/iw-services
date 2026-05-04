@@ -77,7 +77,6 @@ export default function Carousel({ children }: { children: React.ReactNode }) {
   return (
     <section className="w-full flex items-center relative">
       <MoveButton onClick={slidePrev} direction="prev" />
-
       <div
         className="overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y"
         onPointerDown={onPointerDown}
@@ -130,8 +129,8 @@ function MoveButton({
       onClick={onClick}
       className={`z-10 cursor-pointer absolute ${
         direction === "prev"
-          ? "left-2 md:-translate-x-full"
-          : "right-2 md:translate-x-full"
+          ? "right-full -translate-x-1/2"
+          : "left-full translate-x-1/2"
       }`}
     >
       <svg

@@ -1,4 +1,5 @@
 "use client";
+import FlipElement from "@/components/flip-element";
 import { useSubdomain } from "@/lib/useLocation";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,14 +27,16 @@ export default function NotFound() {
       <div className="flex flex-col items-center">
         <label className="text-[#DD272D] font-black text-7xl select-none">
           4
-          <Image
-            src={"/iw-icon.png"}
-            alt={"0"}
-            quality={100}
-            height={1080}
-            width={1080}
-            className="w-min [@media(min-height:800px)]:max-h-20 max-h-10 object-contain flip-logo"
-          />
+          <FlipElement>
+            <Image
+              src={"/iw-icon.png"}
+              alt={"0"}
+              quality={100}
+              height={1080}
+              width={1080}
+              className="w-min [@media(min-height:800px)]:max-h-20 max-h-10 object-contain"
+            />
+          </FlipElement>
           4
         </label>
         <h1

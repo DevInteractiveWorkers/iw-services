@@ -1,3 +1,4 @@
+import FlipElement from "./flip-element";
 import { Icon, IconProps } from "./icon/icon";
 
 export interface ListItemProps extends IconProps {
@@ -21,13 +22,9 @@ export function ListItem({
     <li
       className={`flex gap-5 items-center ${align === "start" ? "flex-row" : "flex-row-reverse"}`}
     >
-      <div
-        className={
-          "service p-4 flex items-center justify-center rounded-full flip-logo"
-        }
-        style={{
-          background: bgColor,
-        }}
+      <FlipElement
+        className={"service p-4 flex items-center justify-center rounded-full"}
+        backgroundColor={bgColor}
       >
         <Icon
           icon={icon}
@@ -37,7 +34,7 @@ export function ListItem({
           stroke={stroke}
           viewBox={viewBox}
         />
-      </div>
+      </FlipElement>
 
       <span
         style={{
