@@ -6,7 +6,7 @@ type FlipElementProps = {
   children: React.ReactNode;
   backgroundColor?: string;
   className?: string;
-  onView?: boolean;
+  onView?: boolean | number;
 };
 
 export default function FlipElement({
@@ -15,7 +15,8 @@ export default function FlipElement({
   className = "",
   onView = true,
 }: FlipElementProps) {
-  const [count, setCount] = useState<number>(0);
+  const [isAnimationRunning, setIsAnimationRunning] = useState<boolean>(false);
+  const delay = typeof onView === "number" ? onView : 0;
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -27,7 +28,9 @@ export default function FlipElement({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("flip-once");
+          setTimeout(() => {
+            el.classList.add("flip-once");
+          }, delay);
           observer.disconnect();
         }
       },
@@ -40,12 +43,15 @@ export default function FlipElement({
   }, []);
 
   const runAnimation = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isAnimationRunning) return;
+    setIsAnimationRunning(true);
     const el = e.currentTarget;
 
     // restart animation
     el.classList.remove("flip-once");
     void el.offsetWidth; // force reflow
     el.classList.add("flip-once");
+    setTimeout(() => setIsAnimationRunning(false), 1200);
   };
 
   return (
