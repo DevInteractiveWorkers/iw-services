@@ -5,6 +5,7 @@ export interface ListItemProps extends IconProps {
   children: React.ReactNode;
   bgColor?: string;
   align?: "start" | "end";
+  delay?: number;
 }
 
 export function ListItem({
@@ -17,6 +18,7 @@ export function ListItem({
   bgColor,
   viewBox,
   align = "start",
+  delay,
 }: ListItemProps) {
   return (
     <li
@@ -25,6 +27,7 @@ export function ListItem({
       <FlipElement
         className={"service p-4 flex items-center justify-center rounded-full"}
         backgroundColor={bgColor}
+        onView={delay}
       >
         <Icon
           icon={icon}

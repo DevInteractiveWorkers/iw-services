@@ -36,6 +36,7 @@ export default function BenefitsList({
           return React.cloneElement<ListItemProps>(child, {
             align: align,
             key: i,
+            delay: i === 0 ? 100 : i * 200,
           });
         })}
       </ul>
