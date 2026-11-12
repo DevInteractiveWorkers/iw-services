@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import NewsletterForm from "./newsletter-form";
 
 export default function SignUp({
   dark,
@@ -43,39 +44,23 @@ export default function SignUp({
 }
 
 function Modal({ onClose }: { onClose: () => void }) {
-  // Load external script once
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://link.msgsndr.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/60" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-2xl z-10 overflow-hidden flex justify-center items-center">
+      <div className="relative z-10 w-full max-w-2xl max-h-[90svh] overflow-y-auto rounded-2xl bg-white p-6 md:p-8">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-6 text-xl font-bold cursor-pointer"
+          aria-label="Close"
+          className="absolute top-3 right-4 text-xl font-bold cursor-pointer text-[#191919]"
         >
           ✕
         </button>
 
-        <iframe
-          src="https://api.leadconnectorhq.com/widget/form/ZEseYSVkwkB9sjZqhqZR"
-          className="w-full h-full min-h-[70svh] flex justify-center items-center"
-          title="Newsletter contact form"
-          data-form-id="ZEseYSVkwkB9sjZqhqZR"
-        />
+        <NewsletterForm />
       </div>
     </div>
   );
