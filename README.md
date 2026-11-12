@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Interactive Workers – Landing Services
 
-## Getting Started
+A single [Next.js](https://nextjs.org) application that serves **5 landing sites**, one per subdomain. Each subdomain targets a different industry (or the general services offering) and is routed to its own folder inside `app/`.
 
-First, run the development server:
+## Services & Subdomains
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+| # | Subdomain | Internal route | Description |
+|---|-----------|----------------|-------------|
+| 1 | `services` | `app/services` | General services landing page and "Who we are" page |
+| 2 | `homecare` | `app/homecare` | Landing for home care agencies |
+| 3 | `insurance` | `app/insurance` | Landing for insurance agencies |
+| 4 | `lawfirms` | `app/lawfirms` | Landing for law firms |
+| 5 | `privatesecurity` | `app/privatesecurity` | Landing for private security companies |
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Examples:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `homecare.interactiveworkers.com`
+- `homecare.iw-services.vercel.app`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The industry sites (`homecare`, `insurance`, `lawfirms`, `privatesecurity`) each include:
 
-## Learn More
+- `page.tsx` – the main landing page
+- `how-it-works/page.tsx` – the "How it works" page
+- `layout.tsx` and `colors.css` – the layout and color theme for that service
 
-To learn more about Next.js, take a look at the following resources:
+## How Subdomain Routing Works
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Routing is handled by [proxy.ts](proxy.ts):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. The subdomain is read from the request host (e.g. `homecare` from `homecare.interactiveworkers.com`).
+2. If it is one of the 5 allowed subdomains, the request is internally rewritten to `/<subdomain>/<path>`.
+3. The root domain and any unknown subdomain are rewritten to the not-found page.
+4. Next.js internals (`/_next`), `/api` routes and static files are ignored.
 
-## Deploy on Vercel
+To add a new service, create a new folder in `app/`, then add its name to `ALLOWED_SUBDOMAINS` in [proxy.ts](proxy.ts).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Shared Code
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `components/` – components shared across all services
+- `app/faq.ts`, `app/reviews.ts` – shared FAQ and reviews data
+- `app/api/stream` – API route (not subdomain-routed)
