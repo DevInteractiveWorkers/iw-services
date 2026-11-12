@@ -28,8 +28,8 @@ export default function ServicesPage() {
         //     <br /> to customer support.
         //   </>
         // }
-        videoUrl="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69e9186ba1636a6c65402e79.mp4"
-        thumbnail="https://assets.cdn.filesafe.space/dtfCxBE6SEYaCMFTlgu5/media/69e91fc8717d5dd4e11ea388.jpeg"
+        videoUrl="https://s3.interactiveworkers.com/demo/ee6cfa06-b65b-4335-9ee7-dc54f214ba09.mp4"
+        thumbnail="https://s3.interactiveworkers.com/landings/thumbnail_general%20landing.jpg"
       />
       <VAs
         header={<>Why Us?</>}
