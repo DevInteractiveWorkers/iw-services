@@ -23,8 +23,11 @@ const SERVICES: Record<string, string> = {
 
 // Derived server-side from the Host header (not the request body) so it can't be spoofed by the form.
 const getService = (req: NextRequest) => {
-  const host = (req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? "")
-    .split(":")[0];
+  const host = (
+    req.headers.get("x-forwarded-host") ??
+    req.headers.get("host") ??
+    ""
+  ).split(":")[0];
   const subdomain = host.split(".")[0];
   const name = SERVICES[subdomain];
   return { subdomain, name: name ?? "interactiveworkers.com" };
@@ -59,9 +62,9 @@ export async function POST(req: NextRequest) {
   try {
     await sendEmail({
       from: process.env.NODEMAILER_USER!,
-      to: process.env.NODEMAILER_USER!,
-      // to: "gm@interactiveworkers.com",
-      // bcc: ["info@interactiveworkers.com", "ceo@interactiveworkers.com"],
+      // to: process.env.NODEMAILER_USER!,
+      to: "gm@interactiveworkers.com",
+      bcc: ["info@interactiveworkers.com", "ceo@interactiveworkers.com"],
       // Company is optional on the newsletter form, so only append it when present.
       subject: `[Client Lead] ${data.fullName}${data.company ? ` - ${data.company}` : ""}`,
       heading: `${data.fullName} signed up to our newsletter through ${service.name}`,
